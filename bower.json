@@ -1,0 +1,23 @@
+{
+  "name": "schedule",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Jared Laser <laserjn@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fullcalendar-scheduler": "^1.3.2",
+    "lodash": "^4.13.1"
+  }
+}

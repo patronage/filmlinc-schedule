@@ -1,0 +1,100 @@
+body {
+    background: #252525;
+}
+
+.fc-unthemed th,
+.fc-unthemed td,
+.fc-unthemed thead,
+.fc-unthemed tbody,
+.fc-unthemed .fc-divider,
+.fc-unthemed .fc-row,
+.fc-unthemed .fc-content,
+.fc-unthemed .fc-popover {
+    border-color: #4d4d4d;
+}
+
+.fc-view-container {
+    border: 1px solid #4d4d4d;
+}
+
+.fc-unthemed .fc-widget-header {
+    background: #000;
+    border: none;
+    border-bottom: 1px solid #4d4d4d;
+    color: #fff;
+}
+
+// divider between resources and times
+.fc-timeline .fc-divider {
+    display: none;
+}
+
+.fc-time-area .fc-slats .fc-major,
+.fc-time-area .fc-slats .fc-minor {
+    background: #000;
+    border-left: #000;
+}
+
+.fc-time-area .fc-slats .fc-major--even,
+.fc-time-area .fc-slats .fc-minor--colored {
+    background: #333;
+    border-left: #333;
+}
+
+.fc-time-area .fc-slats .fc-widget-content:nth-child( 3n + 1 ) {
+    border-left: 1px solid #4d4d4d;
+}
+
+.fc-timeline-event {
+    .fc-widget-content {
+        position: relative;
+    }
+    .fc-content {
+        white-space: normal;
+    }
+}
+
+.fc-content .fc-widget-content > div,
+.fc-rows .fc-widget-content > div,
+.fc-rows .fc-event-container {
+    height: 150px !important;
+}
+
+.fc-event-container {
+    padding-bottom: 0 !important;
+    a {
+        background: #fff;
+        box-sizing: border-box;
+                color: #434343;
+        font-size: 15px;
+        font-weight: bold;
+        height: calc( 100% - 20px );
+        padding: 15px;
+        top: 20px !important;
+    }
+}
+
+.fc-resource-area tr[data-resource-id='howard-gilman-theater'] {
+    background: url('./images/howard-gilman.jpg');
+}
+.fc-resource-area tr[data-resource-id='francesca-beale-theater'] {
+    background: url('./images/francesca-beale.jpg');
+}
+.fc-resource-area tr[data-resource-id='amphitheater'] {
+    background: url('./images/amphitheater.jpg');
+}
+
+.fc-resource-area tr[data-resource-id]:not(:empty) {
+    background-size: cover;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    .fc-cell-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+    }
+}
