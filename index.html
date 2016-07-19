@@ -5,12 +5,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://use.typekit.net/kjh2pnx.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
         <link rel="stylesheet" href="bower_components/fullcalendar-scheduler/dist/scheduler.css" />
         <!-- endbower -->
         <link rel="stylesheet" href="./public/index.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     </head>
 
     <body id="home">
@@ -18,27 +21,29 @@
         <div class="container">
             <div class="row">
                 <div class="="col-md-12">
-                    <div id="calendar"></div>
+                    <div class="schedule">
+                        <div class="schedule-actions">
+                            <div class="schedule-actions__filters">
+                                <span>Filter by</span>
+                                <ul></ul>
+                            </div>
+                            <div class="schedule-actions__view">
+                                <p>View by</p>
+                                <a href="#" class="schedule-actions__view__button">
+                                    <i class="fa fa-list"></i>
+                                    <span>List</span>
+                                </a>
+                                <a href="#" class="schedule-actions__view__button is-active">
+                                    <i class="fa fa-th-large"></i>
+                                    <span>Grid</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="calendar"></div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <style>
-        body {
-            padding: 50px;
-        }
-        .box {
-            height: 150px;
-            width: 150px;
-            border-radius: 5px;
-            border: 1px solid #eee;
-            background-color: #fafafa;
-            color: #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        </style>
 
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>

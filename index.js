@@ -47,7 +47,7 @@ function buildCalendar() {
         slotDuration: '00:10',
         resourceLabelText: ' ',
         header: {
-            left: 'title',
+            left: '',
             center: '',
             right: ''
         },
@@ -112,14 +112,14 @@ function buildCalendar() {
             }
 
             // Add section and meta info
-            element.append( '<div class="fc-callout">' + event.section + '</div>' );
             $interior.prepend( '<span class="fc-section">' + event.section + '</span>' );
-            $interior.append( '<span class="fc-duration">' + event.lengthInMinutes + 'minutes</span>' );
+            $interior.append( '<span class="fc-duration">' + event.lengthInMinutes + ' minutes</span>' );
             if ( !isEventPast ) {
+                element.append( '<div class="fc-callout">' + event.section + '</div>' );
                 $interior.after(
                     '<div class="fc-meta">' +
                         '<span class="fc-meta-time">' +
-                        moment( event.start ).format( 'hh:mm A') +
+                        moment( event.start ).format( 'h:mm A') +
                         '</span>' +
                         '<span class="fc-meta-buy"><a href="' + event.url +'">Buy Tickets</a></span>' +
                     '</div>'
@@ -129,15 +129,14 @@ function buildCalendar() {
         },
         eventAfterAllRender: function() {
 
-            var sections = _.uniq( rawData, function( event ) {
+            var sections = _.groupBy( rawData, function( event ) {
                 return event.section;
             });
+            sections = Object.keys( sections );
 
-            _.forEach( sections, function( event ) {
-                if ( typeof event.section != 'undefined'  &&  event.section != 'FREE EVENTS' ) {
-                    var section = event.section;
-                    var sectionHyphenated = slugifyText( section );
-                    $('.filter-col--sections ul').append( '<li><a class="cal-filter-trigger" href="#" data-section=' + sectionHyphenated + '>' + section + '</a></li>' )
+            _.forEach( sections, function( section ) {
+                if ( typeof section !== 'undefined' ) {
+                    $('.schedule-actions ul').append( '<li><a class="cal-filter-trigger" href="#" data-section=' + slugifyText( section ) + '>' + section + '</a></li>' )
                 }
             });
         },

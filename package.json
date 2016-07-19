@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all --parallel deps style sync",
     "deps": "node bin/deps.js",
-    "style": "node-sass --watch style.scss public/index.css",
+    "style": "node-sass --output-style expanded --watch style.scss public/index.css",
     "sync": "browser-sync start -s --files index.html public/index.css index.js --no-notify"
   },
   "keywords": [],

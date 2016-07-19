@@ -1,8 +1,53 @@
 body {
-  background: #252525; }
+  background: #252525;
+  font-family: "proxima-nova", sans-serif;
+}
 
 .container {
-  width: 1400px; }
+  width: 1400px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.schedule-actions {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-actions__view > * {
+  display: inline-block;
+}
+
+.schedule-actions__view__button {
+  border: 1px solid;
+  color: #fff;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.schedule-actions__view__button:hover {
+  color: #fff;
+}
+
+.schedule-actions__filters span,
+.schedule-actions__filters ul {
+  display: inline-block;
+}
+
+.schedule-actions__filters ul {
+  padding-left: 0;
+}
+
+.schedule-actions__filters li {
+  border: 1px solid;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 2px 5px;
+}
 
 .fc-unthemed th,
 .fc-unthemed td,
@@ -12,42 +57,51 @@ body {
 .fc-unthemed .fc-row,
 .fc-unthemed .fc-content,
 .fc-unthemed .fc-popover {
-  border-color: #4d4d4d; }
+  border-color: #4d4d4d;
+}
 
 .fc-view-container {
-  border: 1px solid #4d4d4d; }
+  border: 1px solid #4d4d4d;
+}
 
 .fc-unthemed .fc-widget-header {
   background: #000;
   border: none;
   border-bottom: 1px solid #4d4d4d;
-  color: #fff; }
+  color: #fff;
+}
 
 .fc-timeline .fc-divider {
-  display: none; }
+  display: none;
+}
 
 .fc-time-area .fc-slats .fc-major,
 .fc-time-area .fc-slats .fc-minor {
   background: #000;
-  border-left: #000; }
+  border-left: #000;
+}
 
 .fc-time-area .fc-slats .fc-major--even,
 .fc-time-area .fc-slats .fc-minor--colored {
   background: #333;
-  border-left: #333; }
+  border-left: #333;
+}
 
 .fc-time-area .fc-slats .fc-widget-content:nth-child(3n + 1) {
-  border-left: 1px solid #4d4d4d; }
+  border-left: 1px solid #4d4d4d;
+}
 
 .fc-timeline-event .fc-widget-content {
-  position: relative; }
+  position: relative;
+}
 
 .fc-timeline-event .fc-content {
   font-size: 12px;
-  white-space: normal; }
+  white-space: normal;
+}
 
 .fc-timeline-event .fc-callout {
-  background: #ddd;
+  background: #ebebeb;
   color: #000;
   font-size: 10px;
   font-weight: normal;
@@ -57,19 +111,23 @@ body {
   right: 0;
   text-transform: uppercase;
   top: -19px;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+}
 
 .fc-timeline-event .fc-section {
   display: block;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .fc-timeline-event .fc-title {
   display: block;
-  margin: 2px 0; }
+  margin: 2px 0;
+}
 
 .fc-timeline-event .fc-duration {
   display: block;
-  font-weight: normal; }
+  font-weight: normal;
+}
 
 .fc-timeline-event .fc-meta {
   border-top: 1px solid #e5e5e5;
@@ -83,78 +141,113 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
-  .fc-timeline-event .fc-meta a {
-    color: #000; }
+  align-items: center;
+}
+
+.fc-timeline-event .fc-meta a {
+  color: #000;
+}
 
 .fc-timeline-event[data-section="potent-potables"] {
-  border-top: 3px solid #1ab6ff; }
-  .fc-timeline-event[data-section="potent-potables"] .fc-section {
-    color: #1ab6ff; }
+  border-top: 3px solid #1ab6ff;
+}
+
+.fc-timeline-event[data-section="potent-potables"] .fc-section {
+  color: #1ab6ff;
+}
 
 .fc-timeline-event[data-section="oneletter-words"] {
-  border-top: 3px solid #599684; }
-  .fc-timeline-event[data-section="oneletter-words"] .fc-section {
-    color: #599684; }
+  border-top: 3px solid #599684;
+}
+
+.fc-timeline-event[data-section="oneletter-words"] .fc-section {
+  color: #599684;
+}
 
 .fc-timeline-event[data-section="words-that-rhyme-with-dog"] {
-  border-top: 3px solid #df2ca5; }
-  .fc-timeline-event[data-section="words-that-rhyme-with-dog"] .fc-section {
-    color: #df2ca5; }
+  border-top: 3px solid #df2ca5;
+}
+
+.fc-timeline-event[data-section="words-that-rhyme-with-dog"] .fc-section {
+  color: #df2ca5;
+}
 
 .fc-timeline-event[data-section="drummers-named-ringo"] {
-  border-top: 3px solid #b07837; }
-  .fc-timeline-event[data-section="drummers-named-ringo"] .fc-section {
-    color: #b07837; }
+  border-top: 3px solid #b07837;
+}
+
+.fc-timeline-event[data-section="drummers-named-ringo"] .fc-section {
+  color: #b07837;
+}
 
 .fc-timeline-event[data-section="colors-that-are-red"] {
-  border-top: 3px solid #2bca23; }
-  .fc-timeline-event[data-section="colors-that-are-red"] .fc-section {
-    color: #2bca23; }
+  border-top: 3px solid #2bca23;
+}
+
+.fc-timeline-event[data-section="colors-that-are-red"] .fc-section {
+  color: #2bca23;
+}
 
 .fc-timeline-event.fc-event-past {
   background: #dedede;
-  border-top: 3px solid #787878; }
-  .fc-timeline-event.fc-event-past .fc-title {
-    opacity: 0.25; }
+  border-top: 3px solid #787878;
+}
+
+.fc-timeline-event.fc-event-past .fc-section,
+.fc-timeline-event.fc-event-past .fc-title,
+.fc-timeline-event.fc-event-past .fc-duration {
+  color: #a8a8a8;
+}
 
 .fc-content .fc-widget-content > div,
 .fc-rows .fc-widget-content > div,
 .fc-rows .fc-event-container {
-  height: 150px !important; }
+  height: 150px !important;
+}
 
 .fc-event-container {
-  padding-bottom: 0 !important; }
-  .fc-event-container > a {
-    background: #fff;
-    box-sizing: border-box;
-    font-size: 15px;
-    font-weight: bold;
-    height: calc( 100% - 20px);
-    padding: 15px;
-    top: 20px !important; }
-  .fc-event-container a,
-  .fc-event-container a:hover {
-    color: #434343; }
+  padding-bottom: 0 !important;
+}
+
+.fc-event-container > a {
+  background: #fff;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: bold;
+  height: calc( 100% - 20px);
+  padding: 15px;
+  top: 20px !important;
+}
+
+.fc-event-container a,
+.fc-event-container a:hover {
+  color: #434343;
+}
 
 .fc-resource-area tr[data-resource-id='howard-gilman-theater'] {
-  background: url("./images/howard-gilman.jpg"); }
+  background: url("./images/howard-gilman.jpg");
+}
 
 .fc-resource-area tr[data-resource-id='francesca-beale-theater'] {
-  background: url("./images/francesca-beale.jpg"); }
+  background: url("./images/francesca-beale.jpg");
+}
 
 .fc-resource-area tr[data-resource-id='amphitheater'] {
-  background: url("./images/amphitheater.jpg"); }
+  background: url("./images/amphitheater.jpg");
+}
 
 .fc-resource-area tr[data-resource-id]:not(:empty) {
   background-size: cover;
   color: #fff;
   font-size: 25px;
   font-weight: bold;
-  -webkit-font-smoothing: antialiased; }
-  .fc-resource-area tr[data-resource-id]:not(:empty) .fc-cell-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center; }
+  -webkit-font-smoothing: antialiased;
+}
+
+.fc-resource-area tr[data-resource-id]:not(:empty) .fc-cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}

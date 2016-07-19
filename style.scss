@@ -1,3 +1,4 @@
+$font-proxima: "proxima-nova",sans-serif;
 $text-color-dark: #434343;
 
 $section-map: (
@@ -20,9 +21,51 @@ $section-color: '';
 
 body {
     background: #252525;
+    font-family: $font-proxima;
 }
+
 .container {
     width: 1400px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.schedule-actions {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__view {
+        > * {
+            display: inline-block;
+        }
+        &__button {
+            border: 1px solid;
+            color: #fff;
+            padding: 5px;
+            text-transform: uppercase;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+    &__filters {
+        span,
+        ul {
+            display: inline-block;
+        }
+        ul {
+            padding-left: 0;
+        }
+        li {
+            border: 1px solid;
+            display: inline-block;
+            margin: 0 5px;
+            padding: 2px 5px;
+        }
+    }
 }
 
 .fc-unthemed th,
@@ -77,7 +120,7 @@ body {
         white-space: normal;
     }
     .fc-callout {
-        background: #ddd;
+        background: #ebebeb;
         color: #000;
         font-size: 10px;
         font-weight: normal;
@@ -127,8 +170,10 @@ body {
     &.fc-event-past {
         background: lighten( #ababab, 20% );
         border-top: 3px solid darken( #ababab, 20% );
-        .fc-title {
-            opacity: 0.25;
+        .fc-section,
+        .fc-title,
+        .fc-duration {
+            color: #a8a8a8;
         }
     }
 }
