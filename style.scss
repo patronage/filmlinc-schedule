@@ -1,5 +1,10 @@
+$text-color-dark: #434343;
+
 body {
     background: #252525;
+}
+.container {
+    width: 1400px;
 }
 
 .fc-unthemed th,
@@ -50,7 +55,87 @@ body {
         position: relative;
     }
     .fc-content {
+        font-size: 12px;
         white-space: normal;
+    }
+    .fc-callout {
+        background: #ddd;
+        color: #000;
+        font-size: 10px;
+        font-weight: normal;
+        height: 15px;
+        padding: 2px 5px;
+        position: absolute;
+        right: 0;
+        text-transform: uppercase;
+        top: -19px;
+        -webkit-font-smoothing: antialiased;
+    }
+    .fc-section {
+        display: block;
+        text-transform: uppercase;
+    }
+    .fc-title {
+        display: block;
+        margin: 2px 0;
+    }
+    .fc-duration {
+        display: block;
+        font-weight: normal;
+    }
+    .fc-meta {
+        border-top: 1px solid #e5e5e5;
+        bottom: 0;
+        box-sizing: border-box;
+        font-size: 10px;
+        left: 0;
+        padding: 2px 5px;
+        position: absolute;
+        text-transform: uppercase;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a {
+            color: #000;
+        }
+    }
+    &[data-section="potent-potables"] {
+        border-top: 3px solid #1ab6ff;
+        .fc-section {
+            color: #1ab6ff;
+        }
+    }
+    &[data-section="oneletter-words"] {
+        border-top: 3px solid #599684;
+        .fc-section {
+            color: #599684;
+        }
+    }
+    &[data-section="words-that-rhyme-with-dog"] {
+        border-top: 3px solid #df2ca5;
+        .fc-section {
+            color: #df2ca5;
+        }
+    }
+    &[data-section="drummers-named-ringo"] {
+        border-top: 3px solid #b07837;
+        .fc-section {
+            color: #b07837;
+        }
+    }
+    &[data-section="colors-that-are-red"] {
+        border-top: 3px solid #2bca23;
+        .fc-section {
+            color: #2bca23;
+        }
+    }
+    &.fc-event-past {
+        background: lighten( #ababab, 20% );
+        border-top: 3px solid darken( #ababab, 20% );
+        .fc-title {
+            opacity: 0.25;
+        }
     }
 }
 
@@ -62,15 +147,18 @@ body {
 
 .fc-event-container {
     padding-bottom: 0 !important;
-    a {
+    > a {
         background: #fff;
         box-sizing: border-box;
-                color: #434343;
         font-size: 15px;
         font-weight: bold;
         height: calc( 100% - 20px );
         padding: 15px;
         top: 20px !important;
+    }
+    a,
+    a:hover {
+        color: $text-color-dark;
     }
 }
 

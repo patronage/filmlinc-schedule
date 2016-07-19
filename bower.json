@@ -18,6 +18,8 @@
   ],
   "dependencies": {
     "fullcalendar-scheduler": "^1.3.2",
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "draggabilly": "^2.1.1",
+    "moment-timezone": "^0.5.4"
   }
 }
