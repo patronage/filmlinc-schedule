@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel deps style sync",
-    "deps": "node bin/deps.js",
+    "start": "npm-run-all --parallel deps:wire style sync",
+    "start:prod": "npm-run-all deps:install deps:wire style:prod server",
+    "deps:wire": "node bin/deps.js",
+    "deps:install": "bower i",
+    "server": "node app.js",
     "style": "node-sass --output-style expanded --watch style.scss public/index.css",
-    "sync": "browser-sync start -s --files index.html public/index.css index.js --no-notify"
+    "style:prod": "node-sass --output-style compressed style.scss public/index.css",
+    "sync": "browser-sync start --server --no-notify --files 'index.html' 'public/index.css' 'public/index.js'"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +22,8 @@
     "wiredep": "^4.0.0"
   },
   "dependencies": {
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
     "node-sass": "^3.8.0"
   }
 }
