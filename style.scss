@@ -1,3 +1,5 @@
+$transition-duration: 0.15s;
+$body-color-bg: #252525;
 $font-proxima: "proxima-nova",sans-serif;
 $text-color-dark: #434343;
 
@@ -20,7 +22,7 @@ $section-color: '';
 }
 
 body {
-    background: #252525;
+    background: $body-color-bg;
     font-family: $font-proxima;
 }
 
@@ -28,6 +30,7 @@ body {
     width: 1400px;
 }
 
+a:focus,
 a:hover {
     text-decoration: none;
 }
@@ -35,23 +38,13 @@ a:hover {
 .schedule-actions {
     color: #fff;
     display: flex;
+    margin: 2em 0;
     justify-content: space-between;
     align-items: center;
-    &__view {
-        > * {
-            display: inline-block;
-        }
-        &__button {
-            border: 1px solid;
-            color: #fff;
-            padding: 5px;
-            text-transform: uppercase;
-            &:hover {
-                color: #fff;
-            }
-        }
-    }
     &__filters {
+        i {
+            cursor: pointer;
+        }
         span,
         ul {
             display: inline-block;
@@ -60,10 +53,92 @@ a:hover {
             padding-left: 0;
         }
         li {
-            border: 1px solid;
             display: inline-block;
             margin: 0 5px;
-            padding: 2px 5px;
+            a {
+                color: #fff;
+                padding: 2px 5px;
+                transition: background $transition-duration;
+                &:hover {
+                    color: #fff;
+                }
+                @include section-color {
+                    border: 1px solid $section-color;
+                    &:hover {
+                        background: $section-color;
+                    }
+                    &.is-active {
+                        background: $section-color;
+                    }
+                }
+            }
+        }
+    }
+    &__view {
+        > * {
+            display: inline-block;
+            margin: 0 5px;
+        }
+        &__button {
+            border: 1px solid $body-color-bg;
+            color: #fff;
+            padding: 5px;
+            text-transform: uppercase;
+            &.is-active {
+                border: 1px solid;
+            }
+            &:not(.is-active):hover {
+                border: 1px dashed transparentize( #fff, 0.85 );
+            }
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.day-picker {
+    background: #000;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    &__day {
+        cursor: pointer;
+        display: block;
+        padding: 10px;
+        position: relative;
+        transition: background-color $transition-duration;
+        width: 100%;
+        span {
+            color: #fff;
+            display: block;
+        }
+        &--name {
+            font-weight: bold;
+        }
+        &:after {
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 10px solid #000;
+            content: '';
+            height: 0; 
+            left: calc( 50% - 15px );
+            position: absolute;
+            top: 100%;
+            opacity: 0;
+            transition: border-top $transition-duration, opacity $transition-duration;
+            width: 0; 
+            z-index: 2;
+        }
+        &.is-active {
+            background: #748795;
+            &:after {
+                border-top: 10px solid #748795;
+                opacity: 1;
+            }
         }
     }
 }
@@ -79,6 +154,10 @@ a:hover {
     border-color: #4d4d4d;
 }
 
+.fc-toolbar {
+    display: none;
+}
+
 .fc-view-container {
     border: 1px solid #4d4d4d;
 }
@@ -87,7 +166,12 @@ a:hover {
     background: #000;
     border: none;
     border-bottom: 1px solid #4d4d4d;
+    padding: 5px 0;
     color: #fff;
+}
+
+.fc-unthemed .fc-time-area {
+    border-left: 1px solid #4d4d4d;
 }
 
 // divider between resources and times
@@ -161,7 +245,7 @@ a:hover {
             color: #000;
         }
     }
-    @include section-color() {
+    @include section-color {
         border-top: 3px solid $section-color;
         .fc-section {
             color: $section-color;

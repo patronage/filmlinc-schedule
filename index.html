@@ -20,25 +20,27 @@
         
         <div class="container">
             <div class="row">
-                <div class="="col-md-12">
+                <div class="col-md-12">
                     <div class="schedule">
                         <div class="schedule-actions">
                             <div class="schedule-actions__filters">
                                 <span>Filter by</span>
                                 <ul></ul>
+                                <i class="fa fa-times hidden"></i>
                             </div>
                             <div class="schedule-actions__view">
                                 <p>View by</p>
-                                <a href="#" class="schedule-actions__view__button">
+                                <a href="#" data-view="list" class="schedule-actions__view__button">
                                     <i class="fa fa-list"></i>
                                     <span>List</span>
                                 </a>
-                                <a href="#" class="schedule-actions__view__button is-active">
+                                <a href="#" data-view="grid" class="schedule-actions__view__button is-active">
                                     <i class="fa fa-th-large"></i>
                                     <span>Grid</span>
                                 </a>
                             </div>
                         </div>
+                        <div class="day-picker"></div>
                         <div id="calendar"></div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 var DATE_KEY_FORMAT = 'MM-DD-YYYY';
-var selectedDate = moment().format( DATE_KEY_FORMAT );
+var userSelectedDate = moment().format( DATE_KEY_FORMAT );
 var groupedData, rawData;
 
 // via: https://gist.github.com/furzeface/01cf2b3ee8a737e8a55b
@@ -8,6 +8,7 @@ function slugifyText( text ) {
     return slug.toLowerCase();
 };
 
+// get event data and format it for scheduler
 function getData( callback ) {
     $.ajax({
         url: './data.json',
@@ -34,10 +35,103 @@ function getData( callback ) {
     })
 }
 
+// see if event is in the past
 function checkPast( dateToCheck ) {
     var now = new moment();
     return dateToCheck.isBefore( now );
 };
+
+// create list of days and bind events to them
+function buildDayPicker() {
+    
+    var now = moment();
+    
+    for (var i = 0; i < 17; i++) {
+
+        var pastDate = moment().subtract( 7, 'days' );
+        var dateToWrite = pastDate.add( i, 'days' );
+
+        $( '.day-picker' ).append(
+            '<div class="day-picker__day" data-day=' + dateToWrite.format( DATE_KEY_FORMAT ) +'>' +
+                '<span class="day-picker__day--name">' + dateToWrite.format( 'ddd' ) + '</span>' +
+                '<span class="day-picker__day--date">' + dateToWrite.format( 'DD' ) + '</span>' +
+            '</div>'
+        );
+
+        // Current day should be active
+        if ( dateToWrite.format( DATE_KEY_FORMAT ) === now.format( DATE_KEY_FORMAT ) ) {
+            $( '.day-picker__day' ).last().addClass( 'is-active' );
+        }
+    }
+
+    // Bind events
+    $( '.day-picker__day' ).on( 'click', function() {
+
+        var selectedDay = $( this ).data( 'day' );
+        if ( selectedDay !== userSelectedDate ) {
+            $( '.day-picker__day.is-active' ).removeClass( 'is-active' );
+            $( this ).addClass( 'is-active' );
+            console.log( 'New selected date: ' + selectedDay );
+        }
+
+    });
+}
+
+// Builds the section selector buttons and binds events
+function buildSectionButtons() {
+
+    var sections = _.groupBy( rawData, function( event ) {
+        return event.section;
+    });
+    sections = Object.keys( sections );
+
+    _.forEach( sections, function( section ) {
+        if ( typeof section !== 'undefined' ) {
+            $('.schedule-actions ul').append( '<li><a class="cal-filter-trigger" href="#" data-section=' + slugifyText( section ) + '>' + section + '</a></li>' )
+        }
+    });
+
+    $( '.cal-filter-trigger' ).on( 'click', function( e ) {
+        e.preventDefault();
+        activateFilterClearButton();
+        if ( $( this ).hasClass( 'is-active' ) ) {
+            return;
+        } else {
+            $( '.cal-filter-trigger' ).removeClass( 'is-active' );
+            $( this ).addClass( 'is-active' );
+            var section = $( this ).data( 'section' );
+            console.log( 'New section: ' + section );
+        }
+    });
+
+}
+
+function activateFilterClearButton() {
+
+    var $clearButton = $( '.schedule-actions__filters i' );
+    $clearButton.removeClass( 'hidden' );
+    $clearButton.one( 'click', function() {
+        $( '.schedule-actions__filters .cal-filter-trigger.is-active' ).removeClass( 'is-active' );
+        $( this ).addClass( 'hidden' );
+    })
+
+}
+
+function bindEvents() {
+
+    $( '.schedule-actions__view__button' ).on( 'click', function( e ) {
+        e.preventDefault();
+        if ( $( this ).hasClass( 'is-active' ) ) {
+            return;
+        } else {
+            $( '.schedule-actions__view__button.is-active' ).removeClass( 'is-active' );
+            $( this ).addClass( 'is-active' );
+            var view = $( this ).data( 'view' );
+            console.log( 'New view: ' + view );
+        }
+    });
+
+}
 
 function buildCalendar() {
 
@@ -53,8 +147,8 @@ function buildCalendar() {
         },
         timezone: 'local',
         height: 'auto',
-        minTime: moment( groupedData[ selectedDate ][ 0 ].start ).format( 'HH:mm:00' ),
-        maxTime: moment( groupedData[ selectedDate ][ groupedData[ selectedDate ].length - 1 ].end ).format( 'HH:mm:00' ),
+        minTime: moment( groupedData[ userSelectedDate ][ 0 ].start ).format( 'HH:mm:00' ),
+        maxTime: moment( groupedData[ userSelectedDate ][ groupedData[ userSelectedDate ].length - 1 ].end ).format( 'HH:mm:00' ),
         resources: function( callback ) {
             var uniqueVenues = _.map( _.uniqBy( rawData, function( event ) {
                 return event.venue_tess;
@@ -76,7 +170,7 @@ function buildCalendar() {
             callback( uniqueVenues );
         },
         events: function( start, end, timezone, callback ) {
-            var eventsFormatted = _.map( groupedData[ selectedDate ], function( event ) {
+            var eventsFormatted = _.map( groupedData[ userSelectedDate ], function( event ) {
                 if ( typeof event.venue_tess !== 'undefined' ) {
                     return Object.assign( {}, event, {
                         resourceId: slugifyText( event.venue_tess )
@@ -127,19 +221,6 @@ function buildCalendar() {
             }
 
         },
-        eventAfterAllRender: function() {
-
-            var sections = _.groupBy( rawData, function( event ) {
-                return event.section;
-            });
-            sections = Object.keys( sections );
-
-            _.forEach( sections, function( section ) {
-                if ( typeof section !== 'undefined' ) {
-                    $('.schedule-actions ul').append( '<li><a class="cal-filter-trigger" href="#" data-section=' + slugifyText( section ) + '>' + section + '</a></li>' )
-                }
-            });
-        },
         viewRender: function( view, element ) {
             var els = $( '.fc-major' );
             _.forEach(els, function( el, index ) {
@@ -166,9 +247,12 @@ function buildCalendar() {
 }
 
 jQuery(document).ready(function() {
-
+    
+    buildDayPicker();
     getData( function() {
         buildCalendar();
+        buildSectionButtons();
     });
+    bindEvents();
 
 });
