@@ -1,7 +1,6 @@
 var DATE_KEY_FORMAT = 'MM-DD-YYYY';
-
-var groupedData, rawData;
 var userSelectedDate = moment().format( DATE_KEY_FORMAT );
+var groupedData, rawData;
 
 // via: https://gist.github.com/furzeface/01cf2b3ee8a737e8a55b
 function slugifyText( text ) {
@@ -73,8 +72,6 @@ function buildDayPicker() {
             $( '.day-picker__day.is-active' ).removeClass( 'is-active' );
             $( this ).addClass( 'is-active' );
             console.log( 'New selected date: ' + selectedDay );
-            userSelectedDate = selectedDay;
-            $('#calendar').fullCalendar( 'refetchEvents' );
         }
 
     });
@@ -173,7 +170,6 @@ function buildCalendar() {
             callback( uniqueVenues );
         },
         events: function( start, end, timezone, callback ) {
-
             var eventsFormatted = _.map( groupedData[ userSelectedDate ], function( event ) {
                 if ( typeof event.venue_tess !== 'undefined' ) {
                     return Object.assign( {}, event, {
