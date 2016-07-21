@@ -12,7 +12,7 @@ $section-map: (
 );
 
 $section-color: '';
-@mixin section-color() {
+@mixin section-loop {
     @each $section, $section-color in $section-map {
         $section-color: #{$section-color} !global;
         &[data-section="#{$section}"] {
@@ -24,6 +24,11 @@ $section-color: '';
 body {
     background: $body-color-bg;
     font-family: $font-proxima;
+    &:not( [data-section=''] ) {
+        .fc-timeline-event {
+            opacity: 0.05;
+        }
+    }
 }
 
 .container {
@@ -62,10 +67,10 @@ a:hover {
                 &:hover {
                     color: #fff;
                 }
-                @include section-color {
+                @include section-loop {
                     border: 1px solid $section-color;
                     &:hover {
-                        background: $section-color;
+                        // background: $section-color;
                     }
                     &.is-active {
                         background: $section-color;
@@ -196,6 +201,10 @@ a:hover {
 }
 
 .fc-timeline-event {
+    transition: opacity $transition-duration;
+    &.has-filter-active.fc-event {
+        opacity: 1;
+    }
     .fc-widget-content {
         position: relative;
     }
@@ -245,7 +254,7 @@ a:hover {
             color: #000;
         }
     }
-    @include section-color {
+    @include section-loop {
         border-top: 3px solid $section-color;
         .fc-section {
             color: $section-color;

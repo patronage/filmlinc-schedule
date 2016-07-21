@@ -3,6 +3,10 @@ body {
   font-family: "proxima-nova", sans-serif;
 }
 
+body:not([data-section='']) .fc-timeline-event {
+  opacity: 0.05;
+}
+
 .container {
   width: 1400px;
 }
@@ -52,20 +56,12 @@ a:hover {
   border: 1px solid #1ab6ff;
 }
 
-.schedule-actions__filters li a[data-section="potent-potables"]:hover {
-  background: #1ab6ff;
-}
-
 .schedule-actions__filters li a[data-section="potent-potables"].is-active {
   background: #1ab6ff;
 }
 
 .schedule-actions__filters li a[data-section="oneletter-words"] {
   border: 1px solid #599684;
-}
-
-.schedule-actions__filters li a[data-section="oneletter-words"]:hover {
-  background: #599684;
 }
 
 .schedule-actions__filters li a[data-section="oneletter-words"].is-active {
@@ -76,10 +72,6 @@ a:hover {
   border: 1px solid #df2ca5;
 }
 
-.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"]:hover {
-  background: #df2ca5;
-}
-
 .schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"].is-active {
   background: #df2ca5;
 }
@@ -88,20 +80,12 @@ a:hover {
   border: 1px solid #b07837;
 }
 
-.schedule-actions__filters li a[data-section="drummers-named-ringo"]:hover {
-  background: #b07837;
-}
-
 .schedule-actions__filters li a[data-section="drummers-named-ringo"].is-active {
   background: #b07837;
 }
 
 .schedule-actions__filters li a[data-section="colors-that-are-red"] {
   border: 1px solid #2bca23;
-}
-
-.schedule-actions__filters li a[data-section="colors-that-are-red"]:hover {
-  background: #2bca23;
 }
 
 .schedule-actions__filters li a[data-section="colors-that-are-red"].is-active {
@@ -232,6 +216,14 @@ a:hover {
 
 .fc-time-area .fc-slats .fc-widget-content:nth-child(3n + 1) {
   border-left: 1px solid #4d4d4d;
+}
+
+.fc-timeline-event {
+  transition: opacity 0.15s;
+}
+
+.fc-timeline-event.has-filter-active.fc-event {
+  opacity: 1;
 }
 
 .fc-timeline-event .fc-widget-content {

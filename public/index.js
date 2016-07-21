@@ -40,7 +40,7 @@ function getData( callback ) {
 function checkPast( dateToCheck ) {
     var now = new moment();
     return dateToCheck.isBefore( now );
-};
+}
 
 // create list of days and bind events to them
 function buildDayPicker() {
@@ -104,29 +104,36 @@ function buildSectionButtons() {
     });
 
     $( '.cal-filter-trigger' ).on( 'click', function( e ) {
+        
+        var section = $( this ).data( 'section' );
         e.preventDefault();
-        activateFilterClearButton();
-        if ( $( this ).hasClass( 'is-active' ) ) {
-            return;
-        } else {
+
+        if ( !$( this ).hasClass( 'is-active' ) ) {
             $( '.cal-filter-trigger' ).removeClass( 'is-active' );
             $( this ).addClass( 'is-active' );
-            var section = $( this ).data( 'section' );
-            console.log( 'New section: ' + section );
+            $( 'body' ).attr( 'data-section', section );
+            updateFilterDisplay( section );
         }
-    });
 
+        activateFilterClearButton();
+    });
 }
 
-function activateFilterClearButton() {
+function updateFilterDisplay( section ) {
+    var filterClass = 'has-filter-active';
+    $( '.fc-timeline-event' ).removeClass( filterClass );
+    $( '.fc-timeline-event[ data-section="' + section + '" ]' ).addClass( filterClass );
+}
 
+// Handle events on the "clear filters" button
+function activateFilterClearButton() {
     var $clearButton = $( '.schedule-actions__filters--clear' );
     $clearButton.removeClass( 'hidden' );
     $clearButton.one( 'click', function() {
+        $( 'body' ).attr( 'data-section', '' );
         $( '.schedule-actions__filters .cal-filter-trigger.is-active' ).removeClass( 'is-active' );
         $( this ).addClass( 'hidden' );
-    })
-
+    });
 }
 
 function bindEvents() {
@@ -142,7 +149,6 @@ function bindEvents() {
             console.log( 'New view: ' + view );
         }
     });
-
 }
 
 function buildCalendar() {
@@ -206,7 +212,7 @@ function buildCalendar() {
             if ( event.section ) {
                 var eventSectionSlug = slugifyText( event.section );
                 $( element ).attr( 'data-section', eventSectionSlug );
-                $( element ).addClass( eventSectionSlug );
+                // $( element ).addClass( eventSectionSlug );
             }
 
             var isEventPast = checkPast( event.start );
@@ -263,7 +269,6 @@ function buildCalendar() {
             // $draggable.draggabilly( 'enable' );
         }
     });
-
 }
 
 jQuery(document).ready(function() {
