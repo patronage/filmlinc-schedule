@@ -343,3 +343,28 @@ a:hover {
 }
 
 @import "list";
+
+.modal-cont {
+    background: transparentize( #000, 0.2 );
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: $zindex-modalOverlay;
+    display: none;
+    &.is-active {
+        display: flex;
+    }
+}
+
+.co {
+    display: none;
+    background: #fff;
+    width: 33%;
+    .modal-cont & {
+        display: block;
+    }
+}

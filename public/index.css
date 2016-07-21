@@ -547,3 +547,30 @@ body:not([data-section='']) .list-row {
 .list-row[data-section="colors-that-are-red"] .list-row__title small {
   color: #2bca23;
 }
+
+.modal-cont {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000000;
+  display: none;
+}
+
+.modal-cont.is-active {
+  display: flex;
+}
+
+.co {
+  display: none;
+  background: #fff;
+  width: 33%;
+}
+
+.modal-cont .co {
+  display: block;
+}

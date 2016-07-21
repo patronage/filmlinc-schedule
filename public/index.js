@@ -1,7 +1,7 @@
 var $calendar = $( '.widget__calendar' );
 var DATE_KEY_FORMAT = 'MM-DD-YYYY';
 var filterClass = 'has-filter-active';
-var groupedData, rawData;
+var groupedData, rawEventData;
 var userSelectedDate = moment().format( DATE_KEY_FORMAT );
 
 // via: https://gist.github.com/furzeface/01cf2b3ee8a737e8a55b
@@ -17,18 +17,18 @@ function getData( callback ) {
         dataType: 'json',
         success: function( data, textStatus, jqXHR ) {
             
-            rawData = _.sortBy( data, function( event ) {
+            rawEventData = _.sortBy( data, function( event ) {
                 return event.start;
             });
 
-            _.forEach( rawData, function( event ) {
+            _.forEach( rawEventData, function( event ) {
                 var start = moment( event.start );
                 var end = moment( event.end );
                 duration = end.diff( start, 'minutes' )
                 event.lengthInMinutes = duration;
             });
 
-            groupedData = _.groupBy( rawData, function( event ) {
+            groupedData = _.groupBy( rawEventData, function( event ) {
                 return moment( event.start ).format( DATE_KEY_FORMAT );
             });
 
@@ -77,7 +77,7 @@ function buildDayPicker() {
 // Builds the section selector buttons and binds events
 function buildSectionButtons() {
 
-    var sections = _.groupBy( rawData, function( event ) {
+    var sections = _.groupBy( rawEventData, function( event ) {
         return event.section;
     });
     sections = Object.keys( sections );
@@ -90,9 +90,10 @@ function buildSectionButtons() {
 }
 
 function updateFilterDisplay( section ) {
+    var $timelineEvents = $( '.fc-timeline-event[ data-section="' + section + '" ]' );
+    var $listRows = $( '.list-row[ data-section="' + section +'" ]' );
     $( '.fc-timeline-event' ).removeClass( filterClass );
-    $( '.fc-timeline-event[ data-section="' + section + '" ]' ).addClass( filterClass );
-    $( '.list-row[ data-section="' + section +'" ]' ).addClass( filterClass );
+    $listRows.addClass( filterClass );
 }
 
 // Handle events on the "clear filters" button
@@ -153,6 +154,7 @@ function bindEvents() {
             buildList();
         }
     });
+
 }
 
 function refreshCalendar() {
@@ -187,7 +189,7 @@ function buildCalendar() {
         minTime: moment( groupedData[ userSelectedDate ][ 0 ].start ).format( 'HH:mm:00' ),
         maxTime: moment( groupedData[ userSelectedDate ][ groupedData[ userSelectedDate ].length - 1 ].end ).format( 'HH:mm:00' ),
         resources: function( callback ) {
-            var uniqueVenues = _.map( _.uniqBy( rawData, function( event ) {
+            var uniqueVenues = _.map( _.uniqBy( rawEventData, function( event ) {
                 return event.venue_tess;
             }), function( event ) {
                 return event.venue_tess;
@@ -223,28 +225,36 @@ function buildCalendar() {
         },
         eventAfterRender: function(event, element, view) {
 
+            var $element = element;
+
             var $interior = element.find( '.fc-content' );
+            var isEventPast = checkPast( event.start );
+            var titleText = $element.find( '.fc-title' ).text();
+            var eventSectionSlug, slug, readableDate;
+
+            $element.attr({
+                'data-slug': event.slug,
+                'data-date': event.date_readable,
+                'data-dateunix': event.start
+            });
 
             // Add event section data
             if ( event.section ) {
-                var eventSectionSlug = slugifyText( event.section );
-                $( element ).attr( 'data-section', eventSectionSlug );
-                // $( element ).addClass( eventSectionSlug );
+                eventSectionSlug = slugifyText( event.section );
+                $element.attr( 'data-section', eventSectionSlug );
             }
 
-            var isEventPast = checkPast( event.start );
             // Was event in the past?
             if ( isEventPast ) {
-                $( element ).attr( 'href', '#' );
-                $( element ).on( 'click', function( e ) {
+                $element.attr( 'href', '#' );
+                $element.on( 'click', function( e ) {
                     e.preventDefault();
                 });
-                $( element ).addClass( 'fc-event-past' );
+                $element.addClass( 'fc-event-past' );
             }
 
             // Convert HTML string into HTML
-            var titleText = element.find( '.fc-title' ).text();
-            element.find( '.fc-title' ).html( titleText );
+            $element.find( '.fc-title' ).html( titleText );
 
             // Add section and meta info
             $interior.prepend( '<span class="fc-section">' + event.section + '</span>' );
@@ -260,6 +270,22 @@ function buildCalendar() {
                     '</div>'
                 );
             }
+
+            $element.on( 'click', function( e ) {
+
+                e.preventDefault();
+                cleanupPopup();
+
+                var slug = $( this ).data( 'slug' );
+                var unixDate = $( this ).data( 'dateunix' );
+
+                //no slug? treat it as a link
+                if ( !slug ){
+                    location.href = $( this ).attr('href');
+                }
+                
+                popupGenerator( slug, unixDate );
+            });
 
         },
         viewRender: function( view, element ) {
