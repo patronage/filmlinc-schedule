@@ -1,0 +1,76 @@
+@import "variables";
+@import "mixins";
+
+.list-row {
+    background: #fff;
+    border-left: 5px solid;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+        margin: 0;
+    }
+
+    &__time {
+        font-weight: bold;
+        width: 15%;
+    }
+
+    &__title {
+        color: $text-color-dark;
+        font-size: 18px;
+        font-weight: bold;
+        width: 50%;
+        small {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+
+    &__location {
+        font-size: 15px;
+        font-weight: bold;
+        width: 25%;
+        small {
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+    }
+
+    &__duration {
+        width: 15%;
+    }
+
+    &__actions {
+        text-align: center;
+        width: 15%;
+        &__tooltip {
+            background: #efefef;
+            display: inline-block;
+            margin-bottom: 5px;
+            padding: 2px 5px;
+        }
+        a,
+        a:hover {
+            color: $text-color-dark;
+            display: block;
+            font-weight: bold;
+        }
+    }
+
+    // section-specific
+    @include section-loop {
+        border-left-color: $section-color;
+        .list-row__title {
+            small {
+                color: $section-color;
+            }
+        }
+    }
+}

@@ -11,7 +11,7 @@
     "server": "node app.js",
     "style": "node-sass --output-style expanded --watch src/style.scss public/index.css",
     "style:prod": "node-sass --output-style compressed src/style.scss public/index.css",
-    "sync": "browser-sync start --server --no-notify --files 'index.html' 'public/index.css' 'public/index.js'"
+    "sync": "browser-sync start --server --no-notify --files 'index.html' 'public/index.css' 'public/*.js'"
   },
   "keywords": [],
   "author": "",

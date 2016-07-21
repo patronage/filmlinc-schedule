@@ -1,4 +1,4 @@
-var $calendar = $( '#calendar' );
+var $calendar = $( '.widget__calendar' );
 var DATE_KEY_FORMAT = 'MM-DD-YYYY';
 var groupedData, rawData;
 var userSelectedDate = moment().format( DATE_KEY_FORMAT );
@@ -36,6 +36,13 @@ function getData( callback ) {
     })
 }
 
+// Swap views
+function changeView( nextView ) {
+    $( 'body' ).attr( 'data-view', nextView );
+    $( '.widget__calendar' ).toggleClass( 'is-hidden' );
+    $( '.widget__list' ).toggleClass( 'is-hidden' );
+}
+
 // see if event is in the past
 function checkPast( dateToCheck ) {
     var now = new moment();
@@ -64,29 +71,6 @@ function buildDayPicker() {
             $( '.day-picker__day' ).last().addClass( 'is-active' );
         }
     }
-
-    // Bind events
-    $( '.day-picker__day' ).on( 'click', function() {
-
-        var selectedDay = $( this ).data( 'day' );
-        if ( selectedDay !== userSelectedDate ) {
-            $( '.day-picker__day.is-active' ).removeClass( 'is-active' );
-            $( this ).addClass( 'is-active' );
-            userSelectedDate = selectedDay;
-            $calendar.fullCalendar( 'refetchEvents' );
-            
-            var minTime = moment( groupedData[ userSelectedDate ][ 0 ].start ).format( 'HH:mm:00' );
-            var maxTime = moment( groupedData[ userSelectedDate ][ groupedData[ userSelectedDate ].length - 1 ].end ).format( 'HH:mm:00' );
-            
-            $calendar.fullCalendar( 'option', {
-                minTime: minTime,
-                maxTime: maxTime
-            });
-            $calendar.fullCalendar( 'gotoDate', moment( userSelectedDate, DATE_KEY_FORMAT ) );
-
-        }
-
-    });
 }
 
 // Builds the section selector buttons and binds events
@@ -101,21 +85,6 @@ function buildSectionButtons() {
         if ( typeof section !== 'undefined' ) {
             $('.schedule-actions ul').append( '<li><a class="cal-filter-trigger" href="#" data-section=' + slugifyText( section ) + '>' + section + '</a></li>' )
         }
-    });
-
-    $( '.cal-filter-trigger' ).on( 'click', function( e ) {
-        
-        var section = $( this ).data( 'section' );
-        e.preventDefault();
-
-        if ( !$( this ).hasClass( 'is-active' ) ) {
-            $( '.cal-filter-trigger' ).removeClass( 'is-active' );
-            $( this ).addClass( 'is-active' );
-            $( 'body' ).attr( 'data-section', section );
-            updateFilterDisplay( section );
-        }
-
-        activateFilterClearButton();
     });
 }
 
@@ -143,12 +112,52 @@ function bindEvents() {
         if ( $( this ).hasClass( 'is-active' ) ) {
             return;
         } else {
+            var view = $( this ).data( 'view' );
             $( '.schedule-actions__view__button.is-active' ).removeClass( 'is-active' );
             $( this ).addClass( 'is-active' );
-            var view = $( this ).data( 'view' );
-            console.log( 'New view: ' + view );
+            changeView( view );
         }
     });
+
+    $( '.schedule-actions__filters' ).on( 'click', '.cal-filter-trigger', function( e ) {
+        
+        var section = $( this ).data( 'section' );
+        e.preventDefault();
+
+        if ( !$( this ).hasClass( 'is-active' ) ) {
+            $( '.cal-filter-trigger' ).removeClass( 'is-active' );
+            $( this ).addClass( 'is-active' );
+            $( 'body' ).attr( 'data-section', section );
+            updateFilterDisplay( section );
+        }
+
+        activateFilterClearButton();
+        refreshCalendar();
+    });
+
+    $( '.day-picker' ).on( 'click', '.day-picker__day', function() {
+
+        var selectedDay = $( this ).data( 'day' );
+        if ( selectedDay !== userSelectedDate ) {
+            $( '.day-picker__day.is-active' ).removeClass( 'is-active' );
+            $( this ).addClass( 'is-active' );
+            userSelectedDate = selectedDay;
+        }
+
+    });
+}
+
+function refreshCalendar() {
+    $calendar.fullCalendar( 'refetchEvents' );
+    
+    var minTime = moment( groupedData[ userSelectedDate ][ 0 ].start ).format( 'HH:mm:00' );
+    var maxTime = moment( groupedData[ userSelectedDate ][ groupedData[ userSelectedDate ].length - 1 ].end ).format( 'HH:mm:00' );
+    
+    $calendar.fullCalendar( 'option', {
+        minTime: minTime,
+        maxTime: maxTime
+    });
+    $calendar.fullCalendar( 'gotoDate', moment( userSelectedDate, DATE_KEY_FORMAT ) );
 }
 
 function buildCalendar() {
@@ -278,11 +287,12 @@ jQuery(document).ready(function() {
         'data-view': ''
     });
     
-    buildDayPicker();
     getData( function() {
         buildCalendar();
+        buildList();
         buildSectionButtons();
     });
+    buildDayPicker();
     bindEvents();
 
 });

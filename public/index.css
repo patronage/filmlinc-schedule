@@ -16,6 +16,30 @@ a:hover {
   text-decoration: none;
 }
 
+.widgets {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.widgets > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 1;
+  transition: -webkit-transform 0.5s, transition 0.5s, opacity 0.5s;
+}
+
+.widgets > div.is-hidden {
+  opacity: 0;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  z-index: 1;
+}
+
 .schedule-actions {
   color: #fff;
   display: flex;
@@ -53,11 +77,11 @@ a:hover {
 }
 
 .schedule-actions__filters li a[data-section="potent-potables"] {
-  border: 1px solid #1ab6ff;
+  border: 1px solid #b07837;
 }
 
 .schedule-actions__filters li a[data-section="potent-potables"].is-active {
-  background: #1ab6ff;
+  background: #b07837;
 }
 
 .schedule-actions__filters li a[data-section="oneletter-words"] {
@@ -77,11 +101,11 @@ a:hover {
 }
 
 .schedule-actions__filters li a[data-section="drummers-named-ringo"] {
-  border: 1px solid #b07837;
+  border: 1px solid #1ab6ff;
 }
 
 .schedule-actions__filters li a[data-section="drummers-named-ringo"].is-active {
-  background: #b07837;
+  background: #1ab6ff;
 }
 
 .schedule-actions__filters li a[data-section="colors-that-are-red"] {
@@ -284,11 +308,11 @@ a:hover {
 }
 
 .fc-timeline-event[data-section="potent-potables"] {
-  border-top: 3px solid #1ab6ff;
+  border-top: 3px solid #b07837;
 }
 
 .fc-timeline-event[data-section="potent-potables"] .fc-section {
-  color: #1ab6ff;
+  color: #b07837;
 }
 
 .fc-timeline-event[data-section="oneletter-words"] {
@@ -308,11 +332,11 @@ a:hover {
 }
 
 .fc-timeline-event[data-section="drummers-named-ringo"] {
-  border-top: 3px solid #b07837;
+  border-top: 3px solid #1ab6ff;
 }
 
 .fc-timeline-event[data-section="drummers-named-ringo"] .fc-section {
-  color: #b07837;
+  color: #1ab6ff;
 }
 
 .fc-timeline-event[data-section="colors-that-are-red"] {
@@ -406,4 +430,112 @@ a:hover {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.75);
+}
+
+.list-row {
+  background: #fff;
+  border-left: 5px solid;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-row p {
+  margin: 0;
+}
+
+.list-row__time {
+  font-weight: bold;
+  width: 15%;
+}
+
+.list-row__title {
+  color: #434343;
+  font-size: 18px;
+  font-weight: bold;
+  width: 50%;
+}
+
+.list-row__title small {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.list-row__location {
+  font-size: 15px;
+  font-weight: bold;
+  width: 25%;
+}
+
+.list-row__location small {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.list-row__duration {
+  width: 15%;
+}
+
+.list-row__actions {
+  text-align: center;
+  width: 15%;
+}
+
+.list-row__actions__tooltip {
+  background: #efefef;
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 2px 5px;
+}
+
+.list-row__actions a,
+.list-row__actions a:hover {
+  color: #434343;
+  display: block;
+  font-weight: bold;
+}
+
+.list-row[data-section="potent-potables"] {
+  border-left-color: #b07837;
+}
+
+.list-row[data-section="potent-potables"] .list-row__title small {
+  color: #b07837;
+}
+
+.list-row[data-section="oneletter-words"] {
+  border-left-color: #599684;
+}
+
+.list-row[data-section="oneletter-words"] .list-row__title small {
+  color: #599684;
+}
+
+.list-row[data-section="words-that-rhyme-with-dog"] {
+  border-left-color: #df2ca5;
+}
+
+.list-row[data-section="words-that-rhyme-with-dog"] .list-row__title small {
+  color: #df2ca5;
+}
+
+.list-row[data-section="drummers-named-ringo"] {
+  border-left-color: #1ab6ff;
+}
+
+.list-row[data-section="drummers-named-ringo"] .list-row__title small {
+  color: #1ab6ff;
+}
+
+.list-row[data-section="colors-that-are-red"] {
+  border-left-color: #2bca23;
+}
+
+.list-row[data-section="colors-that-are-red"] .list-row__title small {
+  color: #2bca23;
 }

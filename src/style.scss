@@ -1,25 +1,5 @@
-$transition-duration: 0.15s;
-$body-color-bg: #252525;
-$font-proxima: "proxima-nova",sans-serif;
-$text-color-dark: #434343;
-
-$section-map: (
-    potent-potables: #1ab6ff,
-    oneletter-words: #599684,
-    words-that-rhyme-with-dog: #df2ca5,
-    drummers-named-ringo: #b07837,
-    colors-that-are-red: #2bca23
-);
-
-$section-color: '';
-@mixin section-loop {
-    @each $section, $section-color in $section-map {
-        $section-color: #{$section-color} !global;
-        &[data-section="#{$section}"] {
-            @content;
-        }
-    }
-}
+@import "variables";
+@import "mixins";
 
 body {
     background: $body-color-bg;
@@ -38,6 +18,28 @@ body {
 a:focus,
 a:hover {
     text-decoration: none;
+}
+
+.widgets {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 1;
+        transition: -webkit-transform 0.5s, transition 0.5s, opacity 0.5s;
+        &.is-hidden {
+            opacity: 0;
+            -webkit-transform: translateX( 100% );
+            transform: translateX( 100% );
+            z-index: 1;
+        }
+    }
 }
 
 .schedule-actions {
@@ -339,3 +341,5 @@ a:hover {
         }
     }
 }
+
+@import "list";
