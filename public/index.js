@@ -272,6 +272,11 @@ function buildCalendar() {
 }
 
 jQuery(document).ready(function() {
+
+    $('body').attr({
+        'data-section': '',
+        'data-view': ''
+    });
     
     buildDayPicker();
     getData( function() {
