@@ -2,3 +2,22 @@ $transition-duration: 0.15s;
 $body-color-bg: #252525;
 $font-proxima: "proxima-nova",sans-serif;
 $text-color-dark: #434343;
+
+$zindex-1:   100;
+$zindex-2:   200;
+$zindex-3:   300;
+$zindex-4:   400;
+$zindex-5:   500;
+$zindex-6:   600;
+$zindex-7:   700;
+$zindex-8:   800;
+$zindex-9:   900;
+$zindex-10:  1000;
+$zindex-11:  1050;
+$zindex-12:  100000000;
+
+$zindex-widgetInactive: $zindex-1;
+
+$zindex-widgetActive: $zindex-2;
+
+$zindex-dayArrow: $zindex-3;

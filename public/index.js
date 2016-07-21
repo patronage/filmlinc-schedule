@@ -1,5 +1,6 @@
 var $calendar = $( '.widget__calendar' );
 var DATE_KEY_FORMAT = 'MM-DD-YYYY';
+var filterClass = 'has-filter-active';
 var groupedData, rawData;
 var userSelectedDate = moment().format( DATE_KEY_FORMAT );
 
@@ -89,9 +90,9 @@ function buildSectionButtons() {
 }
 
 function updateFilterDisplay( section ) {
-    var filterClass = 'has-filter-active';
     $( '.fc-timeline-event' ).removeClass( filterClass );
     $( '.fc-timeline-event[ data-section="' + section + '" ]' ).addClass( filterClass );
+    $( '.list-row[ data-section="' + section +'" ]' ).addClass( filterClass );
 }
 
 // Handle events on the "clear filters" button
@@ -102,11 +103,14 @@ function activateFilterClearButton() {
         $( 'body' ).attr( 'data-section', '' );
         $( '.schedule-actions__filters .cal-filter-trigger.is-active' ).removeClass( 'is-active' );
         $( this ).addClass( 'hidden' );
+        $( '.fc-timeline-event' ).removeClass( filterClass );
+        $( '.list-row' ).removeClass( filterClass );
     });
 }
 
 function bindEvents() {
 
+    // handle change between calendar and list views
     $( '.schedule-actions__view__button' ).on( 'click', function( e ) {
         e.preventDefault();
         if ( $( this ).hasClass( 'is-active' ) ) {
@@ -119,14 +123,16 @@ function bindEvents() {
         }
     });
 
+    // handle the section filters
     $( '.schedule-actions__filters' ).on( 'click', '.cal-filter-trigger', function( e ) {
-        
-        var section = $( this ).data( 'section' );
+
+        var $target = $( e.target );
+        var section = $target.data( 'section' );
         e.preventDefault();
 
-        if ( !$( this ).hasClass( 'is-active' ) ) {
+        if ( !$target.hasClass( 'is-active' ) ) {
             $( '.cal-filter-trigger' ).removeClass( 'is-active' );
-            $( this ).addClass( 'is-active' );
+            $target.addClass( 'is-active' );
             $( 'body' ).attr( 'data-section', section );
             updateFilterDisplay( section );
         }
@@ -135,6 +141,7 @@ function bindEvents() {
         refreshCalendar();
     });
 
+    // handle changing days
     $( '.day-picker' ).on( 'click', '.day-picker__day', function() {
 
         var selectedDay = $( this ).data( 'day' );
@@ -142,8 +149,9 @@ function bindEvents() {
             $( '.day-picker__day.is-active' ).removeClass( 'is-active' );
             $( this ).addClass( 'is-active' );
             userSelectedDate = selectedDay;
+            refreshCalendar();
+            buildList();
         }
-
     });
 }
 

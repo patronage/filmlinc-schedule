@@ -3,6 +3,11 @@
 function buildList() {
 
     var data = groupedData[ userSelectedDate ];
+    var $list = $( '.widget__list' );
+
+    // empty the list out before we add items
+    $list.empty();
+
     _.forEach( data, function( event ) {
 
         var venuesToModify = [ "Howard Gilman Theater", "Amphitheater", "Francesca" ];
@@ -29,7 +34,7 @@ function buildList() {
                 '</div>' +
             '</div>'
         );
-        $( '.widget__list' ).append( template );
+        $list.append( template );
 
     });
 

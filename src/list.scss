@@ -1,6 +1,14 @@
 @import "variables";
 @import "mixins";
 
+body {
+    &:not( [data-section=''] ) {
+        .list-row {
+            opacity: 0.05;
+        }
+    }
+}
+
 .list-row {
     background: #fff;
     border-left: 5px solid;
@@ -10,7 +18,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    &.has-filter-active {
+        opacity: 1 !important;
+    }
     p {
         margin: 0;
     }
