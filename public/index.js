@@ -1,6 +1,7 @@
+var $calendar = $( '#calendar' );
 var DATE_KEY_FORMAT = 'MM-DD-YYYY';
-var userSelectedDate = moment().format( DATE_KEY_FORMAT );
 var groupedData, rawData;
+var userSelectedDate = moment().format( DATE_KEY_FORMAT );
 
 // via: https://gist.github.com/furzeface/01cf2b3ee8a737e8a55b
 function slugifyText( text ) {
@@ -71,7 +72,18 @@ function buildDayPicker() {
         if ( selectedDay !== userSelectedDate ) {
             $( '.day-picker__day.is-active' ).removeClass( 'is-active' );
             $( this ).addClass( 'is-active' );
-            console.log( 'New selected date: ' + selectedDay );
+            userSelectedDate = selectedDay;
+            $calendar.fullCalendar( 'refetchEvents' );
+            
+            var minTime = moment( groupedData[ userSelectedDate ][ 0 ].start ).format( 'HH:mm:00' );
+            var maxTime = moment( groupedData[ userSelectedDate ][ groupedData[ userSelectedDate ].length - 1 ].end ).format( 'HH:mm:00' );
+            
+            $calendar.fullCalendar( 'option', {
+                minTime: minTime,
+                maxTime: maxTime
+            });
+            $calendar.fullCalendar( 'gotoDate', moment( userSelectedDate, DATE_KEY_FORMAT ) );
+
         }
 
     });
@@ -108,7 +120,7 @@ function buildSectionButtons() {
 
 function activateFilterClearButton() {
 
-    var $clearButton = $( '.schedule-actions__filters i' );
+    var $clearButton = $( '.schedule-actions__filters--clear' );
     $clearButton.removeClass( 'hidden' );
     $clearButton.one( 'click', function() {
         $( '.schedule-actions__filters .cal-filter-trigger.is-active' ).removeClass( 'is-active' );
@@ -135,10 +147,12 @@ function bindEvents() {
 
 function buildCalendar() {
 
-    $('#calendar').fullCalendar({
+    $calendar.fullCalendar({
         schedulerLicenseKey: '0709072040-fcs-1468865905',
         defaultView: 'timelineDay',
         slotDuration: '00:10',
+        // slotWidth: 45,
+        // resourceAreaWidth: "25%",
         resourceLabelText: ' ',
         header: {
             left: '',
@@ -205,6 +219,10 @@ function buildCalendar() {
                 $( element ).addClass( 'fc-event-past' );
             }
 
+            // Convert HTML string into HTML
+            var titleText = element.find( '.fc-title' ).text();
+            element.find( '.fc-title' ).html( titleText );
+
             // Add section and meta info
             $interior.prepend( '<span class="fc-section">' + event.section + '</span>' );
             $interior.append( '<span class="fc-duration">' + event.lengthInMinutes + ' minutes</span>' );
@@ -234,6 +252,8 @@ function buildCalendar() {
 
             $( '.fc-major--even' ).next().addClass( 'fc-minor--colored' );
             $( '.fc-major--even' ).next().next().addClass( 'fc-minor--colored' );
+
+            $( '.fc-resource-area tr[data-resource-id]:not(:empty) .fc-cell-content' ).after( '<span class="fc-cell-content-bg"></span>' );
 
             // Make the main window draggable
             // var $draggable = $( '.fc-scroller-canvas' ).draggabilly({

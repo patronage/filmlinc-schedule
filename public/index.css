@@ -1,1 +1,417 @@
-body{background:#252525;font-family:"proxima-nova",sans-serif}.container{width:1400px}a:focus,a:hover{text-decoration:none}.schedule-actions{color:#fff;display:flex;margin:2em 0;justify-content:space-between;align-items:center}.schedule-actions__filters i{cursor:pointer}.schedule-actions__filters span,.schedule-actions__filters ul{display:inline-block}.schedule-actions__filters ul{padding-left:0}.schedule-actions__filters li{display:inline-block;margin:0 5px}.schedule-actions__filters li a{color:#fff;padding:2px 5px;transition:background .15s}.schedule-actions__filters li a:hover{color:#fff}.schedule-actions__filters li a[data-section="potent-potables"]{border:1px solid #1ab6ff}.schedule-actions__filters li a[data-section="potent-potables"]:hover{background:#1ab6ff}.schedule-actions__filters li a[data-section="potent-potables"].is-active{background:#1ab6ff}.schedule-actions__filters li a[data-section="oneletter-words"]{border:1px solid #599684}.schedule-actions__filters li a[data-section="oneletter-words"]:hover{background:#599684}.schedule-actions__filters li a[data-section="oneletter-words"].is-active{background:#599684}.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"]{border:1px solid #df2ca5}.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"]:hover{background:#df2ca5}.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"].is-active{background:#df2ca5}.schedule-actions__filters li a[data-section="drummers-named-ringo"]{border:1px solid #b07837}.schedule-actions__filters li a[data-section="drummers-named-ringo"]:hover{background:#b07837}.schedule-actions__filters li a[data-section="drummers-named-ringo"].is-active{background:#b07837}.schedule-actions__filters li a[data-section="colors-that-are-red"]{border:1px solid #2bca23}.schedule-actions__filters li a[data-section="colors-that-are-red"]:hover{background:#2bca23}.schedule-actions__filters li a[data-section="colors-that-are-red"].is-active{background:#2bca23}.schedule-actions__view>*{display:inline-block;margin:0 5px}.schedule-actions__view__button{border:1px solid #252525;color:#fff;padding:5px;text-transform:uppercase}.schedule-actions__view__button.is-active{border:1px solid}.schedule-actions__view__button:not(.is-active):hover{border:1px dashed rgba(255,255,255,0.15)}.schedule-actions__view__button:hover,.schedule-actions__view__button:focus{color:#fff}.day-picker{background:#000;box-sizing:border-box;text-transform:uppercase;text-align:center;display:flex;justify-content:space-between}.day-picker__day{cursor:pointer;display:block;padding:10px;position:relative;transition:background-color .15s;width:100%}.day-picker__day span{color:#fff;display:block}.day-picker__day--name{font-weight:bold}.day-picker__day:after{border-left:15px solid transparent;border-right:15px solid transparent;border-top:10px solid #000;content:'';height:0;left:calc( 50% - 15px);position:absolute;top:100%;opacity:0;transition:border-top .15s,opacity .15s;width:0;z-index:2}.day-picker__day.is-active{background:#748795}.day-picker__day.is-active:after{border-top:10px solid #748795;opacity:1}.fc-unthemed th,.fc-unthemed td,.fc-unthemed thead,.fc-unthemed tbody,.fc-unthemed .fc-divider,.fc-unthemed .fc-row,.fc-unthemed .fc-content,.fc-unthemed .fc-popover{border-color:#4d4d4d}.fc-toolbar{display:none}.fc-view-container{border:1px solid #4d4d4d}.fc-unthemed .fc-widget-header{background:#000;border:none;border-bottom:1px solid #4d4d4d;padding:5px 0;color:#fff}.fc-unthemed .fc-time-area{border-left:1px solid #4d4d4d}.fc-timeline .fc-divider{display:none}.fc-time-area .fc-slats .fc-major,.fc-time-area .fc-slats .fc-minor{background:#000;border-left:#000}.fc-time-area .fc-slats .fc-major--even,.fc-time-area .fc-slats .fc-minor--colored{background:#333;border-left:#333}.fc-time-area .fc-slats .fc-widget-content:nth-child(3n+1){border-left:1px solid #4d4d4d}.fc-timeline-event .fc-widget-content{position:relative}.fc-timeline-event .fc-content{font-size:12px;white-space:normal}.fc-timeline-event .fc-callout{background:#ebebeb;color:#000;font-size:10px;font-weight:normal;height:15px;padding:2px 5px;position:absolute;right:0;text-transform:uppercase;top:-19px;-webkit-font-smoothing:antialiased}.fc-timeline-event .fc-section{display:block;text-transform:uppercase}.fc-timeline-event .fc-title{display:block;margin:2px 0}.fc-timeline-event .fc-duration{display:block;font-weight:normal}.fc-timeline-event .fc-meta{border-top:1px solid #e5e5e5;bottom:0;box-sizing:border-box;font-size:10px;left:0;padding:2px 5px;position:absolute;text-transform:uppercase;width:100%;display:flex;justify-content:space-between;align-items:center}.fc-timeline-event .fc-meta a{color:#000}.fc-timeline-event[data-section="potent-potables"]{border-top:3px solid #1ab6ff}.fc-timeline-event[data-section="potent-potables"] .fc-section{color:#1ab6ff}.fc-timeline-event[data-section="oneletter-words"]{border-top:3px solid #599684}.fc-timeline-event[data-section="oneletter-words"] .fc-section{color:#599684}.fc-timeline-event[data-section="words-that-rhyme-with-dog"]{border-top:3px solid #df2ca5}.fc-timeline-event[data-section="words-that-rhyme-with-dog"] .fc-section{color:#df2ca5}.fc-timeline-event[data-section="drummers-named-ringo"]{border-top:3px solid #b07837}.fc-timeline-event[data-section="drummers-named-ringo"] .fc-section{color:#b07837}.fc-timeline-event[data-section="colors-that-are-red"]{border-top:3px solid #2bca23}.fc-timeline-event[data-section="colors-that-are-red"] .fc-section{color:#2bca23}.fc-timeline-event.fc-event-past{background:#dedede;border-top:3px solid #787878}.fc-timeline-event.fc-event-past .fc-section,.fc-timeline-event.fc-event-past .fc-title,.fc-timeline-event.fc-event-past .fc-duration{color:#a8a8a8}.fc-content .fc-widget-content>div,.fc-rows .fc-widget-content>div,.fc-rows .fc-event-container{height:150px !important}.fc-event-container{padding-bottom:0 !important}.fc-event-container>a{background:#fff;box-sizing:border-box;font-size:15px;font-weight:bold;height:calc( 100% - 20px);padding:15px;top:20px !important}.fc-event-container a,.fc-event-container a:hover{color:#434343}.fc-resource-area tr[data-resource-id='howard-gilman-theater']{background:url("./images/howard-gilman.jpg")}.fc-resource-area tr[data-resource-id='francesca-beale-theater']{background:url("./images/francesca-beale.jpg")}.fc-resource-area tr[data-resource-id='amphitheater']{background:url("./images/amphitheater.jpg")}.fc-resource-area tr[data-resource-id]:not(:empty){background-size:cover;color:#fff;font-size:25px;font-weight:bold;-webkit-font-smoothing:antialiased}.fc-resource-area tr[data-resource-id]:not(:empty) .fc-cell-content{display:flex;align-items:center;justify-content:center;height:100%;text-align:center}
+body {
+  background: #252525;
+  font-family: "proxima-nova", sans-serif;
+}
+
+.container {
+  width: 1400px;
+}
+
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
+.schedule-actions {
+  color: #fff;
+  display: flex;
+  margin: 2em 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-actions__filters--clear {
+  cursor: pointer;
+}
+
+.schedule-actions__filters span,
+.schedule-actions__filters ul {
+  display: inline-block;
+}
+
+.schedule-actions__filters ul {
+  padding-left: 0;
+}
+
+.schedule-actions__filters li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.schedule-actions__filters li a {
+  color: #fff;
+  padding: 2px 5px;
+  transition: background 0.15s;
+}
+
+.schedule-actions__filters li a:hover {
+  color: #fff;
+}
+
+.schedule-actions__filters li a[data-section="potent-potables"] {
+  border: 1px solid #1ab6ff;
+}
+
+.schedule-actions__filters li a[data-section="potent-potables"]:hover {
+  background: #1ab6ff;
+}
+
+.schedule-actions__filters li a[data-section="potent-potables"].is-active {
+  background: #1ab6ff;
+}
+
+.schedule-actions__filters li a[data-section="oneletter-words"] {
+  border: 1px solid #599684;
+}
+
+.schedule-actions__filters li a[data-section="oneletter-words"]:hover {
+  background: #599684;
+}
+
+.schedule-actions__filters li a[data-section="oneletter-words"].is-active {
+  background: #599684;
+}
+
+.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"] {
+  border: 1px solid #df2ca5;
+}
+
+.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"]:hover {
+  background: #df2ca5;
+}
+
+.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"].is-active {
+  background: #df2ca5;
+}
+
+.schedule-actions__filters li a[data-section="drummers-named-ringo"] {
+  border: 1px solid #b07837;
+}
+
+.schedule-actions__filters li a[data-section="drummers-named-ringo"]:hover {
+  background: #b07837;
+}
+
+.schedule-actions__filters li a[data-section="drummers-named-ringo"].is-active {
+  background: #b07837;
+}
+
+.schedule-actions__filters li a[data-section="colors-that-are-red"] {
+  border: 1px solid #2bca23;
+}
+
+.schedule-actions__filters li a[data-section="colors-that-are-red"]:hover {
+  background: #2bca23;
+}
+
+.schedule-actions__filters li a[data-section="colors-that-are-red"].is-active {
+  background: #2bca23;
+}
+
+.schedule-actions__view > * {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.schedule-actions__view__button {
+  border: 1px solid #252525;
+  color: #fff;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.schedule-actions__view__button.is-active {
+  border: 1px solid;
+}
+
+.schedule-actions__view__button:not(.is-active):hover {
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.schedule-actions__view__button:hover, .schedule-actions__view__button:focus {
+  color: #fff;
+}
+
+.day-picker {
+  background: #000;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-picker__day {
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  position: relative;
+  transition: background-color 0.15s;
+  width: 100%;
+}
+
+.day-picker__day span {
+  color: #fff;
+  display: block;
+}
+
+.day-picker__day--name {
+  font-weight: bold;
+}
+
+.day-picker__day:after {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 10px solid #000;
+  content: '';
+  height: 0;
+  left: calc( 50% - 15px);
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  transition: border-top 0.15s, opacity 0.15s;
+  width: 0;
+  z-index: 2;
+}
+
+.day-picker__day.is-active {
+  background: #748795;
+}
+
+.day-picker__day.is-active:after {
+  border-top: 10px solid #748795;
+  opacity: 1;
+}
+
+.fc-unthemed th,
+.fc-unthemed td,
+.fc-unthemed thead,
+.fc-unthemed tbody,
+.fc-unthemed .fc-divider,
+.fc-unthemed .fc-row,
+.fc-unthemed .fc-content,
+.fc-unthemed .fc-popover {
+  border-color: #4d4d4d;
+}
+
+.fc-toolbar {
+  display: none;
+}
+
+.fc-view-container {
+  border: 1px solid #4d4d4d;
+}
+
+.fc-unthemed .fc-widget-header {
+  background: #000;
+  border: none;
+  border-bottom: 1px solid #4d4d4d;
+  padding: 5px 0;
+  color: #fff;
+}
+
+.fc-unthemed .fc-time-area {
+  border-left: 1px solid #4d4d4d;
+}
+
+.fc-timeline .fc-divider {
+  display: none;
+}
+
+.fc-time-area .fc-slats .fc-major,
+.fc-time-area .fc-slats .fc-minor {
+  background: #000;
+  border-left: #000;
+}
+
+.fc-time-area .fc-slats .fc-major--even,
+.fc-time-area .fc-slats .fc-minor--colored {
+  background: #333;
+  border-left: #333;
+}
+
+.fc-time-area .fc-slats .fc-widget-content:nth-child(3n + 1) {
+  border-left: 1px solid #4d4d4d;
+}
+
+.fc-timeline-event .fc-widget-content {
+  position: relative;
+}
+
+.fc-timeline-event .fc-content {
+  font-size: 12px;
+  white-space: normal;
+}
+
+.fc-timeline-event .fc-callout {
+  background: #ebebeb;
+  color: #000;
+  font-size: 10px;
+  font-weight: normal;
+  height: 15px;
+  padding: 2px 5px;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  top: -19px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fc-timeline-event .fc-section {
+  display: block;
+  text-transform: uppercase;
+}
+
+.fc-timeline-event .fc-title {
+  display: block;
+  margin: 2px 0;
+}
+
+.fc-timeline-event .fc-duration {
+  display: block;
+  font-weight: normal;
+}
+
+.fc-timeline-event .fc-meta {
+  border-top: 1px solid #e5e5e5;
+  bottom: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  left: 0;
+  padding: 2px 5px;
+  position: absolute;
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fc-timeline-event .fc-meta a {
+  color: #000;
+}
+
+.fc-timeline-event[data-section="potent-potables"] {
+  border-top: 3px solid #1ab6ff;
+}
+
+.fc-timeline-event[data-section="potent-potables"] .fc-section {
+  color: #1ab6ff;
+}
+
+.fc-timeline-event[data-section="oneletter-words"] {
+  border-top: 3px solid #599684;
+}
+
+.fc-timeline-event[data-section="oneletter-words"] .fc-section {
+  color: #599684;
+}
+
+.fc-timeline-event[data-section="words-that-rhyme-with-dog"] {
+  border-top: 3px solid #df2ca5;
+}
+
+.fc-timeline-event[data-section="words-that-rhyme-with-dog"] .fc-section {
+  color: #df2ca5;
+}
+
+.fc-timeline-event[data-section="drummers-named-ringo"] {
+  border-top: 3px solid #b07837;
+}
+
+.fc-timeline-event[data-section="drummers-named-ringo"] .fc-section {
+  color: #b07837;
+}
+
+.fc-timeline-event[data-section="colors-that-are-red"] {
+  border-top: 3px solid #2bca23;
+}
+
+.fc-timeline-event[data-section="colors-that-are-red"] .fc-section {
+  color: #2bca23;
+}
+
+.fc-timeline-event.fc-event-past {
+  background: #dedede;
+  border-top: 3px solid #787878;
+}
+
+.fc-timeline-event.fc-event-past .fc-section,
+.fc-timeline-event.fc-event-past .fc-title,
+.fc-timeline-event.fc-event-past .fc-duration {
+  color: #a8a8a8;
+}
+
+.fc-content .fc-widget-content > div,
+.fc-rows .fc-widget-content > div,
+.fc-rows .fc-event-container {
+  height: 150px !important;
+}
+
+.fc-event-container {
+  padding-bottom: 0 !important;
+}
+
+.fc-event-container > a {
+  background: #fff;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: bold;
+  height: calc( 100% - 20px);
+  padding: 15px;
+  top: 20px !important;
+}
+
+.fc-event-container a,
+.fc-event-container a:hover {
+  color: #434343;
+}
+
+.fc-resource-area tr[data-resource-id='howard-gilman-theater'] .fc-cell-content-bg {
+  background: url("./images/howard-gilman.jpg");
+}
+
+.fc-resource-area tr[data-resource-id='francesca-beale-theater'] .fc-cell-content-bg {
+  background: url("./images/francesca-beale.jpg");
+}
+
+.fc-resource-area tr[data-resource-id='amphitheater'] .fc-cell-content-bg {
+  background: url("./images/amphitheater.jpg");
+}
+
+.fc-resource-area tr[data-resource-id] .fc-widget-content {
+  position: relative;
+}
+
+.fc-resource-area tr[data-resource-id] .fc-cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fc-resource-area tr[data-resource-id] .fc-cell-content-bg {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-size: cover;
+}
+
+.fc-resource-area tr[data-resource-id] .fc-cell-content-bg:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+}

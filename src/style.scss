@@ -42,7 +42,7 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     &__filters {
-        i {
+        &--clear {
             cursor: pointer;
         }
         span,
@@ -285,27 +285,48 @@ a:hover {
     }
 }
 
-.fc-resource-area tr[data-resource-id='howard-gilman-theater'] {
+.fc-resource-area tr[data-resource-id='howard-gilman-theater'] .fc-cell-content-bg {
     background: url('./images/howard-gilman.jpg');
 }
-.fc-resource-area tr[data-resource-id='francesca-beale-theater'] {
+.fc-resource-area tr[data-resource-id='francesca-beale-theater'] .fc-cell-content-bg {
     background: url('./images/francesca-beale.jpg');
 }
-.fc-resource-area tr[data-resource-id='amphitheater'] {
+.fc-resource-area tr[data-resource-id='amphitheater'] .fc-cell-content-bg {
     background: url('./images/amphitheater.jpg');
 }
 
-.fc-resource-area tr[data-resource-id]:not(:empty) {
-    background-size: cover;
-    color: #fff;
-    font-size: 25px;
-    font-weight: bold;
-    -webkit-font-smoothing: antialiased;
+.fc-resource-area tr[data-resource-id] {
+    .fc-widget-content {
+        position: relative;
+    }
     .fc-cell-content {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
         text-align: center;
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        font-size: 25px;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+    }
+    .fc-cell-content-bg {
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-size: cover;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: transparentize( #000, 0.25 );
+        }
     }
 }
