@@ -229,10 +229,14 @@ a:hover {
     }
     .fc-section {
         display: block;
+        font-size: 12px;
+        font-weight: 600;
         text-transform: uppercase;
     }
     .fc-title {
         display: block;
+        font-size: 15px;
+        font-weight: bold;
         margin: 2px 0;
     }
     .fc-duration {
@@ -362,9 +366,84 @@ a:hover {
 
 .co {
     display: none;
-    background: #fff;
-    width: 33%;
+    width: 50%;
+    max-width: 500px;
+    position: relative;
     .modal-cont & {
         display: block;
+    }
+}
+
+.co-img,
+.co-img a,
+.co-img img {
+    display: block;
+    width: 100%;
+}
+
+.co-content {
+    background: #fff;
+    padding: 25px;
+    display: flex;
+    @include section-loop {
+        border-top: 3px solid $section-color;
+    }
+    > * {
+        width: 100%;
+    }
+    &__section {
+        font-size: 12px;
+        text-transform: uppercase;
+        @include section-loop {
+            color: $section-color;
+        }
+    }
+    &__title {
+        font-size: 22px;
+        font-weight: 600;
+        a {
+            color: $text-color-dark;
+        }
+    }
+    &__duration {
+        font-size: 12px;
+    }
+    &__description {
+        font-size: 14px;
+        br,
+        hr {
+            display: none;
+        }
+    }
+    &__showtime {
+        font-size: 14px;
+        time {
+            font-weight: bold;
+        }
+        a {
+            background: #748795;
+            color: #fff;
+            padding: 2px 5px;
+            text-transform: uppercase;
+        }
+    }
+    &__location {
+        border-left: 1px solid #dcdcdc;
+        margin-left: 15px;
+        padding-top: calc( 1em + 12px );
+        padding-left: 15px;
+        font-weight: bold;
+        width: 35%;
+    }
+}
+
+.co-closer {
+    color: #fff;
+    position: absolute;
+    right: 0;
+    padding: 10px 15px;
+    border-radius: 0 0 0 3px;
+    &:hover {
+        color: darken( #fff, 20% );
     }
 }

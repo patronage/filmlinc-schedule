@@ -275,11 +275,15 @@ a:hover {
 
 .fc-timeline-event .fc-section {
   display: block;
+  font-size: 12px;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
 .fc-timeline-event .fc-title {
   display: block;
+  font-size: 15px;
+  font-weight: bold;
   margin: 2px 0;
 }
 
@@ -567,10 +571,131 @@ body:not([data-section='']) .list-row {
 
 .co {
   display: none;
-  background: #fff;
-  width: 33%;
+  width: 50%;
+  max-width: 500px;
+  position: relative;
 }
 
 .modal-cont .co {
   display: block;
+}
+
+.co-img,
+.co-img a,
+.co-img img {
+  display: block;
+  width: 100%;
+}
+
+.co-content {
+  background: #fff;
+  padding: 25px;
+  display: flex;
+}
+
+.co-content[data-section="potent-potables"] {
+  border-top: 3px solid #b07837;
+}
+
+.co-content[data-section="oneletter-words"] {
+  border-top: 3px solid #599684;
+}
+
+.co-content[data-section="words-that-rhyme-with-dog"] {
+  border-top: 3px solid #df2ca5;
+}
+
+.co-content[data-section="drummers-named-ringo"] {
+  border-top: 3px solid #1ab6ff;
+}
+
+.co-content[data-section="colors-that-are-red"] {
+  border-top: 3px solid #2bca23;
+}
+
+.co-content > * {
+  width: 100%;
+}
+
+.co-content__section {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.co-content__section[data-section="potent-potables"] {
+  color: #b07837;
+}
+
+.co-content__section[data-section="oneletter-words"] {
+  color: #599684;
+}
+
+.co-content__section[data-section="words-that-rhyme-with-dog"] {
+  color: #df2ca5;
+}
+
+.co-content__section[data-section="drummers-named-ringo"] {
+  color: #1ab6ff;
+}
+
+.co-content__section[data-section="colors-that-are-red"] {
+  color: #2bca23;
+}
+
+.co-content__title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.co-content__title a {
+  color: #434343;
+}
+
+.co-content__duration {
+  font-size: 12px;
+}
+
+.co-content__description {
+  font-size: 14px;
+}
+
+.co-content__description br,
+.co-content__description hr {
+  display: none;
+}
+
+.co-content__showtime {
+  font-size: 14px;
+}
+
+.co-content__showtime time {
+  font-weight: bold;
+}
+
+.co-content__showtime a {
+  background: #748795;
+  color: #fff;
+  padding: 2px 5px;
+  text-transform: uppercase;
+}
+
+.co-content__location {
+  border-left: 1px solid #dcdcdc;
+  margin-left: 15px;
+  padding-top: calc( 1em + 12px);
+  padding-left: 15px;
+  font-weight: bold;
+  width: 35%;
+}
+
+.co-closer {
+  color: #fff;
+  position: absolute;
+  right: 0;
+  padding: 10px 15px;
+  border-radius: 0 0 0 3px;
+}
+
+.co-closer:hover {
+  color: #cccccc;
 }

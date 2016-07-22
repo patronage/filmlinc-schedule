@@ -32,12 +32,21 @@ function popupGenerator( slug, dateUnix ) {
         entryUrl =  entry.permalink;
     }
 
-    // sketchy templating
-    $('.co-img a').attr( 'href', entryUrl );
-    $('.co-img img').attr( 'src', entry.thumb )
-    $('.co-content h2').html( '<a href="' + entryUrl + '">' + entry.title + '</a>' );
-    $('.co-content p').html( entry.desc );
-    $('.co-content h3 span').text( date );
+    // put together our "template"
+    $( '.co-content' ).attr( 'data-section', slugifyText( entry.section ) );
+    $( '.co-img a' ).attr( 'href', entryUrl );
+    $( '.co-img img' ).attr( 'src', '//filmlinc.org/' + entry.event_thumb )
+    $( '.co-content__section' ).text( entry.section ).attr( 'data-section', slugifyText( entry.section ) );
+    $( '.co-content__title' ).html( '<a href="' + entryUrl + '">' + entry.title + '</a>' );
+    $( '.co-content__duration' ).text( entry.running_time + ' minutes' );
+    $( '.co-content__description' ).html( entry.event_desc );
+    $( '.co-content__location' ).text( entry.venue_tess );
+
+    var time = moment( event.start ).format( 'h:mmA' )
+    var date = moment( event.start ).format( 'MMMM D' );
+    $( '.co-content__showtime time' ).text( time + ' on ' + date );
+    $( '.co-content__showtime a' ).attr( 'src', entry.url );
+
 
     // create showtimes list if applicable
     var listString = '';
@@ -50,12 +59,20 @@ function popupGenerator( slug, dateUnix ) {
     $modalCont.addClass( 'is-active' );
     $modalCont.html( cloned );
 
-    $('.fc-week .co-closer').one( 'click', function( e ) {
+    $( '.modal-cont .co' ).on( 'click', function( e ) {
+        e.stopPropagation();
+    });
+
+    $( '.modal-cont' ).one( 'click', function( e ) {
+        cleanupPopup();
+    });
+
+    $('.modal-cont .co-closer').one( 'click', function( e ) {
         e.preventDefault();
         cleanupPopup();
     });
 
-    $(document).on( 'keyup', function(e) {
+    $( document ).on( 'keyup', function(e) {
         if (e.keyCode == 27) {
             cleanupPopup();
         }

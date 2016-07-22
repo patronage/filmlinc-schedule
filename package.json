@@ -1,7 +1,7 @@
 {
   "name": "schedule",
   "version": "1.0.0",
-  "description": "",
+  "description": "requires: - node.js - bower",
   "main": "index.js",
   "scripts": {
     "start": "npm-run-all --parallel deps:wire style sync",
@@ -22,8 +22,20 @@
   "dependencies": {
     "bower": "^1.7.9",
     "express": "^4.14.0",
+    "lodash": "^4.13.1",
     "node-sass": "^3.8.0",
     "npm-run-all": "^2.3.0",
     "wiredep": "^4.0.0"
-  }
+  },
+  "bin": {
+    "schedule": "deps.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patronage/filmlinc-schedule.git"
+  },
+  "bugs": {
+    "url": "https://github.com/patronage/filmlinc-schedule/issues"
+  },
+  "homepage": "https://github.com/patronage/filmlinc-schedule#readme"
 }

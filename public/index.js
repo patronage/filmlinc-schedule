@@ -22,10 +22,8 @@ function getData( callback ) {
             });
 
             _.forEach( rawEventData, function( event ) {
-                var start = moment( event.start );
-                var end = moment( event.end );
-                duration = end.diff( start, 'minutes' )
-                event.lengthInMinutes = duration;
+                var endTime = moment( event.start ).add( event.running_time, 'minutes' ).format();
+                event.endUTC = endTime;
             });
 
             groupedData = _.groupBy( rawEventData, function( event ) {
@@ -90,13 +88,15 @@ function buildSectionButtons() {
 }
 
 function updateFilterDisplay( section ) {
-    var $timelineEvents = $( '.fc-timeline-event[ data-section="' + section + '" ]' );
+    var $timelineEventSelector = $( '.fc-timeline-event[ data-section="' + section + '" ]' );
     var $listRows = $( '.list-row[ data-section="' + section +'" ]' );
-    $( '.fc-timeline-event' ).removeClass( filterClass );
+    
+    $( '.' + filterClass ).removeClass( filterClass );
+    $timelineEventSelector.addClass( filterClass );
     $listRows.addClass( filterClass );
 }
 
-// Handle events on the "clear filters" button
+// Handle events on the "clear filters" buttons
 function activateFilterClearButton() {
     var $clearButton = $( '.schedule-actions__filters--clear' );
     $clearButton.removeClass( 'hidden' );
@@ -139,7 +139,7 @@ function bindEvents() {
         }
 
         activateFilterClearButton();
-        refreshCalendar();
+        // refreshCalendar();
     });
 
     // handle changing days
@@ -170,13 +170,32 @@ function refreshCalendar() {
     $calendar.fullCalendar( 'gotoDate', moment( userSelectedDate, DATE_KEY_FORMAT ) );
 }
 
+function getEarliestTime( data ) {
+    var format = 'HH:mm:00';
+    var firstEvent = _.sortBy( data, function( event ) {
+        return event.start;
+    })[ 0 ]
+    var startTime = moment( firstEvent.start ).format( format );
+    return startTime;
+}
+
+function getLatestTime( data ) {
+    var format = 'HH:mm:00';
+    var sortedEvents = _.sortBy( data, function( event ) {
+        return event.end;
+    });
+    var lastEvent = sortedEvents[ sortedEvents.length - 1 ];
+    var endTime = moment( lastEvent.end ).format( format );
+    return endTime;
+}
+
 function buildCalendar() {
 
     $calendar.fullCalendar({
         schedulerLicenseKey: '0709072040-fcs-1468865905',
         defaultView: 'timelineDay',
         slotDuration: '00:10',
-        // slotWidth: 45,
+        slotWidth: 35,
         // resourceAreaWidth: "25%",
         resourceLabelText: ' ',
         header: {
@@ -186,9 +205,10 @@ function buildCalendar() {
         },
         timezone: 'local',
         height: 'auto',
-        minTime: moment( groupedData[ userSelectedDate ][ 0 ].start ).format( 'HH:mm:00' ),
-        maxTime: moment( groupedData[ userSelectedDate ][ groupedData[ userSelectedDate ].length - 1 ].end ).format( 'HH:mm:00' ),
+        minTime: getEarliestTime( groupedData[ userSelectedDate ] ),
+        maxTime: getLatestTime( groupedData[ userSelectedDate ] ),
         resources: function( callback ) {
+
             var uniqueVenues = _.map( _.uniqBy( rawEventData, function( event ) {
                 return event.venue_tess;
             }), function( event ) {
@@ -258,9 +278,11 @@ function buildCalendar() {
 
             // Add section and meta info
             $interior.prepend( '<span class="fc-section">' + event.section + '</span>' );
-            $interior.append( '<span class="fc-duration">' + event.lengthInMinutes + ' minutes</span>' );
+            $interior.append( '<span class="fc-duration">' + event.running_time + ' minutes</span>' );
             if ( !isEventPast ) {
-                element.append( '<div class="fc-callout">' + event.section + '</div>' );
+                if ( event.ticket_status && event.ticket_status !== 'normal' ) {
+                    element.append( '<div class="fc-callout">' + event.ticket_status + '</div>' );
+                }
                 $interior.after(
                     '<div class="fc-meta">' +
                         '<span class="fc-meta-time">' +
