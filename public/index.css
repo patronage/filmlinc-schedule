@@ -465,10 +465,13 @@ body:not([data-section='']) .list-row {
 }
 
 .list-row__title {
-  color: #434343;
   font-size: 18px;
   font-weight: bold;
   width: 50%;
+}
+
+.list-row__title a {
+  color: #434343;
 }
 
 .list-row__title small {

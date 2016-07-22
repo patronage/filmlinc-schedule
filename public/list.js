@@ -16,20 +16,25 @@ function buildList() {
             venueDescription = 'Elinor Bunin Munroe Film Center';
         }
 
+        var ticketStatus = '';
+        if ( event.ticket_status && event.ticket_status !== 'normal' ) {
+            ticketStatus = '<span class="list-row__actions__tooltip">' + event.ticket_status + '</span>';
+        }
+
         var template = (
             '<div class="list-row" data-section="' + slugifyText( event.section ) + '">' +
                 '<time class="list-row__time">' + moment( event.start ).format( 'h:mmA' ) + '</time>' +
                 '<div class="list-row__title">' +
                     '<small>' + event.section + '</small>' +
-                    '<p>' + event.title + '</p>' +
+                    '<p><a href="' + event.permalink + '">' + event.title + '</a></p>' +
                 '</div>' +
                 '<div class="list-row__location">' +
                     '<small>' + venueDescription + '</small>' +
                     '<p>' + event.venue_tess + '</p>' +
                 '</div>' +
-                '<div class="list-row__duration">' + event.lengthInMinutes + ' mins</div>' +
+                '<div class="list-row__duration">' + event.running_time + ' mins</div>' +
                 '<div class="list-row__actions">' +
-                    '<span class="list-row__actions__tooltip">Standby</span>' +
+                     ticketStatus +
                     '<a href="' + event.url + '">Buy Tickets</a>' +
                 '</div>' +
             '</div>'

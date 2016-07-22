@@ -31,10 +31,12 @@ body {
     }
 
     &__title {
-        color: $text-color-dark;
         font-size: 18px;
         font-weight: bold;
         width: 50%;
+        a {
+            color: $text-color-dark;
+        }
         small {
             font-size: 12px;
             font-weight: 600;
