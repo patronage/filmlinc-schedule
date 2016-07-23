@@ -17,6 +17,14 @@ var filterClass = 'has-filter-active';
 // the currently selected date. defaults to today
 var userSelectedDate = moment().format( DATE_KEY_FORMAT );
 
+var sections = [
+    "Potent potables",
+    "Words that rhyme with dog",
+    "Colors that are red",
+    "One-letter words",
+    "Drummers named ringo"
+];
+
 /* end globals */
 
 // via: https://gist.github.com/furzeface/01cf2b3ee8a737e8a55b
@@ -90,15 +98,14 @@ function buildDayPicker() {
 // Builds the section selector buttons and binds events
 function buildSectionButtons() {
 
-    var sections = _.groupBy( rawEventData, function( event ) {
-        return event.section;
-    });
-    sections = Object.keys( sections );
+    var tooltipText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, omnis.';
 
     _.forEach( sections, function( section ) {
-        if ( typeof section !== 'undefined' ) {
-            $('.schedule-actions ul').append( '<li><a class="cal-filter-trigger" href="#" data-section=' + slugifyText( section ) + '>' + section + '</a></li>' )
-        }
+        $('.schedule-actions ul').append(
+            '<li class="tt faded" data-title="' + tooltipText + '">' +
+                '<a class="cal-filter-trigger" href="#" data-section=' + slugifyText( section ) + '>' + section + '</a>' +
+            '</li>'
+        );
     });
 }
 
