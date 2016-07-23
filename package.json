@@ -9,7 +9,7 @@
     "deps:wire": "node bin/deps.js",
     "deps:install": "bower i",
     "server": "node app.js",
-    "style": "node-sass --output-style expanded --watch src/style.scss public/index.css",
+    "style": "node-sass --error-bell --output-style expanded --watch src/style.scss public/index.css",
     "style:prod": "node-sass --output-style compressed src/style.scss public/index.css",
     "sync": "browser-sync start --server --no-notify --files 'index.html' 'public/index.css' 'public/*.js'"
   },

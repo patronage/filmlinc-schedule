@@ -4,11 +4,13 @@ body {
 }
 
 body:not([data-section='']) .fc-timeline-event {
-  opacity: 0.05;
+  opacity: 0.15;
 }
 
-.container {
-  width: 1400px;
+@media (min-width: 1400px) {
+  .container {
+    width: 1400px;
+  }
 }
 
 a:focus,
@@ -222,6 +224,10 @@ a:hover {
   border-left: 1px solid #4d4d4d;
 }
 
+.fc-unthemed .fc-chrono .fc-cell-text {
+  font-weight: normal;
+}
+
 .fc-timeline .fc-divider {
   display: none;
 }
@@ -300,7 +306,6 @@ a:hover {
   left: 0;
   padding: 2px 5px;
   position: absolute;
-  text-transform: uppercase;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -404,26 +409,34 @@ a:hover {
 }
 
 .fc-resource-area tr[data-resource-id] .fc-cell-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  font-size: 25px;
-  font-weight: bold;
   -webkit-font-smoothing: antialiased;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  white-space: normal;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fc-resource-area tr[data-resource-id] .fc-cell-content small {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .fc-resource-area tr[data-resource-id] .fc-cell-content-bg {
-  position: absolute;
+  background-size: cover;
   display: block;
+  position: absolute;
   height: 100%;
   width: 100%;
   top: 0;
-  background-size: cover;
 }
 
 .fc-resource-area tr[data-resource-id] .fc-cell-content-bg:before {

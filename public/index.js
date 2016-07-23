@@ -1,8 +1,23 @@
-var $calendar = $( '.widget__calendar' );
-var DATE_KEY_FORMAT = 'MM-DD-YYYY';
-var filterClass = 'has-filter-active';
+/* GLOBALS!!! */
+
 var groupedData, rawEventData;
+
+// our lovely calendar
+var $calendar = $( '.widget__calendar' );
+
+// consistent date formatting for when we need a day
+var DATE_KEY_FORMAT = 'MM-DD-YYYY';
+
+// venues that need "Elinor Bunin Munroe Film Center" added
+var venuesToModify = [ "Howard Gilman Theater", "Amphitheater", "Francesca Beale Theater" ];
+
+// class for timeline events and list rows
+var filterClass = 'has-filter-active';
+
+// the currently selected date. defaults to today
 var userSelectedDate = moment().format( DATE_KEY_FORMAT );
+
+/* end globals */
 
 // via: https://gist.github.com/furzeface/01cf2b3ee8a737e8a55b
 function slugifyText( text ) {
@@ -160,8 +175,8 @@ function bindEvents() {
 function refreshCalendar() {
     $calendar.fullCalendar( 'refetchEvents' );
     
-    var minTime = moment( groupedData[ userSelectedDate ][ 0 ].start ).format( 'HH:mm:00' );
-    var maxTime = moment( groupedData[ userSelectedDate ][ groupedData[ userSelectedDate ].length - 1 ].end ).format( 'HH:mm:00' );
+    var minTime = getEarliestTime();
+    var maxTime = getLatestTime();
     
     $calendar.fullCalendar( 'option', {
         minTime: minTime,
@@ -170,9 +185,9 @@ function refreshCalendar() {
     $calendar.fullCalendar( 'gotoDate', moment( userSelectedDate, DATE_KEY_FORMAT ) );
 }
 
-function getEarliestTime( data ) {
-    var format = 'HH:mm:00';
-    var firstEvent = _.sortBy( data, function( event ) {
+function getEarliestTime() {
+    var format = 'HH:00:00';
+    var firstEvent = _.sortBy( groupedData[ userSelectedDate ], function( event ) {
         return event.start;
     })[ 0 ]
     var startTime = moment( firstEvent.start ).format( format );
@@ -181,53 +196,67 @@ function getEarliestTime( data ) {
 
 function getLatestTime( data ) {
     var format = 'HH:mm:00';
-    var sortedEvents = _.sortBy( data, function( event ) {
+    var sortedEvents = _.sortBy( groupedData[ userSelectedDate ], function( event ) {
         return event.end;
     });
     var lastEvent = sortedEvents[ sortedEvents.length - 1 ];
-    var endTime = moment( lastEvent.end ).format( format );
+    var endTime = moment( lastEvent.end ).add( '30', 'minutes' ).format( format );
     return endTime;
+}
+
+// Gets time rounded down to nearest 10 minutes
+// can be used with `scrollTime` http://fullcalendar.io/docs/timeline/scrollTime/
+function getCurrentTimeToClosestTen() {
+    var now = moment();
+    var timeHours = now.format( 'HH' );
+    var timeMinutes = now.format( 'mm' );
+    timeMinutes += '';
+    timeMinutes = timeMinutes.split('')[0];
+    return timeHours + ':' + timeMinutes + '0:00';
 }
 
 function buildCalendar() {
 
     $calendar.fullCalendar({
-        schedulerLicenseKey: '0709072040-fcs-1468865905',
+
+        // http://fullcalendar.io/docs/views/defaultView/
+        // http://fullcalendar.io/docs/views/Available_Views/
         defaultView: 'timelineDay',
-        slotDuration: '00:10',
-        slotWidth: 35,
-        // resourceAreaWidth: "25%",
-        resourceLabelText: ' ',
+        
+        // http://fullcalendar.io/docs/display/header/
         header: {
             left: '',
             center: '',
             right: ''
         },
-        timezone: 'local',
+
+        // http://fullcalendar.io/docs/display/height/
         height: 'auto',
-        minTime: getEarliestTime( groupedData[ userSelectedDate ] ),
-        maxTime: getLatestTime( groupedData[ userSelectedDate ] ),
-        resources: function( callback ) {
 
-            var uniqueVenues = _.map( _.uniqBy( rawEventData, function( event ) {
-                return event.venue_tess;
-            }), function( event ) {
-                return event.venue_tess;
-            });
+        // http://fullcalendar.io/docs/timeline/minTime_maxTime/
+        minTime: getEarliestTime(),
+        maxTime: getLatestTime(),
 
-            // remove any `undefined`
-            uniqueVenues = _.filter( uniqueVenues, function( venue ) {
-                return typeof venue === 'string';
-            });
+        // http://fullcalendar.io/docs/timeline/resourceAreaWidth/
+        resourceAreaWidth: 198,
 
-            uniqueVenues = _.map( uniqueVenues, function( venue ) {
-                return {
-                    id: slugifyText( venue ),
-                    title: venue
-                };
-            });
-            callback( uniqueVenues );
-        },
+        // http://fullcalendar.io/docs/timeline/resourceLabelText/
+        resourceLabelText: ' ',
+
+        schedulerLicenseKey: '0709072040-fcs-1468865905',
+
+        // http://fullcalendar.io/docs/timeline/scrollTime/
+        scrollTime: moment().format('hh:mm:00'),
+
+        // http://fullcalendar.io/docs/timeline/slotDuration/
+        slotDuration: '00:10',
+        
+        // http://fullcalendar.io/docs/timeline/slotWidth/
+        slotWidth: 35,
+
+        // http://fullcalendar.io/docs/timezone/timezone/
+        timezone: 'local',
+
         events: function( start, end, timezone, callback ) {
             var eventsFormatted = _.map( groupedData[ userSelectedDate ], function( event ) {
                 if ( typeof event.venue_tess !== 'undefined' ) {
@@ -243,6 +272,7 @@ function buildCalendar() {
 
             callback( eventsFormatted );
         },
+
         eventAfterRender: function(event, element, view) {
 
             var $element = element;
@@ -280,7 +310,8 @@ function buildCalendar() {
             $interior.prepend( '<span class="fc-section">' + event.section + '</span>' );
             $interior.append( '<span class="fc-duration">' + event.running_time + ' minutes</span>' );
             if ( !isEventPast ) {
-                if ( event.ticket_status && event.ticket_status !== 'normal' ) {
+                // if ( event.ticket_status && event.ticket_status !== 'normal' ) {
+                if ( event.ticket_status ) {
                     element.append( '<div class="fc-callout">' + event.ticket_status + '</div>' );
                 }
                 $interior.after(
@@ -289,6 +320,14 @@ function buildCalendar() {
                         moment( event.start ).format( 'h:mm A') +
                         '</span>' +
                         '<span class="fc-meta-buy"><a href="' + event.url +'">Buy Tickets</a></span>' +
+                    '</div>'
+                );
+            } else {
+                $interior.after(
+                    '<div class="fc-meta">' +
+                        '<span class="fc-meta-time">' +
+                        moment( event.start ).format( 'h:mm A') +
+                        '</span>' +
                     '</div>'
                 );
             }
@@ -308,8 +347,42 @@ function buildCalendar() {
                 
                 popupGenerator( slug, unixDate );
             });
-
         },
+
+        resources: function( callback ) {
+
+            var uniqueVenues = [
+                'Alice Tully Hall',
+                'Walter Reade Theater',
+                'Francesca Beale Theater',
+                'Howard Gilman Theater',
+                'Amphitheater',
+                'Bruno Walter Auditorium'
+            ];
+
+            uniqueVenues = _.map( uniqueVenues, function( venue ) {
+                return {
+                    id: slugifyText( venue ),
+                    title: venue
+                };
+            });
+            callback( uniqueVenues );
+        },
+
+        resourceRender: function( resourceObj, labelTds, bodyTds ) {
+            var $resourceTextEl = $( labelTds ).find( '.fc-cell-text' );
+            var venueName = $resourceTextEl.text();
+            var template = (
+                '<div class="fc-cell-text">' +
+                    '<small>Elinor Bunin Munroe Film Center</small>' +
+                    '<span>' + venueName + '</span>' +
+                '</div>'
+            );
+            if ( venuesToModify.indexOf( venueName ) > -1 ) {
+                $resourceTextEl.replaceWith( template );
+            }
+        },
+
         viewRender: function( view, element ) {
             var els = $( '.fc-major' );
             _.forEach(els, function( el, index ) {
@@ -325,13 +398,6 @@ function buildCalendar() {
             $( '.fc-major--even' ).next().next().addClass( 'fc-minor--colored' );
 
             $( '.fc-resource-area tr[data-resource-id]:not(:empty) .fc-cell-content' ).after( '<span class="fc-cell-content-bg"></span>' );
-
-            // Make the main window draggable
-            // var $draggable = $( '.fc-scroller-canvas' ).draggabilly({
-            //     axis: 'x',
-            //     grid: [ 90, 100 ]
-            // });
-            // $draggable.draggabilly( 'enable' );
         }
     });
 }

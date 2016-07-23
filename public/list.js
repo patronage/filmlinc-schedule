@@ -1,5 +1,3 @@
-// var groupedData;
-// var userSelectedDate;
 function buildList() {
 
     var data = groupedData[ userSelectedDate ];
@@ -10,7 +8,6 @@ function buildList() {
 
     _.forEach( data, function( event ) {
 
-        var venuesToModify = [ "Howard Gilman Theater", "Amphitheater", "Francesca" ];
         var venueDescription = ' ';
         if ( venuesToModify.indexOf( event.venue_tess ) > -1 ) {
             venueDescription = 'Elinor Bunin Munroe Film Center';
