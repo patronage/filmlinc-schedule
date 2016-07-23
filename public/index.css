@@ -691,8 +691,11 @@ body:not([data-section='']) .list-row {
 .co-content__showtime a {
   background: #748795;
   color: #fff;
+  font-family: "proxima-nova-extra-condensed", sans-serif;
   padding: 2px 5px;
+  margin-left: 2px;
   text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
 }
 
 .co-content__location {
