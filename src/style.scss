@@ -1,7 +1,18 @@
-@import "variables";
-@import "mixins";
-@import "tooltip";
-@import "modal";
+@import "_bootstrap";
+@import "_variables";
+
+@import "_breakpoints";
+@import "_mixins";
+
+@import "_tooltip";
+@import "_modal";
+@import "_list";
+
+@media (min-width: 1400px) {
+    .container {
+        width: 1400px;
+    }
+}
 
 body {
     background: $body-color-bg;
@@ -16,11 +27,8 @@ header {
     height: 112px;
     margin: 0 auto;
     width: 1200px;
-}
-
-@media (min-width: 1400px) {
-    .container {
-        width: 1400px;
+    @include md-and-up {
+        display: none;
     }
 }
 
@@ -43,10 +51,12 @@ a:hover {
         opacity: 1;
         transition: -webkit-transform 0.5s, transition 0.5s, opacity 0.5s;
         &.is-hidden {
-            opacity: 0;
-            -webkit-transform: translateX( 100% );
-            transform: translateX( 100% );
-            z-index: $zindex-widgetInactive;
+            @include md-and-up {
+                opacity: 0;
+                -webkit-transform: translateX( 100% );
+                transform: translateX( 100% );
+                z-index: $zindex-widgetInactive;
+            }
         }
     }
 }
@@ -385,5 +395,3 @@ a:hover {
         }
     }
 }
-
-@import "list";

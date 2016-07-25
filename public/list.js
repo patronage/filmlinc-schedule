@@ -20,17 +20,21 @@ function buildList() {
 
         var template = (
             '<div class="list-row" data-section="' + slugifyText( event.section ) + '">' +
-                '<time class="list-row__time">' + moment( event.start ).format( 'h:mmA' ) + '</time>' +
+                '<div class="list-row__time">' +
+                    ticketStatus +
+                    '<time>' + moment( event.start ).format( 'h:mmA' ) + '</time>' +
+                '</div>' +
                 '<div class="list-row__title">' +
                     '<small>' + event.section + '</small>' +
                     '<p><a href="' + event.permalink + '">' + event.title + '</a></p>' +
+                    '<p class="list_row__title--venue hidden-md hidden-lg">' + event.venue_tess + '</p>' +
                 '</div>' +
-                '<div class="list-row__location">' +
+                '<div class="list-row__location hidden-sm hidden-xs">' +
                     '<small>' + venueDescription + '</small>' +
                     '<p>' + event.venue_tess + '</p>' +
                 '</div>' +
-                '<div class="list-row__duration">' + event.running_time + ' mins</div>' +
-                '<div class="list-row__actions">' +
+                '<div class="list-row__duration hidden-sm hidden-xs">' + event.running_time + ' mins</div>' +
+                '<div class="list-row__actions hidden-sm hidden-xs">' +
                      ticketStatus +
                     '<a href="' + event.url + '">Buy Tickets</a>' +
                 '</div>' +

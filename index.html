@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://use.typekit.net/kjh2pnx.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
         <link rel="stylesheet" href="bower_components/fullcalendar-scheduler/dist/scheduler.css" />
@@ -22,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="schedule">
                         <div class="schedule-actions">
-                            <div class="schedule-actions__filters">
+                            <div class="schedule-actions__filters hidden-sm hidden-xs">
                                 <span>Filter by</span>
                                 <ul>
                                     <li class="tt faded" data-title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, omnis.">
@@ -45,7 +44,7 @@
                                     <i class="fa fa-times"></i> clear filter
                                 </span>
                             </div>
-                            <div class="schedule-actions__view">
+                            <div class="schedule-actions__view hidden-sm hidden-xs">
                                 <p>View by</p>
                                 <a href="#" data-view="list" class="schedule-actions__view__button">
                                     <i class="fa fa-list"></i>
@@ -58,10 +57,14 @@
                             </div>
                         </div>
                         <div class="day-picker"></div>
+
+
                         <div class="widgets">
-                            <div class="widget__calendar"></div>
+                            <div class="widget__calendar hidden-sm hidden-xs"></div>
                             <div class="widget__list is-hidden"></div>
                         </div>
+                        
+
                         <div class="modal-cont"></div>
                         <!-- event modal overlay -->
                         <div class="co">
@@ -112,6 +115,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
