@@ -50,10 +50,6 @@ body {
   font-family: "proxima-nova", sans-serif;
 }
 
-body:not([data-section='']) .fc-timeline-event {
-  opacity: 0.15;
-}
-
 header {
   background-image: url("./images/nyffheader.png");
   background-position: center top;
@@ -310,6 +306,10 @@ a:hover {
   transition: opacity 0.15s;
 }
 
+.body-filter-active .fc-timeline-event {
+  opacity: 0.15;
+}
+
 .fc-timeline-event.has-filter-active.fc-event {
   opacity: 1;
 }
@@ -526,10 +526,6 @@ a:hover {
   background: rgba(0, 0, 0, 0.75);
 }
 
-body:not([data-section='']) .list-row {
-  opacity: 0.05;
-}
-
 .list-row {
   background: #fff;
   border-left: 5px solid;
@@ -539,6 +535,10 @@ body:not([data-section='']) .list-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.body-filter-active .list-row {
+  opacity: 0.05;
 }
 
 .list-row.has-filter-active {

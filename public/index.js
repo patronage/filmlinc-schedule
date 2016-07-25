@@ -5,6 +5,9 @@ var groupedData, rawEventData;
 // our lovely calendar
 var $calendar = $( '.widget__calendar' );
 
+// clear filter button
+var $clearButton = $( '.schedule-actions__filters--clear' );
+
 // consistent date formatting for when we need a day
 var DATE_KEY_FORMAT = 'MM-DD-YYYY';
 
@@ -95,35 +98,12 @@ function buildDayPicker() {
     }
 }
 
-// Builds the section selector buttons and binds events
-function buildSectionButtons() {
-
-    var tooltipText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, omnis.';
-
-    _.forEach( sections, function( section ) {
-        $('.schedule-actions ul').append(
-            '<li class="tt faded" data-title="' + tooltipText + '">' +
-                '<a class="cal-filter-trigger" href="#" data-section=' + slugifyText( section ) + '>' + section + '</a>' +
-            '</li>'
-        );
-    });
-}
-
-function updateFilterDisplay( section ) {
-    var $timelineEventSelector = $( '.fc-timeline-event[ data-section="' + section + '" ]' );
-    var $listRows = $( '.list-row[ data-section="' + section +'" ]' );
-    
-    $( '.' + filterClass ).removeClass( filterClass );
-    $timelineEventSelector.addClass( filterClass );
-    $listRows.addClass( filterClass );
-}
-
 // Handle events on the "clear filters" buttons
 function activateFilterClearButton() {
-    var $clearButton = $( '.schedule-actions__filters--clear' );
+    
     $clearButton.removeClass( 'hidden' );
     $clearButton.one( 'click', function() {
-        $( 'body' ).attr( 'data-section', '' );
+        $( 'body' ).removeClass( 'body-filter-active' );
         $( '.schedule-actions__filters .cal-filter-trigger.is-active' ).removeClass( 'is-active' );
         $( this ).addClass( 'hidden' );
         $( '.fc-timeline-event' ).removeClass( filterClass );
@@ -147,21 +127,27 @@ function bindEvents() {
     });
 
     // handle the section filters
-    $( '.schedule-actions__filters' ).on( 'click', '.cal-filter-trigger', function( e ) {
+    $( '.cal-filter-trigger' ).on( 'click', function( e ) {
 
-        var $target = $( e.target );
-        var section = $target.data( 'section' );
         e.preventDefault();
 
-        if ( !$target.hasClass( 'is-active' ) ) {
-            $( '.cal-filter-trigger' ).removeClass( 'is-active' );
-            $target.addClass( 'is-active' );
-            $( 'body' ).attr( 'data-section', section );
-            updateFilterDisplay( section );
+        var $target = $( this );
+        var section = $target.data( 'section' );
+        var $timelineEventSelector = $( '.fc-timeline-event[ data-section="' + section + '" ]' );
+        var $listRows = $( '.list-row[ data-section="' + section +'" ]' );
+
+        $target.toggleClass( 'is-active' );
+        $timelineEventSelector.toggleClass( filterClass );
+        $listRows.toggleClass( filterClass );
+
+        if ( $( '.cal-filter-trigger.is-active' ).length > 0 ) {
+            $( 'body' ).addClass( 'body-filter-active' );
+            activateFilterClearButton();
+        } else {
+            $( 'body' ).removeClass( 'body-filter-active' );
+            $clearButton.addClass( 'hidden' );
         }
 
-        activateFilterClearButton();
-        // refreshCalendar();
     });
 
     // handle changing days
@@ -412,14 +398,12 @@ function buildCalendar() {
 jQuery(document).ready(function() {
 
     $('body').attr({
-        'data-section': '',
         'data-view': ''
     });
     
     getData( function() {
         buildCalendar();
         buildList();
-        buildSectionButtons();
     });
     buildDayPicker();
     bindEvents();

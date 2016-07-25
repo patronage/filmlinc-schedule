@@ -5,11 +5,6 @@
 body {
     background: $body-color-bg;
     font-family: $font-proxima;
-    &:not( [data-section=''] ) {
-        .fc-timeline-event {
-            opacity: 0.15;
-        }
-    }
 }
 
 header {
@@ -222,6 +217,9 @@ a:hover {
 
 .fc-timeline-event {
     transition: opacity $transition-duration;
+    .body-filter-active & {
+        opacity: 0.15;
+    }
     &.has-filter-active.fc-event {
         opacity: 1;
     }
