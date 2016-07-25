@@ -45,6 +45,206 @@
   transform: translate3d(0, 0, 0);
 }
 
+.modal-cont {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000000;
+  display: none;
+}
+
+.modal-cont.is-active {
+  display: flex;
+}
+
+.vm,
+.co {
+  display: none;
+  width: 50%;
+  max-width: 500px;
+  position: relative;
+}
+
+.modal-cont .vm, .modal-cont
+.co {
+  display: block;
+}
+
+.vm-img,
+.vm-img a,
+.vm-img img,
+.co-img,
+.co-img a,
+.co-img img {
+  display: block;
+  width: 100%;
+}
+
+.vm-content,
+.co-content {
+  background: #fff;
+  padding: 25px;
+  display: flex;
+}
+
+.vm-content[data-section="potent-potables"],
+.co-content[data-section="potent-potables"] {
+  border-top: 3px solid #b07837;
+}
+
+.vm-content[data-section="oneletter-words"],
+.co-content[data-section="oneletter-words"] {
+  border-top: 3px solid #599684;
+}
+
+.vm-content[data-section="words-that-rhyme-with-dog"],
+.co-content[data-section="words-that-rhyme-with-dog"] {
+  border-top: 3px solid #df2ca5;
+}
+
+.vm-content[data-section="drummers-named-ringo"],
+.co-content[data-section="drummers-named-ringo"] {
+  border-top: 3px solid #1ab6ff;
+}
+
+.vm-content[data-section="colors-that-are-red"],
+.co-content[data-section="colors-that-are-red"] {
+  border-top: 3px solid #2bca23;
+}
+
+.vm-content > *,
+.co-content > * {
+  width: 100%;
+}
+
+.vm-content__section,
+.co-content__section {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.vm-content__section[data-section="potent-potables"],
+.co-content__section[data-section="potent-potables"] {
+  color: #b07837;
+}
+
+.vm-content__section[data-section="oneletter-words"],
+.co-content__section[data-section="oneletter-words"] {
+  color: #599684;
+}
+
+.vm-content__section[data-section="words-that-rhyme-with-dog"],
+.co-content__section[data-section="words-that-rhyme-with-dog"] {
+  color: #df2ca5;
+}
+
+.vm-content__section[data-section="drummers-named-ringo"],
+.co-content__section[data-section="drummers-named-ringo"] {
+  color: #1ab6ff;
+}
+
+.vm-content__section[data-section="colors-that-are-red"],
+.co-content__section[data-section="colors-that-are-red"] {
+  color: #2bca23;
+}
+
+.vm-content__title,
+.co-content__title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.vm-content__title a,
+.co-content__title a {
+  color: #434343;
+}
+
+.vm-content__duration,
+.co-content__duration {
+  font-size: 12px;
+}
+
+.vm-content__description,
+.co-content__description {
+  font-size: 14px;
+}
+
+.vm-content__description br,
+.vm-content__description hr,
+.co-content__description br,
+.co-content__description hr {
+  display: none;
+}
+
+.vm-content__showtime,
+.co-content__showtime {
+  font-size: 14px;
+}
+
+.vm-content__showtime time,
+.co-content__showtime time {
+  font-weight: bold;
+}
+
+.vm-content__showtime a,
+.co-content__showtime a {
+  background: #748795;
+  color: #fff;
+  font-family: "proxima-nova-extra-condensed", sans-serif;
+  padding: 2px 5px;
+  margin-left: 2px;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+}
+
+.vm-content__location,
+.co-content__location {
+  border-left: 1px solid #dcdcdc;
+  margin-left: 15px;
+  padding-top: calc( 1em + 12px);
+  padding-left: 15px;
+  font-weight: bold;
+  width: 35%;
+}
+
+.vm-content small {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.vm-content__address > * {
+  display: inline-block;
+}
+
+.vm-content__address a {
+  background: #748795;
+  color: #fff;
+  font-family: "proxima-nova-extra-condensed", sans-serif;
+  padding: 2px 5px;
+  margin-left: 2px;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+}
+
+.vm-closer,
+.co-closer {
+  color: #fff;
+  position: absolute;
+  right: 0;
+  padding: 10px 15px;
+  border-radius: 0 0 0 3px;
+}
+
+.vm-closer:hover,
+.co-closer:hover {
+  color: #cccccc;
+}
+
 body {
   background: #252525;
   font-family: "proxima-nova", sans-serif;
@@ -346,7 +546,7 @@ a:hover {
 
 .fc-timeline-event .fc-title {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
   margin: 2px 0;
 }
@@ -452,9 +652,7 @@ a:hover {
 
 .fc-body .fc-scroller,
 .fc-body .fc-scroller .fc-scroller-canvas {
-  overflow: hidden !important;
-  padding-bottom: 0 !important;
-  width: 100%;
+  padding-bottom: 0;
 }
 
 .fc-resource-area tr[data-resource-id='howard-gilman-theater'] .fc-cell-content-bg {
@@ -479,6 +677,10 @@ a:hover {
 
 .fc-resource-area tr[data-resource-id='bruno-walter-auditorium'] .fc-cell-content-bg {
   background: url("./images/bruno-walter.jpg");
+}
+
+.fc-resource-area tr[data-resource-id] {
+  cursor: help;
 }
 
 .fc-resource-area tr[data-resource-id] .fc-widget-content {
@@ -643,155 +845,4 @@ a:hover {
 
 .list-row[data-section="colors-that-are-red"] .list-row__title small {
   color: #2bca23;
-}
-
-.modal-cont {
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  z-index: 100000000;
-  display: none;
-}
-
-.modal-cont.is-active {
-  display: flex;
-}
-
-.co {
-  display: none;
-  width: 50%;
-  max-width: 500px;
-  position: relative;
-}
-
-.modal-cont .co {
-  display: block;
-}
-
-.co-img,
-.co-img a,
-.co-img img {
-  display: block;
-  width: 100%;
-}
-
-.co-content {
-  background: #fff;
-  padding: 25px;
-  display: flex;
-}
-
-.co-content[data-section="potent-potables"] {
-  border-top: 3px solid #b07837;
-}
-
-.co-content[data-section="oneletter-words"] {
-  border-top: 3px solid #599684;
-}
-
-.co-content[data-section="words-that-rhyme-with-dog"] {
-  border-top: 3px solid #df2ca5;
-}
-
-.co-content[data-section="drummers-named-ringo"] {
-  border-top: 3px solid #1ab6ff;
-}
-
-.co-content[data-section="colors-that-are-red"] {
-  border-top: 3px solid #2bca23;
-}
-
-.co-content > * {
-  width: 100%;
-}
-
-.co-content__section {
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.co-content__section[data-section="potent-potables"] {
-  color: #b07837;
-}
-
-.co-content__section[data-section="oneletter-words"] {
-  color: #599684;
-}
-
-.co-content__section[data-section="words-that-rhyme-with-dog"] {
-  color: #df2ca5;
-}
-
-.co-content__section[data-section="drummers-named-ringo"] {
-  color: #1ab6ff;
-}
-
-.co-content__section[data-section="colors-that-are-red"] {
-  color: #2bca23;
-}
-
-.co-content__title {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.co-content__title a {
-  color: #434343;
-}
-
-.co-content__duration {
-  font-size: 12px;
-}
-
-.co-content__description {
-  font-size: 14px;
-}
-
-.co-content__description br,
-.co-content__description hr {
-  display: none;
-}
-
-.co-content__showtime {
-  font-size: 14px;
-}
-
-.co-content__showtime time {
-  font-weight: bold;
-}
-
-.co-content__showtime a {
-  background: #748795;
-  color: #fff;
-  font-family: "proxima-nova-extra-condensed", sans-serif;
-  padding: 2px 5px;
-  margin-left: 2px;
-  text-transform: uppercase;
-  -webkit-font-smoothing: antialiased;
-}
-
-.co-content__location {
-  border-left: 1px solid #dcdcdc;
-  margin-left: 15px;
-  padding-top: calc( 1em + 12px);
-  padding-left: 15px;
-  font-weight: bold;
-  width: 35%;
-}
-
-.co-closer {
-  color: #fff;
-  position: absolute;
-  right: 0;
-  padding: 10px 15px;
-  border-radius: 0 0 0 3px;
-}
-
-.co-closer:hover {
-  color: #cccccc;
 }

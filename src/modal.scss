@@ -1,17 +1,132 @@
-.co {
-    display: none;
-}
+@import "variables";
+@import "mixins";
 
 .modal-cont {
+    background: transparentize( #000, 0.2 );
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
-    .co {
+    z-index: $zindex-modalOverlay;
+    display: none;
+    &.is-active {
+        display: flex;
+    }
+}
+
+.vm,
+.co {
+    display: none;
+    width: 50%;
+    max-width: 500px;
+    position: relative;
+    .modal-cont & {
         display: block;
+    }
+}
+
+.vm-img,
+.vm-img a,
+.vm-img img,
+.co-img,
+.co-img a,
+.co-img img {
+    display: block;
+    width: 100%;
+}
+
+.vm-content,
+.co-content {
+    background: #fff;
+    padding: 25px;
+    display: flex;
+    @include section-loop {
+        border-top: 3px solid $section-color;
+    }
+    > * {
+        width: 100%;
+    }
+    &__section {
+        font-size: 12px;
+        text-transform: uppercase;
+        @include section-loop {
+            color: $section-color;
+        }
+    }
+    &__title {
+        font-size: 22px;
+        font-weight: 600;
+        a {
+            color: $text-color-dark;
+        }
+    }
+    &__duration {
+        font-size: 12px;
+    }
+    &__description {
+        font-size: 14px;
+        br,
+        hr {
+            display: none;
+        }
+    }
+    &__showtime {
+        font-size: 14px;
+        time {
+            font-weight: bold;
+        }
+        a {
+            background: #748795;
+            color: #fff;
+            font-family: $font-proxima-condensed;
+            padding: 2px 5px;
+            margin-left: 2px;
+            text-transform: uppercase;
+            -webkit-font-smoothing: antialiased;
+        }
+    }
+    &__location {
+        border-left: 1px solid #dcdcdc;
+        margin-left: 15px;
+        padding-top: calc( 1em + 12px );
+        padding-left: 15px;
+        font-weight: bold;
+        width: 35%;
+    }
+}
+
+.vm-content {
+    small {
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    &__address {
+        > * {
+            display: inline-block;
+        }
+        a {
+            background: #748795;
+            color: #fff;
+            font-family: $font-proxima-condensed;
+            padding: 2px 5px;
+            margin-left: 2px;
+            text-transform: uppercase;
+            -webkit-font-smoothing: antialiased;
+        }
+    }
+}
+
+.vm-closer,
+.co-closer {
+    color: #fff;
+    position: absolute;
+    right: 0;
+    padding: 10px 15px;
+    border-radius: 0 0 0 3px;
+    &:hover {
+        color: darken( #fff, 20% );
     }
 }

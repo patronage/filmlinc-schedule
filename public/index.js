@@ -374,6 +374,11 @@ function buildCalendar() {
             if ( venuesToModify.indexOf( venueName ) > -1 ) {
                 $resourceTextEl.replaceWith( template );
             }
+
+            $( labelTds ).on( 'click', function( e ) {
+                venuePopupGenerator( venueName );
+            });
+
         },
 
         viewRender: function( view, element ) {

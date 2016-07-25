@@ -4,11 +4,6 @@ var $modalCont = $( '.modal-cont' );
 function cleanupPopup() {
     $modalCont.removeClass( 'is-active' );
     $modalCont.empty();
-    $('.fc-week.has-active-event').removeClass('has-active-event');
-    $('.fc-event.is-active').removeClass('is-active');
-    $('.item-left').removeClass('item-left');
-    $( '.fc-week' ).removeClass('child-item-fixed');
-    $('.item-nudged-vertically').removeClass('item-nudged-vertically');
     $( document ).off( 'keyup ');
 };
 
@@ -74,6 +69,51 @@ function popupGenerator( slug, dateUnix ) {
 
     $( document ).on( 'keyup', function(e) {
         if (e.keyCode == 27) {
+            cleanupPopup();
+        }
+    });
+};
+
+function venuePopupGenerator( venueName ) {
+
+    var sampleVenue = {
+        content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sequi, architecto pariatur deleniti. Pariatur accusamus, sequi quis commodi neque eligendi.',
+        address: '144 W 65th St. New York, NY 10023',
+        directionsLink: 'https://www.google.com',
+        image: '/public/images/shia.jpg'
+    }
+
+    // put together our "template"
+    $( '.vm-img img' ).attr( 'src', sampleVenue.image )
+    $( '.vm-content__title' ).text( venueName );
+    $( '.vm-content__description' ).html( sampleVenue.content );
+    $( '.vm-content__address address' ).text( sampleVenue.address );
+    $( '.vm-content__address a' ).attr( 'src', sampleVenue.directionsLink );
+
+    var cloned = $('.vm').clone();
+    $modalCont.addClass( 'is-active' );
+    $modalCont.html( cloned );
+
+    // Show venue description if necessary
+    if ( venuesToModify.indexOf( venueName ) > -1 ) {
+        $modalCont.find( 'small' ).removeClass( 'hidden' );
+    }
+
+    $( '.modal-cont .vm' ).on( 'click', function( e ) {
+        e.stopPropagation();
+    });
+
+    $( '.modal-cont' ).one( 'click', function( e ) {
+        cleanupPopup();
+    });
+
+    $('.modal-cont .vm-closer').one( 'click', function( e ) {
+        e.preventDefault();
+        cleanupPopup();
+    });
+
+    $( document ).on( 'keyup', function(e) {
+        if ( e.keyCode === 27 ) {
             cleanupPopup();
         }
     });
