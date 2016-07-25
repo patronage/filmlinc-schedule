@@ -76,8 +76,8 @@ a:hover {
 }
 
 .widgets {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -450,6 +450,13 @@ a:hover {
   color: #434343;
 }
 
+.fc-body .fc-scroller,
+.fc-body .fc-scroller .fc-scroller-canvas {
+  overflow: hidden !important;
+  padding-bottom: 0 !important;
+  width: 100%;
+}
+
 .fc-resource-area tr[data-resource-id='howard-gilman-theater'] .fc-cell-content-bg {
   background: url("./images/howard-gilman.jpg");
 }
@@ -460,6 +467,18 @@ a:hover {
 
 .fc-resource-area tr[data-resource-id='amphitheater'] .fc-cell-content-bg {
   background: url("./images/amphitheater.jpg");
+}
+
+.fc-resource-area tr[data-resource-id='alice-tully-hall'] .fc-cell-content-bg {
+  background: url("./images/alice-tully.jpg");
+}
+
+.fc-resource-area tr[data-resource-id='walter-reade-theater'] .fc-cell-content-bg {
+  background: url("./images/walter-reade.jpg");
+}
+
+.fc-resource-area tr[data-resource-id='bruno-walter-auditorium'] .fc-cell-content-bg {
+  background: url("./images/bruno-walter.jpg");
 }
 
 .fc-resource-area tr[data-resource-id] .fc-widget-content {
