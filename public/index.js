@@ -133,6 +133,12 @@ function handleFilters( jqEl ) {
     }
 }
 
+function resetFilters() {
+    $( 'body' ).removeClass( 'body-filter-active' );
+    $( '.list-row.has-filter-active' ).removeClass( 'has-filter-active' );
+    $( '.schedule-actions__dropdown--cont li' ).removeClass( 'is-active' );
+}
+
 function isSmall() {
     
     if ( $( document ).width() < breakpointSmallMax ) {
@@ -173,14 +179,15 @@ function bindEvents() {
             userSelectedDate = selectedDay;
             buildList();
             if ( !isSmall() ) {
-                refreshCalendar();                
+                refreshCalendar();
+            } else {
+                resetFilters();
             }
         }
     });
 
     $( '.schedule-actions__dropdown li' ).on( 'click', function() {
-        var $this = $( this );
-        handleFilters( $this );
+        $( this ).toggleClass( 'is-active' );
     });
 
     $( '.schedule-actions__dropdown__title' ).on( 'click', function() {
@@ -195,6 +202,30 @@ function bindEvents() {
         movePager( true );
     });
 
+    $( '.schedule-actions__dropdown__button--cont button' ).on( 'click', function( e ) {
+        e.preventDefault();
+        updateFiltersBasedOnDropdown();
+        $( '.schedule-actions__dropdown' ).removeClass( 'is-active' );
+    });
+
+}
+
+function updateFiltersBasedOnDropdown() {
+
+    var numEls = $( '.schedule-actions__dropdown--cont li.is-active' ).length;
+    $( '.list-row' ).removeClass( filterClass );
+
+    if ( numEls > 0 ) {
+        $( 'body' ).addClass( 'body-filter-active' );
+        $( '.schedule-actions__dropdown--cont li.is-active' ).each( function() {
+            var $target = $( this );
+            var section = $target.data( 'section' );
+            var $listRowsSelector = $( '.list-row[ data-section="' + section +'" ]' );
+            $listRowsSelector.addClass( filterClass );
+        });
+    } else {
+        $( 'body' ).removeClass( 'body-filter-active' );
+    }
 }
 
 function setDatePickerWidth() {

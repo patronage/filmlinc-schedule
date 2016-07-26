@@ -8753,6 +8753,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   position: relative;
+  transition: transform 0.15s;
 }
 
 .day-picker__pager {
