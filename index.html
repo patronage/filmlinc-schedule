@@ -18,9 +18,37 @@
         <div class="container">
             <header></header>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <div class="schedule">
                         <div class="schedule-actions">
+                            <div class="schedule-actions__dropdown hidden-md hidden-lg">
+                                <div class="schedule-actions__dropdown__title">
+                                    <span>Filter by</span>
+                                    <i class="fa fa-chevron-down"></i>
+                                </div>
+                                <div class="schedule-actions__dropdown--cont">
+                                    <ul>
+                                        <li data-section="potent-potables">
+                                            <span class="schedule-actions__dropdown--indicator"></span> Potent potables
+                                        </li>
+                                        <li data-section="words-that-rhyme-with-dog">
+                                            <span class="schedule-actions__dropdown--indicator"></span> Words that rhyme with dog
+                                        </li>
+                                        <li data-section="colors-that-are-red">
+                                            <span class="schedule-actions__dropdown--indicator"></span> Colors that are red
+                                        </li>
+                                        <li data-section="oneletter-words">
+                                            <span class="schedule-actions__dropdown--indicator"></span> One-letter words
+                                        </li>
+                                        <li data-section="drummers-named-ringo">
+                                            <span class="schedule-actions__dropdown--indicator"></span> Drummers named ringo
+                                        </li>
+                                    </ul>
+                                    <div class="schedule-actions__dropdown__button--cont">
+                                        <button class="button-compressed">Update filters</button>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="schedule-actions__filters hidden-sm hidden-xs">
                                 <span>Filter by</span>
                                 <ul>
@@ -56,15 +84,19 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="day-picker"></div>
-
-
+                        <div class="day-picker__cont">
+                            <div class="day-picker"></div>
+                            <div class="day-picker__pager day-picker__pager--prev">
+                                <i class="fa fa-chevron-left"></i>
+                            </div>
+                            <div class="day-picker__pager day-picker__pager--next">
+                                <i class="fa fa-chevron-right"></i>
+                            </div>
+                        </div>
                         <div class="widgets">
                             <div class="widget__calendar hidden-sm hidden-xs"></div>
                             <div class="widget__list is-hidden"></div>
                         </div>
-                        
-
                         <div class="modal-cont"></div>
                         <!-- event modal overlay -->
                         <div class="co">
@@ -88,7 +120,7 @@
                                     </div>
                                     <div class="co-content__location">
                                         <p></p>
-                                        <p><a href="#">Get directions</a></p>
+                                        <p><a class="button-compressed" href="#">Get directions</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +141,7 @@
                                         <div class="vm-content__address">
                                             <p><strong>Address: </strong></p>
                                             <address></address>
-                                            <a href="#">Get Directions</a>
+                                            <a class="button-compressed" href="#">Get Directions</a>
                                         </div>
                                     </div>
                                 </div>

@@ -1,0 +1,153 @@
+.schedule-actions {
+    color: #fff;
+    overflow: hidden;
+    width: 100%;
+    &__dropdown {
+        background: $body-color-bg;
+        box-sizing: border-box;
+        cursor: s-resize;
+        left: 0;
+        position: absolute;
+        top: 12px;
+        width: 100%;
+        z-index: $zindex-mobileFilter;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        &--cont {
+            height: 0;
+            overflow: hidden;
+            transition: height $transition-duration;
+        }
+        &__title {
+            border: 1px solid $text-color-dark;
+            display: flex;
+            font-size: 18px;
+            padding: 12px 15px;
+            align-items: center;
+            justify-content: space-between;
+            i {
+                transition: transform $transition-duration;
+            }
+        }
+        ul {
+            border: 1px solid $text-color-dark;
+            border-top: none;
+            font-size: 14px;
+            list-style-type: none;
+            margin: 0;
+            padding: 10px 0;
+        }
+        li {
+            cursor: pointer;
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            span {
+                height: 25px;
+                width: 25px;
+                margin-right: 15px;
+                border: 1px solid;
+                transition: background $transition-duration;
+            }
+            @include section-loop {
+                span {
+                    border-color: $section-color;
+                }
+                &.is-active {
+                    color: $section-color;
+                    span {
+                        background: $section-color;
+                    }
+                }
+            }
+        }
+        &__button--cont {
+            border: 1px solid $text-color-dark;
+            border-top: none;
+            padding: 20px 15px;
+        }
+        button {
+            border: none;
+            display: block;
+            font-size: 16px;
+            padding: 6px;
+            width: 100%;
+        }
+        &.is-active {
+            cursor: n-resize;
+            i {
+                transform: rotate( -180deg );
+            }
+            .schedule-actions__dropdown--cont {
+                height: auto;
+                // overflow: visible;
+            }
+        }
+    }
+    &__filters {
+        &--clear {
+            cursor: pointer;
+        }
+        span,
+        ul {
+            display: inline-block;
+        }
+        ul {
+            margin: 0;
+            padding-left: 0;
+        }
+        li {
+            display: inline-block;
+            margin: 0 5px;
+            a {
+                color: #fff;
+                padding: 2px 5px;
+                transition: background $transition-duration;
+                &:hover {
+                    color: #fff;
+                }
+                @include section-loop {
+                    border: 1px solid $section-color;
+                    &:hover {
+                        // background: $section-color;
+                    }
+                    &.is-active {
+                        background: $section-color;
+                    }
+                }
+            }
+        }
+    }
+    &__view {
+        > * {
+            display: inline-block;
+            margin: 0 5px;
+        }
+        &__button {
+            border: 1px solid $body-color-bg;
+            color: #fff;
+            padding: 5px;
+            text-transform: uppercase;
+            &.is-active {
+                border: 1px solid;
+            }
+            &:not(.is-active):hover {
+                border: 1px dashed transparentize( #fff, 0.85 );
+            }
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+    }
+    @include md-and-up {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2em 0;
+    }
+}

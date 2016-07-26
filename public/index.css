@@ -7739,6 +7739,85 @@ button.close {
   }
 }
 
+@media (min-width: 1400px) {
+  .container {
+    width: 1400px;
+  }
+}
+
+body {
+  background: #252525;
+  font-family: "proxima-nova", sans-serif;
+}
+
+header {
+  background-image: url("./images/nyffheader.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 112px;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+@media screen and (max-width: 1199px) {
+  header {
+    display: none;
+  }
+}
+
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
+.widgets {
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.widgets > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  opacity: 1;
+  transition: -webkit-transform 0.5s, transition 0.5s, opacity 0.5s;
+}
+
+@media screen and (min-width: 992px) {
+  .widgets > div.is-hidden {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    z-index: 100;
+  }
+}
+
+.schedule {
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (max-width: 991px) {
+  .schedule {
+    padding-top: 70px;
+  }
+}
+
+.button-compressed {
+  -webkit-font-smoothing: antialiased;
+  background: #748795;
+  color: #fff;
+  font-family: "proxima-nova-extra-condensed", sans-serif;
+  padding: 2px 5px;
+  text-transform: uppercase;
+  padding-top: 65px;
+}
+
 .tt {
   position: relative;
 }
@@ -7934,13 +8013,8 @@ button.close {
 
 .vm-content__showtime a,
 .co-content__showtime a {
-  background: #748795;
-  color: #fff;
-  font-family: "proxima-nova-extra-condensed", sans-serif;
   padding: 2px 5px;
   margin-left: 2px;
-  text-transform: uppercase;
-  -webkit-font-smoothing: antialiased;
 }
 
 .vm-content__location,
@@ -7963,13 +8037,8 @@ button.close {
 }
 
 .vm-content__address a {
-  background: #748795;
-  color: #fff;
-  font-family: "proxima-nova-extra-condensed", sans-serif;
   padding: 2px 5px;
   margin-left: 2px;
-  text-transform: uppercase;
-  -webkit-font-smoothing: antialiased;
 }
 
 .vm-closer,
@@ -8136,70 +8205,156 @@ button.close {
   color: #2bca23;
 }
 
-@media (min-width: 1400px) {
-  .container {
-    width: 1400px;
-  }
-}
-
-body {
-  background: #252525;
-  font-family: "proxima-nova", sans-serif;
-}
-
-header {
-  background-image: url("./images/nyffheader.png");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 112px;
-  margin: 0 auto;
-  width: 1200px;
-}
-
-@media screen and (min-width: 992px) {
-  header {
-    display: none;
-  }
-}
-
-a:focus,
-a:hover {
-  text-decoration: none;
-}
-
-.widgets {
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
-}
-
-.widgets > div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 200;
-  opacity: 1;
-  transition: -webkit-transform 0.5s, transition 0.5s, opacity 0.5s;
-}
-
-@media screen and (min-width: 992px) {
-  .widgets > div.is-hidden {
-    opacity: 0;
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-    z-index: 100;
-  }
-}
-
 .schedule-actions {
   color: #fff;
+  overflow: hidden;
+  width: 100%;
+}
+
+.schedule-actions__dropdown {
+  background: #252525;
+  box-sizing: border-box;
+  cursor: s-resize;
+  left: 0;
+  position: absolute;
+  top: 12px;
+  width: 100%;
+  z-index: 400;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.schedule-actions__dropdown--cont {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.15s;
+}
+
+.schedule-actions__dropdown__title {
+  border: 1px solid #434343;
   display: flex;
-  margin: 2em 0;
-  justify-content: space-between;
+  font-size: 18px;
+  padding: 12px 15px;
   align-items: center;
+  justify-content: space-between;
+}
+
+.schedule-actions__dropdown__title i {
+  transition: transform 0.15s;
+}
+
+.schedule-actions__dropdown ul {
+  border: 1px solid #434343;
+  border-top: none;
+  font-size: 14px;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.schedule-actions__dropdown li {
+  cursor: pointer;
+  padding: 20px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.schedule-actions__dropdown li span {
+  height: 25px;
+  width: 25px;
+  margin-right: 15px;
+  border: 1px solid;
+  transition: background 0.15s;
+}
+
+.schedule-actions__dropdown li[data-section="potent-potables"] span {
+  border-color: #b07837;
+}
+
+.schedule-actions__dropdown li[data-section="potent-potables"].is-active {
+  color: #b07837;
+}
+
+.schedule-actions__dropdown li[data-section="potent-potables"].is-active span {
+  background: #b07837;
+}
+
+.schedule-actions__dropdown li[data-section="oneletter-words"] span {
+  border-color: #599684;
+}
+
+.schedule-actions__dropdown li[data-section="oneletter-words"].is-active {
+  color: #599684;
+}
+
+.schedule-actions__dropdown li[data-section="oneletter-words"].is-active span {
+  background: #599684;
+}
+
+.schedule-actions__dropdown li[data-section="words-that-rhyme-with-dog"] span {
+  border-color: #df2ca5;
+}
+
+.schedule-actions__dropdown li[data-section="words-that-rhyme-with-dog"].is-active {
+  color: #df2ca5;
+}
+
+.schedule-actions__dropdown li[data-section="words-that-rhyme-with-dog"].is-active span {
+  background: #df2ca5;
+}
+
+.schedule-actions__dropdown li[data-section="drummers-named-ringo"] span {
+  border-color: #1ab6ff;
+}
+
+.schedule-actions__dropdown li[data-section="drummers-named-ringo"].is-active {
+  color: #1ab6ff;
+}
+
+.schedule-actions__dropdown li[data-section="drummers-named-ringo"].is-active span {
+  background: #1ab6ff;
+}
+
+.schedule-actions__dropdown li[data-section="colors-that-are-red"] span {
+  border-color: #2bca23;
+}
+
+.schedule-actions__dropdown li[data-section="colors-that-are-red"].is-active {
+  color: #2bca23;
+}
+
+.schedule-actions__dropdown li[data-section="colors-that-are-red"].is-active span {
+  background: #2bca23;
+}
+
+.schedule-actions__dropdown__button--cont {
+  border: 1px solid #434343;
+  border-top: none;
+  padding: 20px 15px;
+}
+
+.schedule-actions__dropdown button {
+  border: none;
+  display: block;
+  font-size: 16px;
+  padding: 6px;
+  width: 100%;
+}
+
+.schedule-actions__dropdown.is-active {
+  cursor: n-resize;
+}
+
+.schedule-actions__dropdown.is-active i {
+  transform: rotate(-180deg);
+}
+
+.schedule-actions__dropdown.is-active .schedule-actions__dropdown--cont {
+  height: auto;
 }
 
 .schedule-actions__filters--clear {
@@ -8295,55 +8450,13 @@ a:hover {
   color: #fff;
 }
 
-.day-picker {
-  background: #000;
-  box-sizing: border-box;
-  text-transform: uppercase;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-.day-picker__day {
-  cursor: pointer;
-  display: block;
-  padding: 10px;
-  position: relative;
-  transition: background-color 0.15s;
-  width: 100%;
-}
-
-.day-picker__day span {
-  color: #fff;
-  display: block;
-}
-
-.day-picker__day--name {
-  font-weight: bold;
-}
-
-.day-picker__day:after {
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 10px solid #000;
-  content: '';
-  height: 0;
-  left: calc( 50% - 15px);
-  position: absolute;
-  top: 100%;
-  opacity: 0;
-  transition: border-top 0.15s, opacity 0.15s;
-  width: 0;
-  z-index: 300;
-}
-
-.day-picker__day.is-active {
-  background: #748795;
-}
-
-.day-picker__day.is-active:after {
-  border-top: 10px solid #748795;
-  opacity: 1;
+@media screen and (min-width: 992px) {
+  .schedule-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2em 0;
+  }
 }
 
 .fc-unthemed th,
@@ -8625,4 +8738,94 @@ a:hover {
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.75);
+}
+
+.day-picker__cont {
+  width: 100%;
+  position: relative;
+}
+
+.day-picker {
+  background: #000;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.day-picker__pager {
+  display: none;
+}
+
+.day-picker__day {
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  position: relative;
+  transition: background-color 0.15s;
+  width: 100%;
+}
+
+.day-picker__day span {
+  color: #fff;
+  display: block;
+}
+
+.day-picker__day--name {
+  font-weight: bold;
+}
+
+.day-picker__day:after {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 10px solid #000;
+  content: '';
+  height: 0;
+  left: calc( 50% - 15px);
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  transition: border-top 0.15s, opacity 0.15s;
+  width: 0;
+  z-index: 300;
+}
+
+.day-picker__day.is-active {
+  background: #748795;
+}
+
+.day-picker__day.is-active:after {
+  border-top: 10px solid #748795;
+  opacity: 1;
+}
+
+@media screen and (max-width: 991px) {
+  .day-picker {
+    display: block;
+  }
+  .day-picker__day {
+    display: inline-block;
+    width: 55px;
+  }
+  .day-picker__pager {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 55px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .day-picker__pager--prev {
+    left: 0;
+  }
+  .day-picker__pager--next {
+    right: 0;
+  }
 }

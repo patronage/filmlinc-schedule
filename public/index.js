@@ -2,6 +2,9 @@
 
 var groupedData, rawEventData;
 
+// should be set to bootstrap's small breakpoint.
+var breakpointSmallMax = 991;
+
 // our lovely calendar
 var $calendar = $( '.widget__calendar' );
 
@@ -111,6 +114,33 @@ function activateFilterClearButton() {
     });
 }
 
+function handleFilters( jqEl ) {
+    var $target = jqEl;
+    var section = $target.data( 'section' );
+    var $timelineEventSelector = $( '.fc-timeline-event[ data-section="' + section + '" ]' );
+    var $listRows = $( '.list-row[ data-section="' + section +'" ]' );
+
+    $target.toggleClass( 'is-active' );
+    $timelineEventSelector.toggleClass( filterClass );
+    $listRows.toggleClass( filterClass );
+
+    if ( $( '.cal-filter-trigger.is-active' ).length > 0 ) {
+        $( 'body' ).addClass( 'body-filter-active' );
+        activateFilterClearButton();
+    } else {
+        $( 'body' ).removeClass( 'body-filter-active' );
+        $clearButton.addClass( 'hidden' );
+    }
+}
+
+function isSmall() {
+    
+    if ( $( document ).width() < breakpointSmallMax ) {
+        return true;
+    }
+    return false;
+}
+
 function bindEvents() {
 
     // handle change between calendar and list views
@@ -128,26 +158,9 @@ function bindEvents() {
 
     // handle the section filters
     $( '.cal-filter-trigger' ).on( 'click', function( e ) {
-
         e.preventDefault();
-
-        var $target = $( this );
-        var section = $target.data( 'section' );
-        var $timelineEventSelector = $( '.fc-timeline-event[ data-section="' + section + '" ]' );
-        var $listRows = $( '.list-row[ data-section="' + section +'" ]' );
-
-        $target.toggleClass( 'is-active' );
-        $timelineEventSelector.toggleClass( filterClass );
-        $listRows.toggleClass( filterClass );
-
-        if ( $( '.cal-filter-trigger.is-active' ).length > 0 ) {
-            $( 'body' ).addClass( 'body-filter-active' );
-            activateFilterClearButton();
-        } else {
-            $( 'body' ).removeClass( 'body-filter-active' );
-            $clearButton.addClass( 'hidden' );
-        }
-
+        var $this = $( this );
+        handleFilters( $this );
     });
 
     // handle changing days
@@ -158,11 +171,57 @@ function bindEvents() {
             $( '.day-picker__day.is-active' ).removeClass( 'is-active' );
             $( this ).addClass( 'is-active' );
             userSelectedDate = selectedDay;
-            refreshCalendar();
             buildList();
+            if ( !isSmall() ) {
+                refreshCalendar();                
+            }
         }
     });
 
+    $( '.schedule-actions__dropdown li' ).on( 'click', function() {
+        var $this = $( this );
+        handleFilters( $this );
+    });
+
+    $( '.schedule-actions__dropdown__title' ).on( 'click', function() {
+        $( '.schedule-actions__dropdown' ).toggleClass( 'is-active' );
+    });
+
+    $( '.day-picker__pager--prev' ).on( 'click', function() {
+        movePager( false );
+    });
+
+    $( '.day-picker__pager--next' ).on( 'click', function() {
+        movePager( true );
+    });
+
+}
+
+function setDatePickerWidth() {
+    var pagerWidth = $( '.day-picker__pager' ).outerWidth();
+    var numDays = $( '.day-picker__day' ).length;
+    var width = $( '.day-picker__day' ).outerWidth();
+    var containerWidth = numDays * width + ( pagerWidth * 2 );
+    $( '.day-picker' ).width( containerWidth ).css({
+        paddingLeft: pagerWidth,
+        paddingRight: pagerWidth
+    });
+}
+
+function movePager( isMovingForward ) {
+    var amountToMove;
+    var dayWidth = $( '.day-picker__day' ).outerWidth();
+    var currentlyTranslatedValue = parseInt( $( '.day-picker' ).css( 'transform' ).split(',')[4] ) || 0;
+
+    if ( !isMovingForward ) {
+        amountToMove = currentlyTranslatedValue + dayWidth;
+        console.log( 'amountToMove forward: ' +  amountToMove );
+        $( '.day-picker' ).css( 'transform', 'translateX(' + amountToMove + 'px )' );
+    } else {
+        amountToMove = currentlyTranslatedValue - dayWidth;
+        console.log( 'amountToMove back: ' +  amountToMove );
+        $( '.day-picker' ).css( 'transform', 'translateX(' + amountToMove + 'px )' );
+    }
 }
 
 function refreshCalendar() {
@@ -412,5 +471,6 @@ jQuery(document).ready(function() {
     });
     buildDayPicker();
     bindEvents();
+    setDatePickerWidth();
 
 });

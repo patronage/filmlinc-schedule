@@ -76,13 +76,8 @@
             font-weight: bold;
         }
         a {
-            background: #748795;
-            color: #fff;
-            font-family: $font-proxima-condensed;
             padding: 2px 5px;
             margin-left: 2px;
-            text-transform: uppercase;
-            -webkit-font-smoothing: antialiased;
         }
     }
     &__location {
@@ -105,13 +100,8 @@
             display: inline-block;
         }
         a {
-            background: #748795;
-            color: #fff;
-            font-family: $font-proxima-condensed;
             padding: 2px 5px;
             margin-left: 2px;
-            text-transform: uppercase;
-            -webkit-font-smoothing: antialiased;
         }
     }
 }

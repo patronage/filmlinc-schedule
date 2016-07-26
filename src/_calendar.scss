@@ -1,0 +1,225 @@
+.fc-unthemed th,
+.fc-unthemed td,
+.fc-unthemed thead,
+.fc-unthemed tbody,
+.fc-unthemed .fc-divider,
+.fc-unthemed .fc-row,
+.fc-unthemed .fc-content,
+.fc-unthemed .fc-popover {
+    border-color: #4d4d4d;
+}
+
+.fc-toolbar {
+    display: none;
+}
+
+.fc-view-container {
+    border: 1px solid #4d4d4d;
+}
+
+.fc-unthemed .fc-widget-header {
+    background: #000;
+    border: none;
+    border-bottom: 1px solid #4d4d4d;
+    padding: 5px 0;
+    color: #fff;
+}
+
+.fc-unthemed .fc-time-area {
+    border-left: 1px solid #4d4d4d;
+}
+
+.fc-unthemed .fc-chrono .fc-cell-text {
+    font-weight: normal;
+}
+
+// divider between resources and times
+.fc-timeline .fc-divider {
+    display: none;
+}
+
+.fc-time-area .fc-slats .fc-major,
+.fc-time-area .fc-slats .fc-minor {
+    background: #000;
+    border-left: #000;
+}
+
+.fc-time-area .fc-slats .fc-major--even,
+.fc-time-area .fc-slats .fc-minor--colored {
+    background: #333;
+    border-left: #333;
+}
+
+.fc-time-area .fc-slats .fc-widget-content:nth-child( 3n + 1 ) {
+    border-left: 1px solid #4d4d4d;
+}
+
+.fc-timeline-event {
+    transition: opacity $transition-duration;
+    .body-filter-active & {
+        opacity: 0.15;
+    }
+    &.has-filter-active.fc-event {
+        opacity: 1;
+    }
+    .fc-widget-content {
+        position: relative;
+    }
+    .fc-content {
+        font-size: 12px;
+        white-space: normal;
+    }
+    .fc-callout {
+        background: #ebebeb;
+        color: #000;
+        font-size: 10px;
+        font-weight: normal;
+        height: 15px;
+        padding: 2px 5px;
+        position: absolute;
+        right: 0;
+        text-transform: uppercase;
+        top: -19px;
+        -webkit-font-smoothing: antialiased;
+    }
+    .fc-section {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .fc-title {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 2px 0;
+    }
+    .fc-duration {
+        display: block;
+        font-weight: normal;
+    }
+    .fc-meta {
+        border-top: 1px solid #e5e5e5;
+        bottom: 0;
+        box-sizing: border-box;
+        font-size: 10px;
+        left: 0;
+        padding: 2px 5px;
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a {
+            color: #000;
+        }
+    }
+    @include section-loop {
+        border-top: 3px solid $section-color;
+        .fc-section {
+            color: $section-color;
+        }
+    }
+    &.fc-event-past {
+        background: lighten( #ababab, 20% );
+        border-top: 3px solid darken( #ababab, 20% );
+        .fc-section,
+        .fc-title,
+        .fc-duration {
+            color: #a8a8a8;
+        }
+    }
+}
+
+.fc-content .fc-widget-content > div,
+.fc-rows .fc-widget-content > div,
+.fc-rows .fc-event-container {
+    height: 150px !important;
+}
+
+.fc-event-container {
+    padding-bottom: 0 !important;
+    > a {
+        background: #fff;
+        box-sizing: border-box;
+        font-size: 15px;
+        font-weight: bold;
+        height: calc( 100% - 20px );
+        padding: 15px;
+        top: 20px !important;
+    }
+    a,
+    a:hover {
+        color: $text-color-dark;
+    }
+}
+
+.fc-body .fc-scroller,
+.fc-body .fc-scroller .fc-scroller-canvas {
+    // overflow: hidden !important;
+    padding-bottom: 0;
+    // width: 100%;
+}
+
+.fc-resource-area tr[data-resource-id='howard-gilman-theater'] .fc-cell-content-bg {
+    background: url('./images/howard-gilman.jpg');
+}
+.fc-resource-area tr[data-resource-id='francesca-beale-theater'] .fc-cell-content-bg {
+    background: url('./images/francesca-beale.jpg');
+}
+.fc-resource-area tr[data-resource-id='amphitheater'] .fc-cell-content-bg {
+    background: url('./images/amphitheater.jpg');
+}
+.fc-resource-area tr[data-resource-id='alice-tully-hall'] .fc-cell-content-bg {
+    background: url('./images/alice-tully.jpg');
+}
+.fc-resource-area tr[data-resource-id='walter-reade-theater'] .fc-cell-content-bg {
+    background: url('./images/walter-reade.jpg');
+}
+.fc-resource-area tr[data-resource-id='bruno-walter-auditorium'] .fc-cell-content-bg {
+    background: url('./images/bruno-walter.jpg');
+}
+
+.fc-resource-area tr[data-resource-id] {
+    cursor: help;
+    .fc-widget-content {
+        position: relative;
+    }
+    .fc-cell-content {
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        height: 100%;
+        position: relative;
+        text-align: center;
+        white-space: normal;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        small {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+    .fc-cell-content-bg {
+        background-size: cover;
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: transparentize( #000, 0.25 );
+        }
+    }
+}

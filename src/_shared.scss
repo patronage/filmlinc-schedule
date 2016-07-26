@@ -1,0 +1,70 @@
+@media (min-width: 1400px) {
+    .container {
+        width: 1400px;
+    }
+}
+
+body {
+    background: $body-color-bg;
+    font-family: $font-proxima;
+}
+
+header {
+    background-image: url("./images/nyffheader.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 112px;
+    margin: 0 auto;
+    width: 1200px;
+    @include md-and-down {
+        display: none;
+    }
+}
+
+a:focus,
+a:hover {
+    text-decoration: none;
+}
+
+.widgets {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: $zindex-widgetActive;
+        opacity: 1;
+        transition: -webkit-transform 0.5s, transition 0.5s, opacity 0.5s;
+        &.is-hidden {
+            @include md-and-up {
+                opacity: 0;
+                -webkit-transform: translateX( 100% );
+                transform: translateX( 100% );
+                z-index: $zindex-widgetInactive;
+            }
+        }
+    }
+}
+
+.schedule {
+    overflow: hidden;
+    position: relative;
+    @include sm-and-down {
+        padding-top: 70px;
+    }
+}
+
+.button-compressed {
+    -webkit-font-smoothing: antialiased;
+    background: #748795;
+    color: #fff;
+    font-family: $font-proxima-condensed;
+    padding: 2px 5px;
+    text-transform: uppercase;
+    padding-top: 65px;
+}

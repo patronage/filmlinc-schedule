@@ -1,0 +1,79 @@
+.day-picker__cont {
+    width: 100%;
+    position: relative;
+}
+
+.day-picker {
+    background: #000;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    &__pager {
+        display: none;
+    }
+    &__day {
+        cursor: pointer;
+        display: block;
+        padding: 10px;
+        position: relative;
+        transition: background-color $transition-duration;
+        width: 100%;
+        span {
+            color: #fff;
+            display: block;
+        }
+        &--name {
+            font-weight: bold;
+        }
+        &:after {
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 10px solid #000;
+            content: '';
+            height: 0; 
+            left: calc( 50% - 15px );
+            position: absolute;
+            top: 100%;
+            opacity: 0;
+            transition: border-top $transition-duration, opacity $transition-duration;
+            width: 0; 
+            z-index: $zindex-dayArrow;
+        }
+        &.is-active {
+            background: #748795;
+            &:after {
+                border-top: 10px solid #748795;
+                opacity: 1;
+            }
+        }
+    }
+    @include sm-and-down {
+        display: block;
+        &__day {
+            display: inline-block;
+            width: 55px;
+        }
+        &__pager {
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 55px;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &--prev {
+                left: 0;
+            }
+            &--next {
+                right: 0;
+            }
+        }
+    }
+}
