@@ -208,6 +208,8 @@ function bindEvents() {
         $( '.schedule-actions__dropdown' ).removeClass( 'is-active' );
     });
 
+    $( window ).on( 'resize', _.debounce( setDatePickerWidth, 150 ) );
+
 }
 
 function updateFiltersBasedOnDropdown() {
@@ -229,14 +231,23 @@ function updateFiltersBasedOnDropdown() {
 }
 
 function setDatePickerWidth() {
-    var pagerWidth = $( '.day-picker__pager' ).outerWidth();
-    var numDays = $( '.day-picker__day' ).length;
-    var width = $( '.day-picker__day' ).outerWidth();
-    var containerWidth = numDays * width + ( pagerWidth * 2 );
-    $( '.day-picker' ).width( containerWidth ).css({
-        paddingLeft: pagerWidth,
-        paddingRight: pagerWidth
-    });
+    if ( isSmall() ) {
+        var pagerWidth = $( '.day-picker__pager' ).outerWidth();
+        var numDays = $( '.day-picker__day' ).length;
+        var width = $( '.day-picker__day' ).outerWidth();
+        var containerWidth = numDays * width + ( pagerWidth * 2 );
+        $( '.day-picker' ).css({
+            paddingLeft: pagerWidth,
+            paddingRight: pagerWidth,
+            width: containerWidth
+        });
+    } else {
+        $( '.day-picker' ).css({
+            paddingLeft: 0,
+            paddingRight: 0,
+            width: 'auto'
+        });
+    }
 }
 
 function movePager( isMovingForward ) {
@@ -246,11 +257,9 @@ function movePager( isMovingForward ) {
 
     if ( !isMovingForward ) {
         amountToMove = currentlyTranslatedValue + dayWidth;
-        console.log( 'amountToMove forward: ' +  amountToMove );
         $( '.day-picker' ).css( 'transform', 'translateX(' + amountToMove + 'px )' );
     } else {
         amountToMove = currentlyTranslatedValue - dayWidth;
-        console.log( 'amountToMove back: ' +  amountToMove );
         $( '.day-picker' ).css( 'transform', 'translateX(' + amountToMove + 'px )' );
     }
 }
