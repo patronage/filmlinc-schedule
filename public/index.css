@@ -8207,6 +8207,8 @@ a:hover {
 
 .schedule-actions {
   color: #fff;
+  font-size: 18px;
+  font-weight: 500;
   overflow: hidden;
   width: 100%;
 }
@@ -8359,6 +8361,14 @@ a:hover {
 
 .schedule-actions__filters--clear {
   cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ccc;
+}
+
+.schedule-actions__filters--clear:hover {
+  color: #fff;
 }
 
 .schedule-actions__filters span,
@@ -8374,10 +8384,11 @@ a:hover {
 .schedule-actions__filters li {
   display: inline-block;
   margin: 0 5px;
+  font-size: 13px;
 }
 
 .schedule-actions__filters li a {
-  color: #fff;
+  color: #ccc;
   padding: 2px 5px;
   transition: background 0.15s;
 }
@@ -8392,6 +8403,7 @@ a:hover {
 
 .schedule-actions__filters li a[data-section="potent-potables"].is-active {
   background: #b07837;
+  color: #fff;
 }
 
 .schedule-actions__filters li a[data-section="oneletter-words"] {
@@ -8400,6 +8412,7 @@ a:hover {
 
 .schedule-actions__filters li a[data-section="oneletter-words"].is-active {
   background: #599684;
+  color: #fff;
 }
 
 .schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"] {
@@ -8408,6 +8421,7 @@ a:hover {
 
 .schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"].is-active {
   background: #df2ca5;
+  color: #fff;
 }
 
 .schedule-actions__filters li a[data-section="drummers-named-ringo"] {
@@ -8416,6 +8430,7 @@ a:hover {
 
 .schedule-actions__filters li a[data-section="drummers-named-ringo"].is-active {
   background: #1ab6ff;
+  color: #fff;
 }
 
 .schedule-actions__filters li a[data-section="colors-that-are-red"] {
@@ -8424,6 +8439,7 @@ a:hover {
 
 .schedule-actions__filters li a[data-section="colors-that-are-red"].is-active {
   background: #2bca23;
+  color: #fff;
 }
 
 .schedule-actions__view > * {
@@ -8435,6 +8451,8 @@ a:hover {
   border: 1px solid #252525;
   color: #fff;
   padding: 5px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -8482,8 +8500,11 @@ a:hover {
   background: #000;
   border: none;
   border-bottom: 1px solid #4d4d4d;
-  padding: 5px 0;
+  padding: 5px 0 5px 2px;
   color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.1em;
 }
 
 .fc-unthemed .fc-time-area {
@@ -8723,7 +8744,7 @@ a:hover {
 }
 
 .fc-resource-area tr[data-resource-id] .fc-cell-content small {
-  color: #e5e5e5;
+  color: #ccc;
   display: block;
   font-size: 11px;
   line-height: 11px;
@@ -8759,6 +8780,8 @@ a:hover {
 
 .day-picker {
   background: #000;
+  border: 1px solid #4d4d4d;
+  border-bottom: none;
   box-sizing: border-box;
   text-transform: uppercase;
   text-align: center;
@@ -8776,18 +8799,26 @@ a:hover {
   cursor: pointer;
   display: block;
   padding: 10px;
+  font-size: 16px;
   position: relative;
   transition: background-color 0.15s;
   width: 100%;
+  letter-spacing: 0.1em;
 }
 
 .day-picker__day span {
-  color: #fff;
   display: block;
 }
 
 .day-picker__day--name {
+  color: #fff;
   font-weight: bold;
+}
+
+.day-picker__day--date {
+  font-weight: 100;
+  color: #cccccc;
+  display: none;
 }
 
 .day-picker__day:after {

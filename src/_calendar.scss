@@ -21,8 +21,11 @@
     background: #000;
     border: none;
     border-bottom: 1px solid #4d4d4d;
-    padding: 5px 0;
+    padding: 5px 0 5px 2px;
     color: #fff;
+    text-transform: uppercase;
+    font-size: 14px; 
+    letter-spacing: 0.1em;
 }
 
 .fc-unthemed .fc-time-area {
@@ -207,7 +210,7 @@
         align-items: center;
         padding: 0 8px;
         small {
-            color: #e5e5e5;
+            color: $color-color-light-grey;
             display: block;
             font-size: 11px;
             line-height: 11px;
