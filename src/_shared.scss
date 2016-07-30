@@ -49,6 +49,9 @@ a:hover {
             }
         }
     }
+    @include sm-and-down {
+        z-index: 1;
+    }
 }
 
 .schedule {

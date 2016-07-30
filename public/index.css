@@ -7797,6 +7797,12 @@ a:hover {
   }
 }
 
+@media screen and (max-width: 991px) {
+  .widgets {
+    z-index: 1;
+  }
+}
+
 .schedule {
   overflow: hidden;
   position: relative;
@@ -8037,23 +8043,6 @@ a:hover {
   line-height: 18px;
 }
 
-.vm-content__button,
-.co-content__button {
-  padding: 5px 8px;
-  font-weight: 600;
-  background: #748795;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 12px;
-  display: inline-block;
-}
-
-.vm-content__button:hover,
-.co-content__button:hover {
-  color: #fff;
-}
-
 .vm-content small {
   font-weight: 600;
   text-transform: uppercase;
@@ -8125,7 +8114,8 @@ a:hover {
 }
 
 .list-row__title small {
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 11px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -8180,9 +8170,12 @@ a:hover {
 }
 
 @media screen and (max-width: 991px) {
+  .list-row {
+    padding-left: 20px;
+  }
   .list-row__time {
     text-align: center;
-    margin-right: 25px;
+    margin-right: 35px;
     width: 15%;
   }
   .list-row__title {
@@ -8821,6 +8814,12 @@ a:hover {
   position: relative;
 }
 
+@media screen and (max-width: 991px) {
+  .day-picker__cont {
+    z-index: 2;
+  }
+}
+
 .day-picker {
   background: #000;
   border: 1px solid #4d4d4d;
@@ -8899,10 +8898,18 @@ a:hover {
 @media screen and (max-width: 991px) {
   .day-picker {
     display: block;
+    border: none;
   }
   .day-picker__day {
     display: inline-block;
-    width: 55px;
+    width: 54px;
+  }
+  .day-picker__day--name {
+    font-size: 13px;
+    line-height: 13px;
+  }
+  .day-picker__day--date {
+    font-size: 13px;
   }
   .day-picker__pager {
     background: #000;
@@ -8910,17 +8917,37 @@ a:hover {
     cursor: pointer;
     height: 100%;
     position: absolute;
-    top: 0;
-    width: 55px;
+    top: 0px;
+    width: 25px;
     z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .day-picker__pager--prev {
-    left: 0;
+    left: -1px;
+    padding: 0 30px 0 10px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+55,000000+100&1+55,0+100 */
+    background: -moz-linear-gradient(left, black 55%, transparent 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, black 55%, transparent 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, black 55%, transparent 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 );
+    /* IE6-9 */
   }
   .day-picker__pager--next {
-    right: 0;
+    right: -1px;
+    padding: 0 10px 0 30px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+45&0+0,1+45 */
+    background: -moz-linear-gradient(left, transparent 0%, black 45%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, transparent 0%, black 45%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, transparent 0%, black 45%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 );
+    /* IE6-9 */
   }
 }

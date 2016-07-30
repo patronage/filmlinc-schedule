@@ -32,7 +32,8 @@
             color: $text-color-dark;
         }
         small {
-            font-size: 12px;
+            font-size: 11px;
+            line-height: 11px;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -89,9 +90,10 @@
     }
 
     @include sm-and-down {
+        padding-left: 20px;
         &__time {
             text-align: center;
-            margin-right: 25px;
+            margin-right: 35px;
             width: 15%;
         }
         &__title {

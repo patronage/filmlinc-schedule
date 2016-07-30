@@ -95,19 +95,6 @@
         font-size: 14px;
         line-height: 18px;
     }
-    &__button {
-        padding: 5px 8px;
-        font-weight: 600;
-        background: $color-festival;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: 12px;
-        display: inline-block;
-        &:hover {
-            color: #fff;
-        }
-    }
 }
 
 .vm-content {
