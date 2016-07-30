@@ -8059,8 +8059,7 @@ a:hover {
   background: #fff;
   border-left: 5px solid;
   border-top: 1px solid #d6d6d6;
-  border-bottom: 1px solid #d6d6d6;
-  padding: 10px 30px;
+  padding: 18px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8081,6 +8080,7 @@ a:hover {
 .list-row__time {
   font-weight: bold;
   width: 15%;
+  letter-spacing: 0.1em;
 }
 
 .list-row__time > * {
@@ -8090,7 +8090,7 @@ a:hover {
 .list-row__title {
   font-size: 15px;
   font-weight: bold;
-  width: 50%;
+  width: 45%;
 }
 
 .list-row__title a {
@@ -8106,12 +8106,14 @@ a:hover {
 .list-row__location {
   font-size: 15px;
   font-weight: bold;
-  width: 25%;
+  width: 35%;
 }
 
 .list-row__location small {
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 11px;
+  color: #838383;
+  letter-spacing: 0.07em;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -8170,6 +8172,8 @@ a:hover {
 }
 
 .list-row[data-section="potent-potables"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: #b07837;
 }
 
@@ -8178,6 +8182,8 @@ a:hover {
 }
 
 .list-row[data-section="oneletter-words"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: #599684;
 }
 
@@ -8186,6 +8192,8 @@ a:hover {
 }
 
 .list-row[data-section="words-that-rhyme-with-dog"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: #df2ca5;
 }
 
@@ -8194,6 +8202,8 @@ a:hover {
 }
 
 .list-row[data-section="drummers-named-ringo"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: #1ab6ff;
 }
 
@@ -8202,7 +8212,13 @@ a:hover {
 }
 
 .list-row[data-section="colors-that-are-red"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: #2bca23;
+}
+
+.list-row:last-child {
+  border-bottom: 1px solid #d6d6d6;
 }
 
 .schedule-actions {

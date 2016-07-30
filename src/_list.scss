@@ -2,8 +2,7 @@
     background: #fff;
     border-left: 5px solid;
     border-top: 1px solid #d6d6d6;
-    border-bottom: 1px solid #d6d6d6;
-    padding: 10px 30px;
+    padding: 18px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,6 +19,7 @@
     &__time {
         font-weight: bold;
         width: 15%;
+        letter-spacing: 0.1em;
         > * {
             display: block;
         }
@@ -27,7 +27,7 @@
     &__title {
         font-size: 15px;
         font-weight: bold;
-        width: 50%;
+        width: 45%;
         a {
             color: $text-color-dark;
         }
@@ -41,10 +41,12 @@
     &__location {
         font-size: 15px;
         font-weight: bold;
-        width: 25%;
+        width: 35%;
         small {
-            font-size: 12px;
-            font-weight: 400;
+            font-size: 11px;
+            color: lighten($text-color-dark, 25%);
+            letter-spacing: 0.07em;
+            font-weight: 600;
             text-transform: uppercase;
         }
     }
@@ -106,8 +108,13 @@
         border-left-color: $section-color;
         .list-row__title {
             small {
+                font-size: 11px;
+                letter-spacing: 0.1em;
                 color: $section-color;
             }
         }
+    }
+    &:last-child {
+        border-bottom: 1px solid #d6d6d6;
     }
 }
