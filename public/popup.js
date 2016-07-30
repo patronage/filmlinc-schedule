@@ -36,6 +36,7 @@ function popupGenerator( slug, dateUnix ) {
     $( '.co-content__duration' ).text( entry.running_time + ' minutes' );
     $( '.co-content__description' ).html( entry.event_desc );
     $( '.co-content__location' ).text( entry.venue_tess );
+    $( '.co-content__directors' ).text( entry.directors );
 
     var time = moment( event.start ).format( 'h:mmA' )
     var date = moment( event.start ).format( 'MMMM D' );
