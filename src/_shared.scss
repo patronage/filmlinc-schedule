@@ -67,4 +67,7 @@ a:hover {
     padding: 2px 5px;
     text-transform: uppercase;
     padding-top: 65px;
+    &:hover {
+        color: #fff;
+    }
 }

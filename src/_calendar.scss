@@ -89,7 +89,8 @@
     }
     .fc-section {
         display: block;
-        font-size: 12px;
+        font-size: 11px;
+        line-height: 11px;
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -99,7 +100,11 @@
         font-size: 15px;
         line-height: 18px;
         font-weight: bold;
-        margin: 2px 0;
+        margin: 2px 0 2px -10px !important;
+        // Jared, I'M SORRY ABOUT THAT. Not sure how else to do this, without editing the main component css. 
+    }
+    .fc-title {
+        
     }
     .fc-duration {
         display: block;
