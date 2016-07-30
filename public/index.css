@@ -8586,7 +8586,6 @@ a:hover {
   line-height: 18px;
   font-weight: bold;
   margin: 2px 0;
-  padding-left: 0;
 }
 
 .fc-timeline-event .fc-duration {
@@ -8836,6 +8835,10 @@ a:hover {
   z-index: 300;
 }
 
+.day-picker__day:hover {
+  background: rgba(116, 135, 149, 0.3);
+}
+
 .day-picker__day.is-active {
   background: #748795;
 }
@@ -8843,6 +8846,10 @@ a:hover {
 .day-picker__day.is-active:after {
   border-top: 10px solid #748795;
   opacity: 1;
+}
+
+.day-picker__day.is-active .day-picker__day--date {
+  color: #fff;
 }
 
 @media screen and (max-width: 991px) {

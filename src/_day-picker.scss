@@ -27,7 +27,6 @@
         width: 100%;
         letter-spacing: 0.1em;
         span {
-            
             display: block;
         }
         &--name {
@@ -53,11 +52,19 @@
             width: 0; 
             z-index: $zindex-dayArrow;
         }
+        &:hover {
+            background: transparentize($color-festival, 0.7);
+        }
         &.is-active {
-            background: #748795;
+            background: $color-festival;
+
             &:after {
-                border-top: 10px solid #748795;
+                border-top: 10px solid $color-festival;
                 opacity: 1;
+            }
+            .day-picker__day--date {
+                // Jared, I couldn't figure out the right way to set this class. 
+                color: #fff;
             }
         }
     }
