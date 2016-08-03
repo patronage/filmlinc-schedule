@@ -426,18 +426,19 @@ function buildCalendar() {
 
             $element.on( 'click', function( e ) {
 
-                e.preventDefault();
                 cleanupPopup();
 
                 var slug = $( this ).data( 'slug' );
                 var unixDate = $( this ).data( 'dateunix' );
 
                 //no slug? treat it as a link
-                if ( !slug ){
-                    location.href = $( this ).attr('href');
+                // if ( !slug ){
+                //     window.location.href = $( this ).attr('href');
+                // }
+
+                if ( e.target.tagName !== 'A' ) {
+                    popupGenerator( slug, unixDate );
                 }
-                
-                popupGenerator( slug, unixDate );
             });
         },
 
