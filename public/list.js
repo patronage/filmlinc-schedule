@@ -31,7 +31,7 @@ function buildList() {
         var template = (
             '<div class="list-row" data-section="' + slugifyText( event.section ) + '">' +
                 '<div class="list-row__time">' +
-                    ticketStatus +
+                    '<span class="list-row__actions__tooltip">' + event.ticket_status + '</span>' +
                     '<time>' + moment( event.start ).format( 'h:mmA' ) + '</time>' +
                 '</div>' +
                 '<div class="list-row__title">' +
