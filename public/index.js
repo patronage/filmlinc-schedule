@@ -148,6 +148,17 @@ function isSmall() {
     return false;
 }
 
+// check if a date time string is today
+// accepts a `day` in a moment-compatible format
+function isDayToday( day ) {
+    var today = moment().startOf( 'day' );
+    var day = moment( day ).startOf( 'day' );
+    if ( day.isSame( today  ) ) {
+        return true;
+    }
+    return false;
+}
+
 function bindEvents() {
 
     // handle change between calendar and list views
@@ -273,7 +284,8 @@ function refreshCalendar() {
     
     $calendar.fullCalendar( 'option', {
         minTime: minTime,
-        maxTime: maxTime
+        maxTime: maxTime,
+        scrollTime: determineScrollTime()
     });
     $calendar.fullCalendar( 'gotoDate', moment( userSelectedDate, DATE_KEY_FORMAT ) );
 }
@@ -308,6 +320,12 @@ function getCurrentTimeToClosestTen() {
     return timeHours + ':' + timeMinutes + '0:00';
 }
 
+function determineScrollTime() {
+    if ( isDayToday( userSelectedDate ) ) {
+        return getCurrentTimeToClosestTen();
+    }
+}
+
 function buildCalendar() {
 
     $calendar.fullCalendar({
@@ -339,7 +357,7 @@ function buildCalendar() {
         schedulerLicenseKey: '0709072040-fcs-1468865905',
 
         // http://fullcalendar.io/docs/timeline/scrollTime/
-        scrollTime: moment().format('hh:mm:00'),
+        scrollTime: determineScrollTime(),
 
         // http://fullcalendar.io/docs/timeline/slotDuration/
         slotDuration: '00:10',
