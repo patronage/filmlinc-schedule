@@ -52,6 +52,7 @@ function getData( callback ) {
 
             _.forEach( rawEventData, function( event ) {
                 var endTime = moment( event.start ).add( event.running_time, 'minutes' ).format();
+                event.end = endTime;
                 event.endUTC = endTime;
             });
 
