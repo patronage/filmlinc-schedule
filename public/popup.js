@@ -13,7 +13,6 @@ function popupGenerator( slug, dateUnix ) {
         'slug': slug,
         'start': dateUnix
     });
-    console.log( entry );
 
     //When showing just a "day" date, to prevent from changing days, don't factor in the new york
     //local offset
@@ -42,11 +41,10 @@ function popupGenerator( slug, dateUnix ) {
         $( '.co-content__directors' ).text( newText );
     })
 
-    var time = moment( event.start ).format( 'h:mmA' )
-    var date = moment( event.start ).format( 'MMMM D' );
+    var time = moment( entry.start ).format( 'h:mmA' )
+    var date = moment( entry.start ).format( 'MMMM D' );
     $( '.co-content__showtime time' ).text( time + ' on ' + date );
     $( '.co-content__showtime a' ).attr( 'src', entry.url );
-
 
     // create showtimes list if applicable
     var listString = '';
@@ -56,6 +54,10 @@ function popupGenerator( slug, dateUnix ) {
     $('.co-showtimes-list').html( listString );
 
     var cloned = $('.co').clone();
+    var isEventPast = checkPast( moment( entry.start ) );
+    if ( isEventPast ) {
+        $( cloned ).find( '.co-content__showtime .button-compressed' ).remove();
+    }
     $modalCont.addClass( 'is-active' );
     $modalCont.html( cloned );
 
