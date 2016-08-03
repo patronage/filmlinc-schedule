@@ -91,7 +91,7 @@ function buildDayPicker() {
         $( '.day-picker' ).append(
             '<div class="day-picker__day" data-day=' + dateToWrite.format( DATE_KEY_FORMAT ) +'>' +
                 '<span class="day-picker__day--name">' + dateToWrite.format( 'ddd' ) + '</span>' +
-                '<span class="day-picker__day--date">' + dateToWrite.format( 'DD' ) + '</span>' +
+                '<span class="day-picker__day--date">' + dateToWrite.format( 'D' ) + '</span>' +
             '</div>'
         );
 
