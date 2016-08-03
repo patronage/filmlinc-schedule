@@ -13,9 +13,19 @@ function buildList() {
             venueDescription = 'Elinor Bunin Munroe Film Center';
         }
 
-        var ticketStatus = '';
-        if ( event.ticket_status && event.ticket_status !== 'normal' ) {
-            ticketStatus = '<span class="list-row__actions__tooltip">' + event.ticket_status + '</span>';
+        var ticketStatus = '<a href="' + event.url + '">Buy Tickets</a>';
+        
+        if ( event.ticket_status /*&& event.ticket_status !== 'normal'*/ ) {
+            ticketStatus = (
+                '<span class="list-row__actions__tooltip">' + event.ticket_status + '</span>' +
+                '<a href="' + event.url + '">Buy Tickets</a>'
+            );
+        }
+
+        if ( event.ticket_status && ( event.ticket_status === 'standby' || event.ticket_status === 'free' ) ) {
+            ticketStatus = (
+                '<span class="list-row__actions__tooltip">' + event.ticket_status + '</span>'
+            );
         }
 
         var template = (
@@ -36,7 +46,6 @@ function buildList() {
                 '<div class="list-row__duration hidden-sm hidden-xs">' + event.running_time + ' mins</div>' +
                 '<div class="list-row__actions hidden-sm hidden-xs">' +
                      ticketStatus +
-                    '<a href="' + event.url + '">Buy Tickets</a>' +
                 '</div>' +
             '</div>'
         );
