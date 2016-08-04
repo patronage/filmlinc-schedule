@@ -1,6 +1,7 @@
 .day-picker__cont {
-    width: 100%;
     position: relative;
+    overflow: hidden;
+    width: 100%;
     @include sm-and-down {
         z-index: 2;
     }

@@ -70,6 +70,7 @@ function changeView( nextView ) {
     $( 'body' ).attr( 'data-view', nextView );
     $( '.widget__calendar' ).toggleClass( 'is-hidden' );
     $( '.widget__list' ).toggleClass( 'is-hidden' );
+    updateWidgetContainerHeight( nextView );
 }
 
 // see if event is in the past
@@ -326,6 +327,14 @@ function determineScrollTime() {
     }
 }
 
+function updateWidgetContainerHeight( view ) {
+    var height = $( '.fc-view-container' ).height() + $( '.day-picker__cont' ).height();
+    if ( view === 'list' ) {
+        height = $( '.widget__list' ).height() + $( '.day-picker__cont' ).height();
+    }
+    $( '.widgets' ).height( height );
+}
+
 function buildCalendar() {
 
     $calendar.fullCalendar({
@@ -520,6 +529,8 @@ function buildCalendar() {
             $( '.fc-major--even' ).next().next().addClass( 'fc-minor--colored' );
 
             $( '.fc-resource-area tr[data-resource-id]:not(:empty) .fc-cell-content' ).after( '<span class="fc-cell-content-bg"></span>' );
+
+            updateWidgetContainerHeight();
         }
     });
 }

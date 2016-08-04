@@ -7772,8 +7772,6 @@ a:hover {
 }
 
 .widgets {
-  min-height: 100vh;
-  overflow-x: hidden;
   position: relative;
 }
 
@@ -7782,7 +7780,7 @@ a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   z-index: 200;
   opacity: 1;
   transition: -webkit-transform 0.5s, transition 0.5s, opacity 0.5s;
@@ -7797,6 +7795,12 @@ a:hover {
   }
 }
 
+@media screen and (min-width: 992px) {
+  .widgets {
+    overflow: hidden;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .widgets {
     z-index: 1;
@@ -7804,7 +7808,6 @@ a:hover {
 }
 
 .schedule {
-  overflow: hidden;
   position: relative;
 }
 
@@ -7857,7 +7860,7 @@ a:hover {
   content: attr(data-title);
   font-size: 13px;
   padding: 6px 10px;
-  bottom: 30px;
+  bottom: 28px;
   width: 250px;
   white-space: normal;
 }
@@ -8245,7 +8248,6 @@ a:hover {
   color: #fff;
   font-size: 18px;
   font-weight: 500;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -8407,6 +8409,10 @@ a:hover {
   color: #fff;
 }
 
+.schedule-actions__filters > span {
+  margin-right: 5px;
+}
+
 .schedule-actions__filters span,
 .schedule-actions__filters ul {
   display: inline-block;
@@ -8419,7 +8425,7 @@ a:hover {
 
 .schedule-actions__filters li {
   display: inline-block;
-  margin: 0 5px;
+  margin-right: 5px;
   font-size: 13px;
 }
 
@@ -8811,8 +8817,9 @@ a:hover {
 }
 
 .day-picker__cont {
-  width: 100%;
   position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 @media screen and (max-width: 991px) {
