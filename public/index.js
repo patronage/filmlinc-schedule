@@ -430,7 +430,7 @@ function buildCalendar() {
                         '<span class="fc-meta-time">' +
                         moment( event.start ).format( 'h:mm A') +
                         '</span>' +
-                        '<span class="fc-meta-buy"><a href="' + event.url +'">Buy Tickets</a></span>' +
+                        '<span class="fc-meta-buy"><a class="fc-meta-buy__link" href="' + event.url +'">Buy Tickets</a></span>' +
                     '</div>'
                 );
             } else {
@@ -445,6 +445,7 @@ function buildCalendar() {
 
             $element.on( 'click', function( e ) {
 
+                e.preventDefault();
                 cleanupPopup();
 
                 var slug = $( this ).data( 'slug' );
@@ -458,6 +459,10 @@ function buildCalendar() {
                 if ( e.target.tagName !== 'A' ) {
                     popupGenerator( slug, unixDate );
                 }
+            });
+
+            $( '.fc-meta-buy__link' ).on( 'click', function( e ) {
+                e.stopPropagation();
             });
         },
 
