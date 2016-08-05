@@ -6,10 +6,13 @@
   "scripts": {
     "start": "npm-run-all --parallel deps:wire style sync",
     "start:prod": "npm-run-all deps:install deps:wire style:prod server",
+    "bundle": "npm-run-all concat style:bundle",
+    "concat": "node bin/bundle.js",
     "deps:wire": "node bin/deps.js",
     "deps:install": "bower i",
     "server": "node app.js",
     "style": "node-sass --error-bell --output-style expanded --watch src/style.scss public/index.css",
+    "style:bundle": "node-sass --output-style compressed src/style.scss dist/_nyffCalendar.scss",
     "style:prod": "node-sass --output-style compressed src/style.scss public/index.css",
     "sync": "browser-sync start --server --no-notify --files 'index.html' 'public/index.css' 'public/*.js'"
   },
@@ -17,7 +20,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.13.0"
+    "browser-sync": "^2.13.0",
+    "concatenate-files": "^0.1.1",
+    "mac-open": "^0.1.3",
+    "rimraf": "^2.5.4",
+    "uglify-js": "^2.7.0"
   },
   "dependencies": {
     "bower": "^1.7.9",

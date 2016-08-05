@@ -1,8 +1,9 @@
 // writes data with fake sections for development
 
+var filePath = __dirname + '/../public/data.json';
 var fs = require('fs');
 var _ = require('lodash');
-var data = require('./public/data.json');
+var data = require( filePath );
 
 var opts = [
     'Potent potables',
@@ -20,4 +21,4 @@ _.forEach( data, function( event ) {
 
 });
 
-fs.writeFileSync('./public/data.json', JSON.stringify( data ) );
+fs.writeFileSync( filePath, JSON.stringify( data ) );
