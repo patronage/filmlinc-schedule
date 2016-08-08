@@ -45,7 +45,7 @@ function getData( callback ) {
         url: '/public/data.json',
         dataType: 'json',
         success: function( data, textStatus, jqXHR ) {
-            
+
             rawEventData = _.sortBy( data, function( event ) {
                 return event.start;
             });
@@ -306,7 +306,11 @@ function getLatestTime( data ) {
         return event.end;
     });
     var lastEvent = sortedEvents[ sortedEvents.length - 1 ];
-    var endTime = moment( lastEvent.end ).add( '30', 'minutes' ).format( format );
+    var eventPlusBuffer = moment( lastEvent.end ).add( '30', 'minutes' );
+    var endTime = eventPlusBuffer.format( format );
+    if ( moment( userSelectedDate, DATE_KEY_FORMAT ).format( 'MM-DD' ) !==  eventPlusBuffer.format( 'MM-DD' ) ) {
+        return;
+    }
     return endTime;
 }
 
@@ -492,6 +496,7 @@ function buildCalendar() {
                     title: venue
                 };
             });
+
             callback( uniqueVenues );
         },
 
