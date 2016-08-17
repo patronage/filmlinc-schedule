@@ -37,7 +37,11 @@ function popupGenerator( slug, dateUnix ) {
     $( '.co-content__location' ).text( entry.venue_tess );
     entry.directors.forEach( function( director ) {
         var currentText = $( '.co-content__directors' ).text();
-        var newText = currentText + ', ' + director;
+        if ( currentText.length ) {
+            var newText = currentText + ', ' + director;
+        } else {
+            var newText = currentText + director;
+        }
         $( '.co-content__directors' ).text( newText );
     })
 

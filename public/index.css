@@ -7925,29 +7925,44 @@ a:hover {
   display: flex;
 }
 
-.vm-content[data-section="potent-potables"],
-.co-content[data-section="potent-potables"] {
+.vm-content[data-section="main-slate"],
+.co-content[data-section="main-slate"] {
   border-top: 3px solid #b07837;
 }
 
-.vm-content[data-section="oneletter-words"],
-.co-content[data-section="oneletter-words"] {
+.vm-content[data-section="convergence"],
+.co-content[data-section="convergence"] {
   border-top: 3px solid #599684;
 }
 
-.vm-content[data-section="words-that-rhyme-with-dog"],
-.co-content[data-section="words-that-rhyme-with-dog"] {
+.vm-content[data-section="projections"],
+.co-content[data-section="projections"] {
   border-top: 3px solid #df2ca5;
 }
 
-.vm-content[data-section="drummers-named-ringo"],
-.co-content[data-section="drummers-named-ringo"] {
+.vm-content[data-section="special-events"],
+.co-content[data-section="special-events"] {
   border-top: 3px solid #1ab6ff;
 }
 
-.vm-content[data-section="colors-that-are-red"],
-.co-content[data-section="colors-that-are-red"] {
+.vm-content[data-section="explorations"],
+.co-content[data-section="explorations"] {
   border-top: 3px solid #2bca23;
+}
+
+.vm-content[data-section="revivals"],
+.co-content[data-section="revivals"] {
+  border-top: 3px solid #eeeaaa;
+}
+
+.vm-content[data-section="retrospectives"],
+.co-content[data-section="retrospectives"] {
+  border-top: 3px solid #B7652A;
+}
+
+.vm-content[data-section="spotlight-on-documentary"],
+.co-content[data-section="spotlight-on-documentary"] {
+  border-top: 3px solid #67E3F0;
 }
 
 .vm-content > *,
@@ -7963,29 +7978,44 @@ a:hover {
   text-transform: uppercase;
 }
 
-.vm-content__section[data-section="potent-potables"],
-.co-content__section[data-section="potent-potables"] {
+.vm-content__section[data-section="main-slate"],
+.co-content__section[data-section="main-slate"] {
   color: #b07837;
 }
 
-.vm-content__section[data-section="oneletter-words"],
-.co-content__section[data-section="oneletter-words"] {
+.vm-content__section[data-section="convergence"],
+.co-content__section[data-section="convergence"] {
   color: #599684;
 }
 
-.vm-content__section[data-section="words-that-rhyme-with-dog"],
-.co-content__section[data-section="words-that-rhyme-with-dog"] {
+.vm-content__section[data-section="projections"],
+.co-content__section[data-section="projections"] {
   color: #df2ca5;
 }
 
-.vm-content__section[data-section="drummers-named-ringo"],
-.co-content__section[data-section="drummers-named-ringo"] {
+.vm-content__section[data-section="special-events"],
+.co-content__section[data-section="special-events"] {
   color: #1ab6ff;
 }
 
-.vm-content__section[data-section="colors-that-are-red"],
-.co-content__section[data-section="colors-that-are-red"] {
+.vm-content__section[data-section="explorations"],
+.co-content__section[data-section="explorations"] {
   color: #2bca23;
+}
+
+.vm-content__section[data-section="revivals"],
+.co-content__section[data-section="revivals"] {
+  color: #eeeaaa;
+}
+
+.vm-content__section[data-section="retrospectives"],
+.co-content__section[data-section="retrospectives"] {
+  color: #B7652A;
+}
+
+.vm-content__section[data-section="spotlight-on-documentary"],
+.co-content__section[data-section="spotlight-on-documentary"] {
+  color: #67E3F0;
 }
 
 .vm-content__title,
@@ -8032,7 +8062,6 @@ a:hover {
 .vm-content__showtime a,
 .co-content__showtime a {
   padding: 2px 5px;
-  margin-left: 2px;
 }
 
 .vm-content__location,
@@ -8190,54 +8219,84 @@ a:hover {
   }
 }
 
-.list-row[data-section="potent-potables"] {
+.list-row[data-section="main-slate"] {
   border-left-color: #b07837;
 }
 
-.list-row[data-section="potent-potables"] .list-row__title small {
+.list-row[data-section="main-slate"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #b07837;
 }
 
-.list-row[data-section="oneletter-words"] {
+.list-row[data-section="convergence"] {
   border-left-color: #599684;
 }
 
-.list-row[data-section="oneletter-words"] .list-row__title small {
+.list-row[data-section="convergence"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #599684;
 }
 
-.list-row[data-section="words-that-rhyme-with-dog"] {
+.list-row[data-section="projections"] {
   border-left-color: #df2ca5;
 }
 
-.list-row[data-section="words-that-rhyme-with-dog"] .list-row__title small {
+.list-row[data-section="projections"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #df2ca5;
 }
 
-.list-row[data-section="drummers-named-ringo"] {
+.list-row[data-section="special-events"] {
   border-left-color: #1ab6ff;
 }
 
-.list-row[data-section="drummers-named-ringo"] .list-row__title small {
+.list-row[data-section="special-events"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #1ab6ff;
 }
 
-.list-row[data-section="colors-that-are-red"] {
+.list-row[data-section="explorations"] {
   border-left-color: #2bca23;
 }
 
-.list-row[data-section="colors-that-are-red"] .list-row__title small {
+.list-row[data-section="explorations"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #2bca23;
+}
+
+.list-row[data-section="revivals"] {
+  border-left-color: #eeeaaa;
+}
+
+.list-row[data-section="revivals"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #eeeaaa;
+}
+
+.list-row[data-section="retrospectives"] {
+  border-left-color: #B7652A;
+}
+
+.list-row[data-section="retrospectives"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #B7652A;
+}
+
+.list-row[data-section="spotlight-on-documentary"] {
+  border-left-color: #67E3F0;
+}
+
+.list-row[data-section="spotlight-on-documentary"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #67E3F0;
 }
 
 .list-row:last-child {
@@ -8311,64 +8370,100 @@ a:hover {
   transition: background 0.15s;
 }
 
-.schedule-actions__dropdown li[data-section="potent-potables"] span {
+.schedule-actions__dropdown li[data-section="main-slate"] span {
   border-color: #b07837;
 }
 
-.schedule-actions__dropdown li[data-section="potent-potables"].is-active {
+.schedule-actions__dropdown li[data-section="main-slate"].is-active {
   color: #b07837;
 }
 
-.schedule-actions__dropdown li[data-section="potent-potables"].is-active span {
+.schedule-actions__dropdown li[data-section="main-slate"].is-active span {
   background: #b07837;
 }
 
-.schedule-actions__dropdown li[data-section="oneletter-words"] span {
+.schedule-actions__dropdown li[data-section="convergence"] span {
   border-color: #599684;
 }
 
-.schedule-actions__dropdown li[data-section="oneletter-words"].is-active {
+.schedule-actions__dropdown li[data-section="convergence"].is-active {
   color: #599684;
 }
 
-.schedule-actions__dropdown li[data-section="oneletter-words"].is-active span {
+.schedule-actions__dropdown li[data-section="convergence"].is-active span {
   background: #599684;
 }
 
-.schedule-actions__dropdown li[data-section="words-that-rhyme-with-dog"] span {
+.schedule-actions__dropdown li[data-section="projections"] span {
   border-color: #df2ca5;
 }
 
-.schedule-actions__dropdown li[data-section="words-that-rhyme-with-dog"].is-active {
+.schedule-actions__dropdown li[data-section="projections"].is-active {
   color: #df2ca5;
 }
 
-.schedule-actions__dropdown li[data-section="words-that-rhyme-with-dog"].is-active span {
+.schedule-actions__dropdown li[data-section="projections"].is-active span {
   background: #df2ca5;
 }
 
-.schedule-actions__dropdown li[data-section="drummers-named-ringo"] span {
+.schedule-actions__dropdown li[data-section="special-events"] span {
   border-color: #1ab6ff;
 }
 
-.schedule-actions__dropdown li[data-section="drummers-named-ringo"].is-active {
+.schedule-actions__dropdown li[data-section="special-events"].is-active {
   color: #1ab6ff;
 }
 
-.schedule-actions__dropdown li[data-section="drummers-named-ringo"].is-active span {
+.schedule-actions__dropdown li[data-section="special-events"].is-active span {
   background: #1ab6ff;
 }
 
-.schedule-actions__dropdown li[data-section="colors-that-are-red"] span {
+.schedule-actions__dropdown li[data-section="explorations"] span {
   border-color: #2bca23;
 }
 
-.schedule-actions__dropdown li[data-section="colors-that-are-red"].is-active {
+.schedule-actions__dropdown li[data-section="explorations"].is-active {
   color: #2bca23;
 }
 
-.schedule-actions__dropdown li[data-section="colors-that-are-red"].is-active span {
+.schedule-actions__dropdown li[data-section="explorations"].is-active span {
   background: #2bca23;
+}
+
+.schedule-actions__dropdown li[data-section="revivals"] span {
+  border-color: #eeeaaa;
+}
+
+.schedule-actions__dropdown li[data-section="revivals"].is-active {
+  color: #eeeaaa;
+}
+
+.schedule-actions__dropdown li[data-section="revivals"].is-active span {
+  background: #eeeaaa;
+}
+
+.schedule-actions__dropdown li[data-section="retrospectives"] span {
+  border-color: #B7652A;
+}
+
+.schedule-actions__dropdown li[data-section="retrospectives"].is-active {
+  color: #B7652A;
+}
+
+.schedule-actions__dropdown li[data-section="retrospectives"].is-active span {
+  background: #B7652A;
+}
+
+.schedule-actions__dropdown li[data-section="spotlight-on-documentary"] span {
+  border-color: #67E3F0;
+}
+
+.schedule-actions__dropdown li[data-section="spotlight-on-documentary"].is-active {
+  color: #67E3F0;
+}
+
+.schedule-actions__dropdown li[data-section="spotlight-on-documentary"].is-active span {
+  background: #67E3F0;
 }
 
 .schedule-actions__dropdown__button--cont {
@@ -8439,48 +8534,75 @@ a:hover {
   color: #fff;
 }
 
-.schedule-actions__filters li a[data-section="potent-potables"] {
+.schedule-actions__filters li a[data-section="main-slate"] {
   border: 1px solid #b07837;
 }
 
-.schedule-actions__filters li a[data-section="potent-potables"].is-active {
+.schedule-actions__filters li a[data-section="main-slate"].is-active {
   background: #b07837;
   color: #fff;
 }
 
-.schedule-actions__filters li a[data-section="oneletter-words"] {
+.schedule-actions__filters li a[data-section="convergence"] {
   border: 1px solid #599684;
 }
 
-.schedule-actions__filters li a[data-section="oneletter-words"].is-active {
+.schedule-actions__filters li a[data-section="convergence"].is-active {
   background: #599684;
   color: #fff;
 }
 
-.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"] {
+.schedule-actions__filters li a[data-section="projections"] {
   border: 1px solid #df2ca5;
 }
 
-.schedule-actions__filters li a[data-section="words-that-rhyme-with-dog"].is-active {
+.schedule-actions__filters li a[data-section="projections"].is-active {
   background: #df2ca5;
   color: #fff;
 }
 
-.schedule-actions__filters li a[data-section="drummers-named-ringo"] {
+.schedule-actions__filters li a[data-section="special-events"] {
   border: 1px solid #1ab6ff;
 }
 
-.schedule-actions__filters li a[data-section="drummers-named-ringo"].is-active {
+.schedule-actions__filters li a[data-section="special-events"].is-active {
   background: #1ab6ff;
   color: #fff;
 }
 
-.schedule-actions__filters li a[data-section="colors-that-are-red"] {
+.schedule-actions__filters li a[data-section="explorations"] {
   border: 1px solid #2bca23;
 }
 
-.schedule-actions__filters li a[data-section="colors-that-are-red"].is-active {
+.schedule-actions__filters li a[data-section="explorations"].is-active {
   background: #2bca23;
+  color: #fff;
+}
+
+.schedule-actions__filters li a[data-section="revivals"] {
+  border: 1px solid #eeeaaa;
+}
+
+.schedule-actions__filters li a[data-section="revivals"].is-active {
+  background: #eeeaaa;
+  color: #fff;
+}
+
+.schedule-actions__filters li a[data-section="retrospectives"] {
+  border: 1px solid #B7652A;
+}
+
+.schedule-actions__filters li a[data-section="retrospectives"].is-active {
+  background: #B7652A;
+  color: #fff;
+}
+
+.schedule-actions__filters li a[data-section="spotlight-on-documentary"] {
+  border: 1px solid #67E3F0;
+}
+
+.schedule-actions__filters li a[data-section="spotlight-on-documentary"].is-active {
+  background: #67E3F0;
   color: #fff;
 }
 
@@ -8656,44 +8778,68 @@ a:hover {
   color: #000;
 }
 
-.fc-timeline-event[data-section="potent-potables"] {
+.fc-timeline-event[data-section="main-slate"] {
   border-top: 3px solid #b07837;
 }
 
-.fc-timeline-event[data-section="potent-potables"] .fc-section {
+.fc-timeline-event[data-section="main-slate"] .fc-section {
   color: #b07837;
 }
 
-.fc-timeline-event[data-section="oneletter-words"] {
+.fc-timeline-event[data-section="convergence"] {
   border-top: 3px solid #599684;
 }
 
-.fc-timeline-event[data-section="oneletter-words"] .fc-section {
+.fc-timeline-event[data-section="convergence"] .fc-section {
   color: #599684;
 }
 
-.fc-timeline-event[data-section="words-that-rhyme-with-dog"] {
+.fc-timeline-event[data-section="projections"] {
   border-top: 3px solid #df2ca5;
 }
 
-.fc-timeline-event[data-section="words-that-rhyme-with-dog"] .fc-section {
+.fc-timeline-event[data-section="projections"] .fc-section {
   color: #df2ca5;
 }
 
-.fc-timeline-event[data-section="drummers-named-ringo"] {
+.fc-timeline-event[data-section="special-events"] {
   border-top: 3px solid #1ab6ff;
 }
 
-.fc-timeline-event[data-section="drummers-named-ringo"] .fc-section {
+.fc-timeline-event[data-section="special-events"] .fc-section {
   color: #1ab6ff;
 }
 
-.fc-timeline-event[data-section="colors-that-are-red"] {
+.fc-timeline-event[data-section="explorations"] {
   border-top: 3px solid #2bca23;
 }
 
-.fc-timeline-event[data-section="colors-that-are-red"] .fc-section {
+.fc-timeline-event[data-section="explorations"] .fc-section {
   color: #2bca23;
+}
+
+.fc-timeline-event[data-section="revivals"] {
+  border-top: 3px solid #eeeaaa;
+}
+
+.fc-timeline-event[data-section="revivals"] .fc-section {
+  color: #eeeaaa;
+}
+
+.fc-timeline-event[data-section="retrospectives"] {
+  border-top: 3px solid #B7652A;
+}
+
+.fc-timeline-event[data-section="retrospectives"] .fc-section {
+  color: #B7652A;
+}
+
+.fc-timeline-event[data-section="spotlight-on-documentary"] {
+  border-top: 3px solid #67E3F0;
+}
+
+.fc-timeline-event[data-section="spotlight-on-documentary"] .fc-section {
+  color: #67E3F0;
 }
 
 .fc-timeline-event.fc-event-past {

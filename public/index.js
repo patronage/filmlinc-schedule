@@ -24,11 +24,14 @@ var filterClass = 'has-filter-active';
 var userSelectedDate = moment().format( DATE_KEY_FORMAT );
 
 var sections = [
-    "Potent potables",
-    "Words that rhyme with dog",
-    "Colors that are red",
-    "One-letter words",
-    "Drummers named ringo"
+    "MAIN SLATE",
+    "CONVERGENCE",
+    "PROJECTIONS",
+    "SPECIAL EVENTS",
+    "EXPLORATIONS",
+    "REVIVALS",
+    "RETROSPECTIVES",
+    "SPOTLIGHT ON DOCUMENTARY"
 ];
 
 /* end globals */

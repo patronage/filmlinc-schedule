@@ -6,11 +6,14 @@ var _ = require('lodash');
 var data = require( filePath );
 
 var opts = [
-    'Potent potables',
-    'One-letter words',
-    'Words that rhyme with dog',
-    'Drummers named ringo',
-    'Colors that are red'
+    'MAIN SLATE',
+    'CONVERGENCE',
+    'PROJECTIONS',
+    'SPECIAL EVENTS',
+    'EXPLORATIONS',
+    'REVIVALS',
+    'RETROSPECTIVES',
+    'SPOTLIGHT ON DOCUMENTARY'
 ];
 
 var length = opts.length - 1;
