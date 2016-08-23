@@ -12,11 +12,9 @@
         <link rel="stylesheet" href="bower_components/fullcalendar-scheduler/dist/scheduler.css" />
         <!-- endbower -->
         <link rel="stylesheet" href="/public/index.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     </head>
     <body id="home">
         <div class="container">
-            <!-- <header></header> -->
             <div class="row">
                 <div class="col-xs-12">
                     <div class="schedule">
@@ -40,17 +38,20 @@
                                         <li data-section="special-events">
                                             <span class="schedule-actions__dropdown--indicator"></span> Special events
                                         </li>
-                                        <li data-section="Explorations">
+                                        <li data-section="explorations">
                                             <span class="schedule-actions__dropdown--indicator"></span> Explorations
                                         </li>
                                         <li data-section="revivals">
                                             <span class="schedule-actions__dropdown--indicator"></span> Revivals
                                         </li>
-                                        <li data-section="retrospectives">
-                                            <span class="schedule-actions__dropdown--indicator"></span> Retrospectives
+                                        <li data-section="retrospective">
+                                            <span class="schedule-actions__dropdown--indicator"></span> Retrospective
                                         </li>
                                         <li data-section="spotlight-on-documentary">
                                             <span class="schedule-actions__dropdown--indicator"></span> Spotlight on Documentary
+                                        </li>
+                                        <li data-section="talks">
+                                            <span class="schedule-actions__dropdown--indicator"></span> Talks
                                         </li>
                                     </ul>
                                     <div class="schedule-actions__dropdown__button--cont">
@@ -68,7 +69,8 @@
                                     </li>
 
                                     <li class="tt faded" data-title="An array of immersive experiences that redefine the idea of cinematic storytelling">
-                                        <a class="cal-filter-trigger" href="#" data-section="convergence">CONVERGENCE
+                                        <a class="cal-filter-trigger" href="#" data-section="convergence">
+                                        CONVERGENCE
                                         </a>
                                     </li>
 
@@ -83,13 +85,11 @@
                                         SPECIAL EVENTS
                                         </a>
                                     </li>
-
                                     <li class="tt faded" data-title="Our newest section, featuring bold selections from the vanguard of contemporary cinema">
                                         <a class="cal-filter-trigger" href="#" data-section="explorations">
                                         EXPLORATIONS
                                         </a>
                                     </li>
-
                                     <li class="tt faded" data-title="The latest restorations and rereleases of essential classics of cinema">
                                         <a class="cal-filter-trigger" href="#" data-section="revivals">
                                         REVIVALS
@@ -97,14 +97,20 @@
                                     </li>
 
                                     <li class="tt faded" data-title="Looking back at the work of crucial, often underappreciated film masters">
-                                        <a class="cal-filter-trigger" href="#" data-section="retrospectives">
-                                        RETROSPECTIVES
+                                        <a class="cal-filter-trigger" href="#" data-section="retrospective">
+                                        RETROSPECTIVE
                                         </a>
                                     </li>
 
                                     <li class="tt faded" data-title="Dispatches from the front lines of today's nonfiction">
                                         <a class="cal-filter-trigger" href="#" data-section="spotlight-on-documentary">
                                         SPOTLIGHT ON DOCUMENTARY
+                                        </a>
+                                    </li>
+
+                                    <li class="tt faded" data-title="Intimate conversations with some of the most exciting directors and stars of this year's lineup">
+                                        <a class="cal-filter-trigger" href="#" data-section="talks">
+                                        TALKS
                                         </a>
                                     </li>
                                 </ul>
@@ -116,13 +122,11 @@
                                 <p>View by</p>
                                 <div class="schedule-actions__view__buttons">
                                     <a href="#" data-view="list" class="schedule-actions__view__button">
-                                        <!-- <img src="/img/icon-list.svg" alt="List icon" class="icon" /> -->
-                                        <i class="fa fa-list"></i>
+                                        <img src="/img/190-menu-white.svg" class="icon" alt="List icon" />
                                         <span>List</span>
                                     </a>
                                     <a href="#" data-view="grid" class="schedule-actions__view__button is-active">
-                                        <!-- <img src="/img/icon-list.svg" alt="List icon" class="icon" /> -->
-                                        <i class="fa fa-th-large"></i>
+                                        <img src="/img/370-table2-white.svg" class="icon" alt="Grid icon" />
                                         <span>Grid</span>
                                     </a>
                                 </div>
@@ -156,11 +160,11 @@
                                         <small class="co-content__section"></small>
                                         <p class="co-content__title"></p>
                                         <p class="co-content__duration"></p>
+                                        <p class="co-content__directors"></p>
                                         <p class="co-content__description"></p>
                                         <div class="co-content__showtime">
                                             <time></time>
-                                            <span class="co-content__directors"></span>
-                                            <a href="#" class="button-compressed">Buy tickets</a>
+                                            {# <a href="#" class="button-compressed">Buy&nbsp;tickets</a> #}
                                         </div>
                                     </div>
                                     <div class="co-content__location">

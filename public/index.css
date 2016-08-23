@@ -7927,7 +7927,7 @@ a:hover {
 
 .vm-content[data-section="main-slate"],
 .co-content[data-section="main-slate"] {
-  border-top: 3px solid #b07837;
+  border-top: 3px solid #e8230f;
 }
 
 .vm-content[data-section="convergence"],
@@ -7952,17 +7952,22 @@ a:hover {
 
 .vm-content[data-section="revivals"],
 .co-content[data-section="revivals"] {
-  border-top: 3px solid #eeeaaa;
+  border-top: 3px solid #a59e39;
 }
 
-.vm-content[data-section="retrospectives"],
-.co-content[data-section="retrospectives"] {
+.vm-content[data-section="retrospective"],
+.co-content[data-section="retrospective"] {
   border-top: 3px solid #B7652A;
 }
 
 .vm-content[data-section="spotlight-on-documentary"],
 .co-content[data-section="spotlight-on-documentary"] {
   border-top: 3px solid #67E3F0;
+}
+
+.vm-content[data-section="talks"],
+.co-content[data-section="talks"] {
+  border-top: 3px solid #12356c;
 }
 
 .vm-content > *,
@@ -7980,7 +7985,7 @@ a:hover {
 
 .vm-content__section[data-section="main-slate"],
 .co-content__section[data-section="main-slate"] {
-  color: #b07837;
+  color: #e8230f;
 }
 
 .vm-content__section[data-section="convergence"],
@@ -8005,17 +8010,22 @@ a:hover {
 
 .vm-content__section[data-section="revivals"],
 .co-content__section[data-section="revivals"] {
-  color: #eeeaaa;
+  color: #a59e39;
 }
 
-.vm-content__section[data-section="retrospectives"],
-.co-content__section[data-section="retrospectives"] {
+.vm-content__section[data-section="retrospective"],
+.co-content__section[data-section="retrospective"] {
   color: #B7652A;
 }
 
 .vm-content__section[data-section="spotlight-on-documentary"],
 .co-content__section[data-section="spotlight-on-documentary"] {
   color: #67E3F0;
+}
+
+.vm-content__section[data-section="talks"],
+.co-content__section[data-section="talks"] {
+  color: #12356c;
 }
 
 .vm-content__title,
@@ -8220,13 +8230,13 @@ a:hover {
 }
 
 .list-row[data-section="main-slate"] {
-  border-left-color: #b07837;
+  border-left-color: #e8230f;
 }
 
 .list-row[data-section="main-slate"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: #b07837;
+  color: #e8230f;
 }
 
 .list-row[data-section="convergence"] {
@@ -8270,20 +8280,20 @@ a:hover {
 }
 
 .list-row[data-section="revivals"] {
-  border-left-color: #eeeaaa;
+  border-left-color: #a59e39;
 }
 
 .list-row[data-section="revivals"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: #eeeaaa;
+  color: #a59e39;
 }
 
-.list-row[data-section="retrospectives"] {
+.list-row[data-section="retrospective"] {
   border-left-color: #B7652A;
 }
 
-.list-row[data-section="retrospectives"] .list-row__title small {
+.list-row[data-section="retrospective"] .list-row__title small {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #B7652A;
@@ -8297,6 +8307,16 @@ a:hover {
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #67E3F0;
+}
+
+.list-row[data-section="talks"] {
+  border-left-color: #12356c;
+}
+
+.list-row[data-section="talks"] .list-row__title small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #12356c;
 }
 
 .list-row:last-child {
@@ -8371,15 +8391,15 @@ a:hover {
 }
 
 .schedule-actions__dropdown li[data-section="main-slate"] span {
-  border-color: #b07837;
+  border-color: #e8230f;
 }
 
 .schedule-actions__dropdown li[data-section="main-slate"].is-active {
-  color: #b07837;
+  color: #e8230f;
 }
 
 .schedule-actions__dropdown li[data-section="main-slate"].is-active span {
-  background: #b07837;
+  background: #e8230f;
 }
 
 .schedule-actions__dropdown li[data-section="convergence"] span {
@@ -8431,26 +8451,26 @@ a:hover {
 }
 
 .schedule-actions__dropdown li[data-section="revivals"] span {
-  border-color: #eeeaaa;
+  border-color: #a59e39;
 }
 
 .schedule-actions__dropdown li[data-section="revivals"].is-active {
-  color: #eeeaaa;
+  color: #a59e39;
 }
 
 .schedule-actions__dropdown li[data-section="revivals"].is-active span {
-  background: #eeeaaa;
+  background: #a59e39;
 }
 
-.schedule-actions__dropdown li[data-section="retrospectives"] span {
+.schedule-actions__dropdown li[data-section="retrospective"] span {
   border-color: #B7652A;
 }
 
-.schedule-actions__dropdown li[data-section="retrospectives"].is-active {
+.schedule-actions__dropdown li[data-section="retrospective"].is-active {
   color: #B7652A;
 }
 
-.schedule-actions__dropdown li[data-section="retrospectives"].is-active span {
+.schedule-actions__dropdown li[data-section="retrospective"].is-active span {
   background: #B7652A;
 }
 
@@ -8464,6 +8484,18 @@ a:hover {
 
 .schedule-actions__dropdown li[data-section="spotlight-on-documentary"].is-active span {
   background: #67E3F0;
+}
+
+.schedule-actions__dropdown li[data-section="talks"] span {
+  border-color: #12356c;
+}
+
+.schedule-actions__dropdown li[data-section="talks"].is-active {
+  color: #12356c;
+}
+
+.schedule-actions__dropdown li[data-section="talks"].is-active span {
+  background: #12356c;
 }
 
 .schedule-actions__dropdown__button--cont {
@@ -8535,11 +8567,11 @@ a:hover {
 }
 
 .schedule-actions__filters li a[data-section="main-slate"] {
-  border: 1px solid #b07837;
+  border: 1px solid #e8230f;
 }
 
 .schedule-actions__filters li a[data-section="main-slate"].is-active {
-  background: #b07837;
+  background: #e8230f;
   color: #fff;
 }
 
@@ -8580,19 +8612,19 @@ a:hover {
 }
 
 .schedule-actions__filters li a[data-section="revivals"] {
-  border: 1px solid #eeeaaa;
+  border: 1px solid #a59e39;
 }
 
 .schedule-actions__filters li a[data-section="revivals"].is-active {
-  background: #eeeaaa;
+  background: #a59e39;
   color: #fff;
 }
 
-.schedule-actions__filters li a[data-section="retrospectives"] {
+.schedule-actions__filters li a[data-section="retrospective"] {
   border: 1px solid #B7652A;
 }
 
-.schedule-actions__filters li a[data-section="retrospectives"].is-active {
+.schedule-actions__filters li a[data-section="retrospective"].is-active {
   background: #B7652A;
   color: #fff;
 }
@@ -8603,6 +8635,15 @@ a:hover {
 
 .schedule-actions__filters li a[data-section="spotlight-on-documentary"].is-active {
   background: #67E3F0;
+  color: #fff;
+}
+
+.schedule-actions__filters li a[data-section="talks"] {
+  border: 1px solid #12356c;
+}
+
+.schedule-actions__filters li a[data-section="talks"].is-active {
+  background: #12356c;
   color: #fff;
 }
 
@@ -8779,11 +8820,11 @@ a:hover {
 }
 
 .fc-timeline-event[data-section="main-slate"] {
-  border-top: 3px solid #b07837;
+  border-top: 3px solid #e8230f;
 }
 
 .fc-timeline-event[data-section="main-slate"] .fc-section {
-  color: #b07837;
+  color: #e8230f;
 }
 
 .fc-timeline-event[data-section="convergence"] {
@@ -8819,18 +8860,18 @@ a:hover {
 }
 
 .fc-timeline-event[data-section="revivals"] {
-  border-top: 3px solid #eeeaaa;
+  border-top: 3px solid #a59e39;
 }
 
 .fc-timeline-event[data-section="revivals"] .fc-section {
-  color: #eeeaaa;
+  color: #a59e39;
 }
 
-.fc-timeline-event[data-section="retrospectives"] {
+.fc-timeline-event[data-section="retrospective"] {
   border-top: 3px solid #B7652A;
 }
 
-.fc-timeline-event[data-section="retrospectives"] .fc-section {
+.fc-timeline-event[data-section="retrospective"] .fc-section {
   color: #B7652A;
 }
 
@@ -8840,6 +8881,14 @@ a:hover {
 
 .fc-timeline-event[data-section="spotlight-on-documentary"] .fc-section {
   color: #67E3F0;
+}
+
+.fc-timeline-event[data-section="talks"] {
+  border-top: 3px solid #12356c;
+}
+
+.fc-timeline-event[data-section="talks"] .fc-section {
+  color: #12356c;
 }
 
 .fc-timeline-event.fc-event-past {

@@ -2,6 +2,8 @@
 
 var groupedData, rawEventData;
 
+var now = moment();
+
 // should be set to bootstrap's small breakpoint.
 var breakpointSmallMax = 991;
 
@@ -20,8 +22,12 @@ var venuesToModify = [ "Howard Gilman Theater", "Amphitheater", "Francesca Beale
 // class for timeline events and list rows
 var filterClass = 'has-filter-active';
 
-// the currently selected date. defaults to today
-var userSelectedDate = moment().format( DATE_KEY_FORMAT );
+// the currently selected date. defaults to today or the first day of festival
+var userSelectedDate = moment( 'Fri Sep 30 2016 00:00:00 GMT-0400 (EDT)' ).format( DATE_KEY_FORMAT );
+
+if ( now.isAfter( userSelectedDate ) ) {
+    userSelectedDate = now.format( DATE_KEY_FORMAT )
+}
 
 var sections = [
     "MAIN SLATE",
@@ -30,7 +36,7 @@ var sections = [
     "SPECIAL EVENTS",
     "EXPLORATIONS",
     "REVIVALS",
-    "RETROSPECTIVES",
+    "RETROSPECTIVE",
     "SPOTLIGHT ON DOCUMENTARY"
 ];
 
@@ -38,6 +44,9 @@ var sections = [
 
 // via: https://gist.github.com/furzeface/01cf2b3ee8a737e8a55b
 function slugifyText( text ) {
+    if ( typeof text === 'undefined' ) {
+        return null;
+    }
     var slug = text.replace(/[^\w\s]+/gi, '').replace(/ +/gi, '-');
     return slug.toLowerCase();
 };
@@ -45,7 +54,7 @@ function slugifyText( text ) {
 // get event data and format it for scheduler
 function getData( callback ) {
     $.ajax({
-        url: '/public/data.json',
+        url: 'http://www.filmlinc.org/wp-content/themes/filmlinc/api-events.php?start=2016-09-30&end=2016-10-16',
         dataType: 'json',
         success: function( data, textStatus, jqXHR ) {
 
@@ -84,13 +93,21 @@ function checkPast( dateToCheck ) {
 
 // create list of days and bind events to them
 function buildDayPicker() {
-    
-    var now = moment();
-    
-    for (var i = 0; i < 17; i++) {
 
-        var pastDate = moment().subtract( 7, 'days' );
-        var dateToWrite = pastDate.add( i, 'days' );
+    var now = moment();
+    var startDate = moment( 'Thurs Sep 29 2016 00:00:00 GMT-0400 (EDT)' );
+    var endDate = moment( 'Sun Oct 16 2016 00:00:00 GMT-0400 (EDT)' );
+    var numDays = endDate.diff( startDate, 'days' );
+    var initialHighlightedDay = moment( 'Fri Sep 30 2016 00:00:00 GMT-0400 (EDT)' );
+    if ( now.isAfter( startDate ) ) {
+        initialHighlightedDay = now;
+    }
+
+    // moment actually modifies the date when you add days (see below) so we create a dupe
+    var _start = moment( 'Thurs Sep 29 2016 00:00:00 GMT-0400 (EDT)' );
+
+    for (var i = 0; i < numDays; i++) {
+        var dateToWrite = _start.add( 1, 'days' );
 
         $( '.day-picker' ).append(
             '<div class="day-picker__day" data-day=' + dateToWrite.format( DATE_KEY_FORMAT ) +'>' +
@@ -100,7 +117,7 @@ function buildDayPicker() {
         );
 
         // Current day should be active
-        if ( dateToWrite.format( DATE_KEY_FORMAT ) === now.format( DATE_KEY_FORMAT ) ) {
+        if ( dateToWrite.format( DATE_KEY_FORMAT ) === initialHighlightedDay.format( DATE_KEY_FORMAT ) ) {
             $( '.day-picker__day' ).last().addClass( 'is-active' );
         }
     }
@@ -108,7 +125,7 @@ function buildDayPicker() {
 
 // Handle events on the "clear filters" buttons
 function activateFilterClearButton() {
-    
+
     $clearButton.removeClass( 'hidden' );
     $clearButton.one( 'click', function() {
         $( 'body' ).removeClass( 'body-filter-active' );
@@ -145,7 +162,7 @@ function resetFilters() {
 }
 
 function isSmall() {
-    
+
     if ( $( document ).width() < breakpointSmallMax ) {
         return true;
     }
@@ -282,10 +299,12 @@ function movePager( isMovingForward ) {
 
 function refreshCalendar() {
     $calendar.fullCalendar( 'refetchEvents' );
-    
+
     var minTime = getEarliestTime();
     var maxTime = getLatestTime();
-    
+
+    console.log( 'min time is: ' + minTime );
+
     $calendar.fullCalendar( 'option', {
         minTime: minTime,
         maxTime: maxTime,
@@ -296,6 +315,9 @@ function refreshCalendar() {
 
 function getEarliestTime() {
     var format = 'HH:00:00';
+
+    console.log( 'userSelectedDate is: ' + userSelectedDate );
+
     var firstEvent = _.sortBy( groupedData[ userSelectedDate ], function( event ) {
         return event.start;
     })[ 0 ]
@@ -349,7 +371,7 @@ function buildCalendar() {
         // http://fullcalendar.io/docs/views/defaultView/
         // http://fullcalendar.io/docs/views/Available_Views/
         defaultView: 'timelineDay',
-        
+
         // http://fullcalendar.io/docs/display/header/
         header: {
             left: '',
@@ -359,6 +381,9 @@ function buildCalendar() {
 
         // http://fullcalendar.io/docs/display/height/
         height: 'auto',
+
+        // http://fullcalendar.io/docs/current_date/defaultDate/
+        defaultDate: userSelectedDate,
 
         // http://fullcalendar.io/docs/timeline/minTime_maxTime/
         minTime: getEarliestTime(),
@@ -377,7 +402,7 @@ function buildCalendar() {
 
         // http://fullcalendar.io/docs/timeline/slotDuration/
         slotDuration: '00:10',
-        
+
         // http://fullcalendar.io/docs/timeline/slotWidth/
         slotWidth: 35,
 
@@ -434,11 +459,14 @@ function buildCalendar() {
             $element.find( '.fc-title' ).html( titleText );
 
             // Add section and meta info
-            $interior.prepend( '<span class="fc-section">' + event.section + '</span>' );
-            $interior.append( '<span class="fc-duration">' + event.running_time + ' minutes</span>' );
+            if ( event.section ) {
+                $interior.prepend( '<span class="fc-section">' + event.section + '</span>' );
+            }
+            if ( event.running_time && typeof event.running_time !== 'undefined' ) {
+                $interior.append( '<span class="fc-duration">' + event.running_time + ' minutes</span>' );
+            }
             if ( !isEventPast ) {
-                // if ( event.ticket_status && event.ticket_status !== 'normal' ) {
-                if ( event.ticket_status ) {
+                if ( event.ticket_status && event.ticket_status !== 'normal' ) {
                     element.append( '<div class="fc-callout">' + event.ticket_status + '</div>' );
                 }
                 $interior.after(
@@ -446,7 +474,7 @@ function buildCalendar() {
                         '<span class="fc-meta-time">' +
                         moment( event.start ).format( 'h:mm A') +
                         '</span>' +
-                        '<span class="fc-meta-buy"><a class="fc-meta-buy__link" href="' + event.url +'">Buy Tickets</a></span>' +
+                        // '<span class="fc-meta-buy"><a class="fc-meta-buy__link" href="' + event.url +'">Buy Tickets</a></span>' +
                     '</div>'
                 );
             } else {
@@ -490,7 +518,8 @@ function buildCalendar() {
                 'Francesca Beale Theater',
                 'Howard Gilman Theater',
                 'Amphitheater',
-                'Bruno Walter Auditorium'
+                'Bruno Walter Auditorium',
+                'AMC Lincoln Square'
             ];
 
             uniqueVenues = _.map( uniqueVenues, function( venue ) {
@@ -548,7 +577,7 @@ jQuery(document).ready(function() {
     $('body').attr({
         'data-view': ''
     });
-    
+
     getData( function() {
         buildCalendar();
         buildList();
