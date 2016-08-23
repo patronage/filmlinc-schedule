@@ -14,7 +14,7 @@ var $calendar = $( '.widget__calendar' );
 var $clearButton = $( '.schedule-actions__filters--clear' );
 
 // consistent date formatting for when we need a day
-var DATE_KEY_FORMAT = 'MM-DD-YYYY';
+var DATE_KEY_FORMAT = 'YYYY-MM-DD';
 
 // venues that need "Elinor Bunin Munroe Film Center" added
 var venuesToModify = [ "Howard Gilman Theater", "Amphitheater", "Francesca Beale Theater" ];
