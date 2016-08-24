@@ -395,7 +395,7 @@ function buildCalendar() {
         // http://fullcalendar.io/docs/timeline/resourceLabelText/
         resourceLabelText: ' ',
 
-        schedulerLicenseKey: '0709072040-fcs-1468865905',
+        schedulerLicenseKey: 'KEY_GOES_HERE',
 
         // http://fullcalendar.io/docs/timeline/scrollTime/
         scrollTime: determineScrollTime(),
@@ -545,9 +545,9 @@ function buildCalendar() {
                 $resourceTextEl.replaceWith( template );
             }
 
-            $( labelTds ).on( 'click', function( e ) {
-                venuePopupGenerator( venueName );
-            });
+            // $( labelTds ).on( 'click', function( e ) {
+            //     venuePopupGenerator( venueName );
+            // });
 
         },
 
